@@ -54,5 +54,69 @@ You can find this dataset in the notebook on this page to inspect the dataset as
 
 [UCI Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+Disease)
 
+[![](https://video.udacity-data.com/topher/2020/April/5e8cea63_l1-ehr-data-security-analysis-6/l1-ehr-data-security-analysis-6.jpg "Key Distributions")Key Distributions](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/eaf98312-bcfb-473d-abf1-0d78164a561f/concepts/4081fe09-1941-4b29-97eb-9e4ac1c8bb61#)
+
+## Value Distributions Review {#value-distributions-review}
+
+* Normal is the well-known bell-curve that most people are familiar with and is also referred to as a Gaussian distribution
+* The uniform distribution is where the unique values have almost the same frequency and this is important b/c this might indicate some issue with the data
+* Skewed/unbalanced data distributions as the name indicates are where a smaller subset of values or a single value dominates
+* Bimodal and Poisson but for the scope of this course we will not cover those
+
+## Missing Values and Outliers {#missing-values-and-outliers}
+
+Missing values are especially common in healthcare where you may have incomplete records or some fields are sparsely populated
+
+### Missing Data Classification {#missing-data-classification}
+
+**MCAR**which stands for Missing Completely at Random. This means that the data is missing due to something unrelated to the data and there is**no systematic reason**for the missing data. In other words, there is an equal probability that data is missing for all cases. This is often due to some instrumentation like a broken instrument or process issue where some of the data is randomly missing.
+
+**MAR**refers to Missing at Random and this is the opposite case where there**is some systematic relationship**between data and the probability of missing data. For example, there might be some missing demographics choices in surveys.
+
+**MNAR**is a Missing Not at Random and this usually means there is a relationship between a value in the dataset and the missing values.
+
+Understanding why data is missing help with choosing the best imputing method to fill or drop the values in your dataset.
+
+### Code Concepts {#code-concepts}
+
+Create a function to check the percent of missing and zero values you have.
+
+```
+def
+check_for_missing_and_null
+(df)
+:
+
+    null_df = pd.DataFrame({
+'columns'
+: df.columns, 
+                            
+'percent_null'
+: df.isnull().sum() * 
+100
+ / len(df), 
+                           
+'percent_zero'
+: df.isin([
+0
+]).sum() * 
+100
+ / len(df)
+                           } )
+    
+return
+ null_df 
+
+```
+
+Apply that function to the original dataframe`check_for_missing_and_null(dataframe)`
+
+View the results and see if there are any values that stand out. Again you may need to deal with different columns in different ways depending on their type and reason for missing or zero values.
+
+#### Additional Resources {#additional-resources}
+
+* [Imputation Methods](https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779)
+* [Advanced Imputation Methods](https://www.sciencedirect.com/science/article/pii/S2352914819302783)
+
 
 
