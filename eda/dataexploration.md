@@ -90,12 +90,12 @@ check_for_missing_and_null
     null_df = pd.DataFrame({
 'columns'
 : df.columns, 
-                            
+
 'percent_null'
 : df.isnull().sum() * 
 100
  / len(df), 
-                           
+
 'percent_zero'
 : df.isin([
 0
@@ -103,10 +103,9 @@ check_for_missing_and_null
 100
  / len(df)
                            } )
-    
-return
- null_df 
 
+return
+ null_df
 ```
 
 Apply that function to the original dataframe`check_for_missing_and_null(dataframe)`
@@ -118,5 +117,19 @@ View the results and see if there are any values that stand out. Again you may n
 * [Imputation Methods](https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779)
 * [Advanced Imputation Methods](https://www.sciencedirect.com/science/article/pii/S2352914819302783)
 
+## High Cardinality {#high-cardinality}
 
+**Cardinality**: refers to the number of unique values that a feature has and is relevant to EHR datasets because there are code sets such as diagnosis codes in the order of tens of thousands of unique codes. This only applies to**categorical features**and the reason this is a problem is that it can increase dimensionality and makes training models much more difficult and time-consuming.
+
+**How do we define a field with high cardinality?**
+
+* Determine if it is a categorical feature.
+* Determine if it has a high number of unique values. This can be a bit subjective but we can probably agree that for a field with 2 unique values would not have high cardinality whereas a field like diagnosis codes might have tens of thousands of unique values would have high cardinality.
+* Use the
+  `nunique()`
+  method to return the number of unique values for the categorical categories above.
+
+#### Additional Resources {#additional-resources}
+
+[Reducing Dimensionality](https://en.wikipedia.org/wiki/Dimensionality_reduction)
 
