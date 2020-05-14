@@ -77,41 +77,6 @@ Missing values are especially common in healthcare where you may have incomplete
 
 Understanding why data is missing help with choosing the best imputing method to fill or drop the values in your dataset.
 
-### Code Concepts {#code-concepts}
-
-Create a function to check the percent of missing and zero values you have.
-
-```
-def
-check_for_missing_and_null
-(df)
-:
-
-    null_df = pd.DataFrame({
-'columns'
-: df.columns, 
-
-'percent_null'
-: df.isnull().sum() * 
-100
- / len(df), 
-
-'percent_zero'
-: df.isin([
-0
-]).sum() * 
-100
- / len(df)
-                           } )
-
-return
- null_df
-```
-
-Apply that function to the original dataframe`check_for_missing_and_null(dataframe)`
-
-View the results and see if there are any values that stand out. Again you may need to deal with different columns in different ways depending on their type and reason for missing or zero values.
-
 #### Additional Resources {#additional-resources}
 
 * [Imputation Methods](https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779)
