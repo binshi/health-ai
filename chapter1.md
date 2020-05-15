@@ -114,5 +114,131 @@ Finally, the third part is the extension which is the last character and can be 
 
 [Code Structure](https://library.ahima.org/doc?oid=106177#.Xm70u5NKhQI)[Coding Guidelines](https://www.cms.gov/Medicare/Coding/ICD10/Downloads/2019-ICD10-Coding-Guidelines-.pdf)
 
+## Diagnosis Codes Key Points {#diagnosis-codes-key-points}
+
+First, it is important to note that it can take several encounters for a patient to receive a diagnosis, and therefore a diagnosis code. There may be an initial appointment, some follow-up testing, and then another appointment before a diagnosis is determined. This is very common. This means that there may not be diagnosis codes for every encounter.
+
+Encounter 1: G30.9, M06.9,~~**G30.9**~~
+
+Second, a diagnosis code should never be repeated in the same encounter.
+
+* Encounter 1:
+  **G30.9**
+  , M06.9
+* Encounter 2:
+  **G30.9**
+  , M06.9, A34.6
+
+Third, it is expected that a diagnosis would carry across different encounters as the patient is being treated for that diagnosis.
+
+#### Additional Resources {#additional-resources}
+
+In the video, we showed you the CDC lookup tool for ICD10-CM codes. The link is below. Go ahead and look up some codes you might be familiar with!
+
+* [CDC ICD10-CM Lookup Tool](https://icd10cmtool.cdc.gov/?fy=FY2019)
+* [Coronavirus ICD Code Announcement](https://www.cdc.gov/nchs/data/icd/Announcement-New-ICD-code-for-coronavirus-2-20-2020.pdf)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8e3c2a_l2-ehr-code-sets-4/l2-ehr-code-sets-4.jpg)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/3277cb18-1de1-49c3-b42e-3287aae3fde0#)
+
+### Diagnosis Code Prioritization {#diagnosis-code-prioritization}
+
+At a high level, it is important to distinguish what code is taking up the most resources or is the most critical and there are few terms that you should become familiar with.
+
+* **Primary Diagnosis Code**
+  : The code that takes up the most resources to treat.
+* **Principal Diagnosis Code**
+  : The diagnosis that is found after hospitalization to be the one that is chiefly responsible.
+
+This**can be**an important distinction since the admitting diagnosis code can widely differ from the final, Principal Diagnosis. For the most part, these terms interchangeably but it's good to be aware of the differences and the need to dig into the details when necessary.
+
+* **Secondary Diagnosis Codes**
+  : The other diagnosis codes listed on an encounter.
+
+For example, if a patient were to have a knee replacement surgery but had type 2 diabetes as a prior condition, the secondary diagnosis code of type 2 diabetes would be included in the medical record.
+
+**Note**: Secondary diagnoses codes can include many additional codes
+
+#### Additional Resources {#additional-resources}
+
+* [ICD10 -CM Coding Guidelines](https://www.cms.gov/Medicare/Coding/ICD10/Downloads/2019-ICD10-Coding-Guidelines-.pdf)
+* [Primary, Principal, and Secondary Diagnosis Codes](https://www.hcpro.com/HIM-324035-5707/QA-Primary-principal-and-secondary-diagnoses.html)
+
+**Procedure Codes**: the categorization of the medical codes during an encounter. It's important to note if a procedure is inpatient or outpatient.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f6b65_l2-ehr-code-sets-3/l2-ehr-code-sets-3.jpg "Key Procedure Code Sets")Key Procedure Code Sets](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/9e9ef750-5450-48f6-8f34-1870cd460225#)
+
+### Key Procedure Code Sets {#key-procedure-code-sets}
+
+The graphic above shows some additional information about 3 of the important code sets. Here are the key points about each of them.
+
+* **ICD10 PCS**
+  : Procedure Coding Systems
+  * Only for
+    **Inpatient**
+  * 72,000+ codes as of 2019
+  * Focus on medical and surgical
+* **CPT**
+  : Current Procedural Terminology
+  * **Outpatient**
+    focused but can apply to physician visits in ambulatory settings
+  * 10,000+ codes as of 2019
+  * Focus on professional services by physician
+* **HCPCS**
+  : Healthcare Common Procedure Coding System
+  * Inpatient and outpatient
+  * Has 3 levels
+    * L1: CPT Codes
+    * L2: Non-physician services
+      * DME: Durable Medical Equipment
+      * Ambulatory Services
+      * Dental
+    * L3: Medicare/Medicaid related
+
+We will focus on ICD-10 PCS and CPT codes, but it's good to be aware of HCPCS codes, too!
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8994_l2-ehr-code-sets-6/l2-ehr-code-sets-6.jpg "ICD10 PCS Selections")ICD10 PCS Selections](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/9e9ef750-5450-48f6-8f34-1870cd460225#)
+
+### ICD10-PCS Code Structure {#icd10-pcs-code-structure}
+
+* 7 alphanumeric characters \[A-Z, 0-9\]
+* 1st character is the Section
+  * Reference Section codes categories in the table above
+* Subsequent characters relate to the
+  _Section_
+  and give:
+  * Body System
+  * Body Part
+  * Approach
+  * Device used for a procedure
+
+#### Additional Resources {#additional-resources}
+
+* [PCS Procedure Code System](https://www.cms.gov/Medicare/Coding/ICD10/Downloads/2014-pcs-procedure-coding-system.pdf)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8953_l2-ehr-code-sets-4/l2-ehr-code-sets-4.jpg "Coronary Heart Code Example: 027004Z")Coronary Heart Code Example: 027004Z](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/9e9ef750-5450-48f6-8f34-1870cd460225#)
+
+## PCS Code Example {#pcs-code-example}
+
+For this example we used 027004Z. This is a Heart Surgery code that relates to:
+
+* Dilation of Coronary Artery
+* One Site with Drug-eluting Intraluminal Device
+* Open Approach
+
+You can see the breakdown in the image above. In the table, you can see that this code starts with**0**, which is the**Medical**category. If you look over the link from the last section,[PCS Procedure Code System](https://www.cms.gov/Medicare/Coding/ICD10/Downloads/2014-pcs-procedure-coding-system.pdf), you can further see where the rest of the code breaks down.
+
+* 0 = Medical
+* 2 = Heart and Great Vessels
+* 7 = Dilation
+* 0 = Coronary Artery, One Site
+* 0 = Open Approach
+* 4 = Drug-eluting Intraluminal Device
+* Z = No Qualifier
+
+#### Additional Resources {#additional-resources}
+
+* [PCS Overview](https://www.tacomacc.edu/userfiles/servers/server_6/file/him/him240/pcsoverview/pcsoverview4)
+* [Medicare Coding](https://www.cms.gov/Medicare/Coding/ICD10/Downloads/2016-PCS-Slides.pdf)
+
 
 
