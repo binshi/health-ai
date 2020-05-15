@@ -240,5 +240,33 @@ You can see the breakdown in the image above. In the table, you can see that thi
 * [PCS Overview](https://www.tacomacc.edu/userfiles/servers/server_6/file/him/him240/pcsoverview/pcsoverview4)
 * [Medicare Coding](https://www.cms.gov/Medicare/Coding/ICD10/Downloads/2016-PCS-Slides.pdf)
 
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8960_l2-ehr-code-sets-5/l2-ehr-code-sets-5.jpg "CPT Category 1 Billable Codes")CPT Category 1 Billable Codes](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/9e9ef750-5450-48f6-8f34-1870cd460225#)
+
+## CPT Codes {#cpt-codes}
+
+CPT codes have the following structure:
+
+* Up to 5 numbers
+* 3 Categories
+  * Category 1: Billable codes
+    * 10 sections largely split along biological systems which are broken out in the image above
+  * Category 2:
+    * Five digits that end in F
+    * Non-billable
+    * Performance measure focused on physicals and patient history
+  * Category 3:
+    * Services and procedures using emerging technology
+
+Generally, you'll focus on the first two categories.
+
+As a reminder, we will not be covering HCPCS Codes. However, we have added some additional links regarding HCPCS codes below.
+
+#### Additional Links {#additional-links}
+
+* [Understanding CPT Codes](https://www.aapc.com/resources/medical-coding/cpt.aspx)
+* [CMS.gov Database Download for CPT Codes](https://www.cms.gov/medicare-coverage-database/license/cpt-license.aspx?from=~/overview-and-quick-search.aspx&npage=/medicare-coverage-database/downloads/downloadable-databases.aspx)
+* [CMS.gov HCPCS Codes Information](https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo)
+* [HCPCS Wikipedia](https://en.wikipedia.org/wiki/Healthcare_Common_Procedure_Coding_System)
+
 
 
