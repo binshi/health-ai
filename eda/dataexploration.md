@@ -98,3 +98,23 @@ Understanding why data is missing help with choosing the best imputing method to
 
 [Reducing Dimensionality](https://en.wikipedia.org/wiki/Dimensionality_reduction)
 
+# Key Points {#key-points}
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8cf13f_l1-ehr-data-security-analysis-7/l1-ehr-data-security-analysis-7.jpg "Important of Representative Data")Important of Representative Data](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/eaf98312-bcfb-473d-abf1-0d78164a561f/concepts/2eb766af-8240-4bfa-9945-b5f53cf22c31#)
+
+## Demographic Analysis {#demographic-analysis}
+
+The reason that demographic analysis is so important, especially in healthcare, is that we need our clinical trials and machine learning models to be able to representative to general population. While this is not always completely possible given limited trials and very rare conditions it is something we need to strive for and identify as early as possible if there may be an issue.
+
+If we don't have a properly representative demographic dataset, we wouldn't know how a drug or prediction might impact a certain age, race or gender which could lead to significant issues for those not represented.
+
+When completing a demographic analysis, it can be helpful to group data into buckets or bins.
+
+In this walkthrough, we used`np.arange()`to create the bucket ranges, then used them to create the applies with a`.join()`method, and finally used`pd.cut()`to create our new "age\_bins" buckets. You can use whatever methods you would like to complete this task. We also took the opportunity to change the sex or gender column from 0,1 to "male" and "female" to further breakdown our categories and demographics using`replace()`. Again this should all be a review, but we are just including here to be clear.
+
+You may also use different age buckets/bins and see how the value distribution looks for those bins.
+
+#### Additional Resources {#additional-resources}
+
+[Demographic Analysis](https://www.sciencedirect.com/topics/computer-science/demographic-data)
+
