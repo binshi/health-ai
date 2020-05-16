@@ -268,5 +268,70 @@ As a reminder, we will not be covering HCPCS Codes. However, we have added some 
 * [CMS.gov HCPCS Codes Information](https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo)
 * [HCPCS Wikipedia](https://en.wikipedia.org/wiki/Healthcare_Common_Procedure_Coding_System)
 
+## Medication Code Key Points {#medication-code-key-points}
 
+**NDC**: National Drug Code
+
+In this section, we discussed the NDC Codes. These codes have been in place since 1972, and are maintained by the FDA.
+
+### NDC Code Structure {#ndc-code-structure}
+
+* 10- to 11-digit code
+  * multiple configurations
+* 3 Parts
+  * Labeler: Drug manufacturer
+  * Product code: the actual drug details
+  * Package code: form and size of medication
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8a68_l2-ehr-code-sets-7/l2-ehr-code-sets-7.jpg)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/5d48e35a-a785-4642-bad7-631cc878ce9f#)
+
+In the image above you, can see the first part of the NDC code for_Tecentriq_.
+
+The first part of the code**50242**is the**Labeler**, which maps to the manufacturer of the drug \(which in this case is**Genentech, Inc**\).
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8a73_l2-ehr-code-sets-8/l2-ehr-code-sets-8.jpg "NDC Product Code")NDC Product Code](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/5d48e35a-a785-4642-bad7-631cc878ce9f#)
+
+In the example above, we are looking at the middle section of the code**917**.
+
+**917**is the**Product Code**. In this case, it takes the unpronounceable, Non-Proprietary Name,**ATEZOLIZUMAB 1200mg/20ml**and maps it to the Proprietary Name,**Tecentriq**. It also indicates that the drug dosage form is**Injection, Solution**and the route of administration is**Intravenous**.
+
+It is important to note that you may need to use the Non-Proprietary Name in order to group a drug by all of its generics.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8a7e_l2-ehr-code-sets-9/l2-ehr-code-sets-9.jpg "NDC Packaging Code")NDC Packaging Code](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/5d48e35a-a785-4642-bad7-631cc878ce9f#)
+
+Finally, the last two digits**01**.
+
+This is the**packaging code**, and in this instance indicates that the package is a 14ml single vial in 1 carton for single use.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8aa3_l2-ehr-code-sets-10/l2-ehr-code-sets-10.jpg "HCPCS Crosswalk")HCPCS Crosswalk](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/5d48e35a-a785-4642-bad7-631cc878ce9f#)
+
+### Crosswalk {#crosswalk}
+
+**Crosswalk**: A connection between two different code sets or versions of drugs in the same code set.
+
+A common term you will hear for medical code sets is a crosswalk.
+
+For NDC codes we can connect them to HCPCS codes and depending on the data source you are looking at there may be a mapping from these codes.
+
+For the previous example, there is a crosswalk between the Tecentriq NDC code and the HCPCS code J9022. Something to note is that the HCPCS code starts with a J and the “J” codes tend to be drugs that are injected but by definition, they are drugs that are not taken orally. You can see that the HCPCS code maps some info from the NDC code.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8a8e_l2-ehr-code-sets-11/l2-ehr-code-sets-11.jpg "NDC Code Challenges")NDC Code Challenges](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/5d48e35a-a785-4642-bad7-631cc878ce9f#)
+
+### Challenge with NDC Codes {#challenge-with-ndc-codes}
+
+One of the major challenges with NDC codes is to normalize or group codes by common types of drugs. For example, let’s take acetaminophen. You would think this would be relatively straightforward to group whenever someone has the NDC code for this drug. However, as you can see from this table of only a sample of the results from[NDC List](http://ndclist.com/)that there many drug codes that could contain acetaminophen with other drugs too. This can make drugs very difficult to deal with.
+
+#### Additional Resources: {#additional-resources-}
+
+[NDC List](http://ndclist.com/)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e8f8ab0_l2-ehr-code-sets-12/l2-ehr-code-sets-12.jpg "RXNorm Example")RXNorm Example](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/5d48e35a-a785-4642-bad7-631cc878ce9f#)
+
+### RXNorm {#rxnorm}
+
+To address the problem just mentioned, the NIH developed a normalized naming system called**RXNorm**, which does what its name implies and groups medication together. This is important because providers, pharmacies, payers all send EHR records with this data but might use different names and it becomes difficult to communicate between different systems.
+
+To illustrate this issue, take a look at a drug Naproxen and the just a few examples of different names of naproxen that is the same thing,
+
+While there is a crosswalk between NDC codes and RXNorm, there are still some issues. Depending on the system you are dealing with, it could use one or the other code set.
 
