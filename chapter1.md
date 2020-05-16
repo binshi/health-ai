@@ -1,3 +1,31 @@
+EHR Code sets allow for the comparison of data across various EHR systems. You first learned about diagnosis codes. In particular, ICD10-CM. You gained knowledge of what this code set is, why it's important, how to read them. You also applied that knowledge by grouping data using EHR codes as well as build an embedding with visualizations. Hopefully, ICD10- CM codes will be easy to work with from now on.
+
+Then you reduced cardinality of a dataset using procedure codes after learning more about ICD10-PCS, CPT and HCPCS. You should be able to break down medication codes too! You should also be able to apply your knowledge to deal with the challenges of working with medication code sets.
+
+Finally, you put all of this code knowledge to work by grouping and categorizing these code sets with CCS. I know that there was a lot of information in this lesson, but now it's time to move on to learning some magic to transform EHR Data! Into what? You'll have to head to the next lesson to find out!
+
+[![](https://video.udacity-data.com/topher/2020/April/5e908920_l2-ehr-code-sets-15/l2-ehr-code-sets-15.jpg "EHR Code Sets Overview")EHR Code Sets Overview](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/36105657-a626-43d7-bed7-2c6fe2fa5f2d#)
+
+## Key Terms {#key-terms}
+
+| Key Terms | Definition |
+| :--- | :--- |
+| Medical Encounter | An interaction between a patient and healthcare provider\(s\) for the purpose of providing healthcare service\(s\) or assessing the health status of a patient. |
+| ICD10: | International Classification of Diseases 10 |
+| WHO: | World Health Organization |
+| ICD10-CM | International Classification of Diseases 10 - Clinical Modification |
+| Primary Diagnosis Code | The code that takes up the most resources to treat. |
+| Principal Diagnosis Code | The diagnosis that is found after hospitalization to be the one that is chiefly responsible. |
+| Secondary Diagnosis Codes: | The other diagnosis codes listed on an encounter. |
+| Medical Procedure | A course of action to achieve an intended result for a patient in healthcare. |
+| Procedure Codes | The categorization of these medical codes during an encounter. |
+| NDC | National Drug Code |
+| Crosswalk | A connection between two different code sets or versions of drugs in the same code set. |
+| RXNorm | Groups medications together. |
+| CCS | Clinical Classifications Software used to map diagnosis or procedure codes from ICD code sets. |
+| MS-DRG | Medicare Severity-Diagnosis Related Group |
+| SNOMED CT | Systematized Nomenclature of Medicine—Clinical Terms |
+
 ## Working with EHR Code Sets {#working-with-ehr-code-sets}
 
 You are about 20% of the way through and you have gained some very important skills in dealing with EHR data. Now you'll build even more on those skills as we begin to look at Electronic Health Record Code sets. But before we get started, let's review what will be covered in this lesson.
@@ -335,8 +363,6 @@ To illustrate this issue, take a look at a drug Naproxen and the just a few exam
 
 While there is a crosswalk between NDC codes and RXNorm, there are still some issues. Depending on the system you are dealing with, it could use one or the other code set.
 
-
-
 ## Grouping/Categorizing Key Points {#grouping-categorizing-key-points}
 
 **CCS**- Clinical Classifications Software
@@ -387,12 +413,12 @@ It would be hard to have a medical expert categorize these at and they can chang
 ### Other Categorization Systems {#other-categorization-systems}
 
 * **MS- DRG**
-  - Medicare Severity-Diagnosis Related Group
+  * Medicare Severity-Diagnosis Related Group
   * Group payment based on the principal diagnosis
   * Up to 25 secondary dx
   * Up to 25 procedures during a visit/encounter
 * **SNOMED CT**
-  - Systematized Nomenclature of Medicine—Clinical Terms
+  * Systematized Nomenclature of Medicine—Clinical Terms
   * License to use
   * Helpful for making the EHR records interoperable
 
