@@ -335,3 +335,74 @@ To illustrate this issue, take a look at a drug Naproxen and the just a few exam
 
 While there is a crosswalk between NDC codes and RXNorm, there are still some issues. Depending on the system you are dealing with, it could use one or the other code set.
 
+
+
+## Grouping/Categorizing Key Points {#grouping-categorizing-key-points}
+
+**CCS**- Clinical Classifications Software
+
+As mentioned earlier, there is a tremendous challenge of taking the 77K+ ICD10 PCS codes and categorizing them into meaningful categories at scale. This is where a government-industry partnership called the Healthcare Cost and Utilization Project \(HCUP\) created a categorization system called clinical classifications software or CCS. It can be used to map diagnosis or procedure codes from ICD code sets. It has single or multi-level options for mapping these codes.
+
+### Single Level Categories {#single-level-categories}
+
+* Mutually exclusive categories
+* 285 categories for diagnoses
+* 231 categories for procedures
+
+As an example using single-level codes:
+
+* **Operations on the cardiovascular system **are codes **43-63**
+* **Heart valve procedures **is code **43**
+  .
+
+Below you can see how that changes using multi-level codes.
+
+Single level categories can be used for ranking of codes and help with risk adjustment scoring
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90882a_l2-ehr-code-sets-13/l2-ehr-code-sets-13.jpg "CCS Multi-level Categories")CCS Multi-level Categories](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/2e1be139-4d7d-4fce-ac3a-9f3b93aadb30#)
+
+### Multi-Level Categories {#multi-level-categories}
+
+CCS Multi-level categories are helpful for more detailed analysis and grouping at a more granular level. there are 4 levels for diagnosis codes and 3 levels for procedure codes.
+
+In the above example,**7**is a broad category, but then you can see that it branches off into**7.1**and**7.2**into more detail.**7.1**.
+
+Then**7.1.X.X**further break down hypertension.
+
+**7.1.2.1**= Hypertensive heart and/or renal disease \(_typo in image above_\).
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90884f_l2-ehr-code-sets-14/l2-ehr-code-sets-14.jpg "CCS ICD10 - PCS Category Mapping File ")CCS ICD10 - PCS Category Mapping File[CCS website](https://www.hcup-us.ahrq.gov/toolssoftware/ccs10/ccs10.jsp)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/76f4c48c-a664-4750-8753-5811c854d02a/concepts/2e1be139-4d7d-4fce-ac3a-9f3b93aadb30#)
+
+### CCS ICD10-PCS Category Mapping File {#ccs-icd10-pcs-category-mapping-file}
+
+Below we have included a link to the CCS ICD10-PCS Category Mapping File which makes figuring out and working with these category groupings much easier._You download the mapping file for taking ICD10 PCS procedure codes and map them to grouping/categorization with CCS._
+
+The mapping file breaks down like this \(image above\):
+
+* ICD10 codes and their descriptions on the left
+* CCS category descriptions, Multi CCS LVL 1, and Multi Lvl 1 Label on the right.
+
+It would be hard to have a medical expert categorize these at and they can change over time. Thankfully CCS maps these for us. These mappings can be helpful in reducing dimensionality.
+
+### Other Categorization Systems {#other-categorization-systems}
+
+* **MS- DRG**
+  - Medicare Severity-Diagnosis Related Group
+  * Group payment based on the principal diagnosis
+  * Up to 25 secondary dx
+  * Up to 25 procedures during a visit/encounter
+* **SNOMED CT**
+  - Systematized Nomenclature of Medicine—Clinical Terms
+  * License to use
+  * Helpful for making the EHR records interoperable
+
+We will not be using these two in this course and there are many other systems as well, but knowing that they exist is good.
+
+#### Additional Resources {#additional-resources}
+
+* [CCS website](https://www.hcup-us.ahrq.gov/toolssoftware/ccs10/ccs10.jsp)
+* [MS-DRG](https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/AcuteInpatientPPS/MS-DRG-Classifications-and-Software)
+* [SNOMED CT](http://www.snomed.org/snomed-ct/five-step-briefing)
+
+
+
