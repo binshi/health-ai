@@ -115,7 +115,7 @@ We could find out using
 
 Therefore this dataset would be at the line level.
 
-[![](https://video.udacity-data.com/topher/2020/April/5e908aa3_l3-ehr-data-transformations-and-tensorflow-feature-engineering-5/l3-ehr-data-transformations-and-tensorflow-feature-engineering-5.jpg "Encounter Level")Encounter Level](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
+[![](https://video.udacity-data.com/topher/2020/April/5e908aa3_l3-ehr-data-transformations-and-tensorflow-feature-engineering-5/l3-ehr-data-transformations-and-tensorflow-feature-engineering-5.jpg "Encounter Level")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
 
 If the total number of rows is equal to the number of unique encounters, it is at the encounter level.
 
@@ -163,11 +163,12 @@ The definition of an encounter commonly used for EHR records comes from the Heal
 
 2. Create column list for the other columns not in the grouping
 
-3. Transform your data into a new dataframe. You can use
-   `groupby()`
-   and
-   `agg()`
+3. Transform your data into a new dataframe. You can use  
+   `groupby()`  
+   and  
+   `agg()`  
    functions for this
+
 4. Then you can do a quick inspection of the result by grabbing one of the patient records and to compare the output of the original dataframe and the newly transformed encounter dataframe.
 
 **Note**: The data used in the walkthrough was created just to show you how this would work. You'll practice this more in later exercises as well.
