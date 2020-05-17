@@ -18,6 +18,7 @@ To use the TensorFlow Feature Columns with numerical features we need to do the 
 1. Identify the fields with numerical features.
 2. Use the TensorFlow Dataset API to load the dataset.
 3. Create your own custom normalizer function like a z-score
+
    ```
    def
    z_score_normalizer
@@ -25,8 +26,8 @@ To use the TensorFlow Feature Columns with numerical features we need to do the 
    :
    return
     z_score_normalization
-
    ```
+
 4. Use the TensorFlow numeric\_column feature and pass in the z\_score\_normalizer function to the normalizer\_fn argument.
    * `tf.feature_column.numerical_column(column_name, normalizer_fn=z_score_normalizer)`
 5. Let the TensorFlow Feature Column API do it's magic!
@@ -41,14 +42,9 @@ For building categorical features with the TensorFlow Features Column API, we fo
 
 1. Select the categorical feature columns.
 2. Create a vocabulary text file with all of the unique values for a given categorical feature and add a placeholder value for out of vocabulary\(OOV\) values in the first row.
-   * **Note**
-     : For columns with a small number of features, you probably don't need to do this step and can instead pass an array/list to the
-     [categorical\_column\_with\_vocabulary\_list function](https://www.tensorflow.org/api_docs/python/tf/feature_column/categorical_column_with_vocabulary_list)
-     .
+   * **Note**: For columns with a small number of features, you probably don't need to do this step and can instead pass an array/list to the [categorical\_column\_with\_vocabulary\_list function](https://www.tensorflow.org/api_docs/python/tf/feature_column/categorical_column_with_vocabulary_list)
    * The creation of a separate vocabulary file method is particularly great for features with high cardinality. It can also allow you to use other tools like SQL to generate these vocab files with more massive datasets and decouple this process if you are already creating these for data profiling purposes.
-3. Create your new feature by passing the vocabulary feature to the final derived feature. This can be an embedding or one-hot encoded feature. In this example, we created a one-hot encoding feature with the
-   [indicator column function](https://www.tensorflow.org/api_docs/python/tf/feature_column/indicator_column)
-   .
+3. Create your new feature by passing the vocabulary feature to the final derived feature. This can be an embedding or one-hot encoded feature. In this example, we created a one-hot encoding feature with the [indicator column function](https://www.tensorflow.org/api_docs/python/tf/feature_column/indicator_column)
 
 Example:
 
