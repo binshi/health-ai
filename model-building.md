@@ -18,3 +18,45 @@ There is so much to cover in this section. Head to the next section to get start
 
 [![](https://video.udacity-data.com/topher/2020/April/5e90dae4_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-1/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-1.jpg "Lesson Overview")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/097b1cd3-89ae-49f1-b1f0-723d438b9cbf#)
 
+### Tensorflow Regression Model with DenseFeatures
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90db09_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-2/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-2.jpg "Build Model with TF \`DenseFeatures\`")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/c3d65858-313d-45b0-9ba1-97b55b19098c#)
+
+## TF DenseFeatures Key Points {#tf-densefeatures-key-points}
+
+In this section, we will focus on just building a simple Tensorflow regression model with TF`DenseFeatures`, but we realize that there are more advanced deep learning architectures. Please feel free to try different approaches to augment your features and architecture with the walkthroughs and exercises in this lesson. There are some additional links below to explore around with some AutoML offerings. These are not the focus of this course but are included in case this is interesting to you.
+
+### Build Model with TF DenseFeatures {#build-model-with-tf-densefeatures}
+
+Tensorflow DenseFeatures, combining features, like those from the TensorFlow Feature Columns API, into a dense representation for the model.
+
+You can only use certain TF Feature Columns with`DenseFeatures`:
+
+* `numeric_column`
+* `embedding_column`
+* `bucketized_column`
+* `indicator_column`
+
+**Note**:
+
+* For the sake of simplicity, we will use the Sequential API for this course, but if you want to customize further, feel free to try to the Functional API. However, you might encounter some issues later with configuring some other parts with the TF Probability outputs.
+* As of writing, Tensorflow is experimenting with Sequence Features columns as well that can be combined with the
+  `SequenceFeatures`
+  function. This will not be covered in the course but wanted to share this for your info since it can be very useful.
+
+#### Additional Resources {#additional-resources}
+
+* [TF DenseFeatures](https://www.tensorflow.org/api_docs/python/tf/keras/layers/DenseFeatures)
+* [Functional API](https://www.tensorflow.org/guide/keras/functional)
+* [SequenceFeatures](https://www.tensorflow.org/api_docs/python/tf/keras/experimental/SequenceFeatures)
+* [GCP AutoML](https://cloud.google.com/automl/)
+* [AWS Autopilot](https://aws.amazon.com/sagemaker/autopilot/)
+* [AdaNet](https://ai.googleblog.com/2018/10/introducing-adanet-fast-and-flexible.html)
+* [AutoKeras](https://autokeras.com/)
+* [H20 Driverless AI](https://www.h2o.ai/products/h2o-driverless-ai/)
+* [AdaNet Additional](https://arxiv.org/abs/1607.01097)
+* [AutoKeras Titanic](https://autokeras.com/examples/titanic/)
+* [Evolved Transformer](https://arxiv.org/abs/1901.11117)
+
+
+
