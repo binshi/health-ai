@@ -20,16 +20,14 @@ To use the TensorFlow Feature Columns with numerical features we need to do the 
 3. Create your own custom normalizer function like a z-score
 
    ```
-   def
-   z_score_normalizer
-   (args)
-   :
-   return
-    z_score_normalization
+   def z_score_normalizer(args):
+       return z_score_normalization
    ```
 
 4. Use the TensorFlow numeric\_column feature and pass in the z\_score\_normalizer function to the normalizer\_fn argument.
+
    * `tf.feature_column.numerical_column(column_name, normalizer_fn=z_score_normalizer)`
+
 5. Let the TensorFlow Feature Column API do it's magic!
 
 #### Additional Resources {#additional-resources}
