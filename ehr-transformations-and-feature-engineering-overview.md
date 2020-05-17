@@ -26,7 +26,7 @@ With EHR datasets, there are three levels.
 
 These levels are extremely important in healthcare data, and being able to identify and work with data at the correct level will ensure that you start with the correct data type and dataset to feed to your models.
 
-[![](https://video.udacity-data.com/topher/2020/April/5e908a09_l3-ehr-data-transformations-and-tensorflow-feature-engineering-1/l3-ehr-data-transformations-and-tensorflow-feature-engineering-1.jpg "Overview of the Three Levels")Overview of the Three Levels](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
+[![](https://video.udacity-data.com/topher/2020/April/5e908a09_l3-ehr-data-transformations-and-tensorflow-feature-engineering-1/l3-ehr-data-transformations-and-tensorflow-feature-engineering-1.jpg "Overview of the Three Levels")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
 
 ### Line Level {#line-level}
 
@@ -54,7 +54,7 @@ Continuing with our example above if the patient contracts bronchitis often, ove
 
 Now that you have a basic understanding of the different levels we'll explore them a bit more with examples.
 
-[![](https://video.udacity-data.com/topher/2020/April/5e908a2f_l3-ehr-data-transformations-and-tensorflow-feature-engineering-2/l3-ehr-data-transformations-and-tensorflow-feature-engineering-2.jpg "Example Overview of Dataset Levels")Example Overview of Dataset Levels](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
+[![](https://video.udacity-data.com/topher/2020/April/5e908a2f_l3-ehr-data-transformations-and-tensorflow-feature-engineering-2/l3-ehr-data-transformations-and-tensorflow-feature-engineering-2.jpg "Example Overview of Dataset Levels")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
 
 ## EHR Dataset Levels Continued {#ehr-dataset-levels-continued}
 
@@ -74,29 +74,24 @@ A particular encounter might have 50 lines and that might be treated inadvertent
 
 Further, selecting the wrong encounter from the patient record can often occur and there might be a case where you only want the earliest or latest visit or state for a patient or time step for your model. This can cause many issues that might not become apparent until the modeling or deployment phases of your project
 
-[![](https://video.udacity-data.com/topher/2020/April/5e908a65_l3-ehr-data-transformations-and-tensorflow-feature-engineering-3/l3-ehr-data-transformations-and-tensorflow-feature-engineering-3.jpg "How do you know which level you are at?")How do you know which level you are at?](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
+[![](https://video.udacity-data.com/topher/2020/April/5e908a65_l3-ehr-data-transformations-and-tensorflow-feature-engineering-3/l3-ehr-data-transformations-and-tensorflow-feature-engineering-3.jpg "How do you know which level you are at?")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
 
 ## How do you know the dataset level for your data? {#how-do-you-know-the-dataset-level-for-your-data-}
 
 This is actually fairly easy if you collect some key metrics from your dataset and there are different ways to do this but I provided a few simple ways to do below.
 
-1. The total number of rows in the dataset. This is a simple calculation with
-   `len()`
-2. The number of unique encounters or visits. You can calculate this by finding the field\(s\) that give the identity of a unique encounter using
-   `nunique()`
+1. The total number of rows in the dataset. This is a simple calculation with `len()`
+2. The number of unique encounters or visits. You can calculate this by finding the field\(s\) that give the identity of a unique encounter using `nunique()`
    .
 
 ### Example {#example}
 
 ```
 total_rows = len(fake_df)
-total_encounters = fake_df[
-'encounter'
-].nunique()
-
+total_encounters = fake_df['encounter'].nunique()
 ```
 
-[![](https://video.udacity-data.com/topher/2020/April/5e908a84_l3-ehr-data-transformations-and-tensorflow-feature-engineering-4/l3-ehr-data-transformations-and-tensorflow-feature-engineering-4.jpg "Line Level")Line Level](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
+[![](https://video.udacity-data.com/topher/2020/April/5e908a84_l3-ehr-data-transformations-and-tensorflow-feature-engineering-4/l3-ehr-data-transformations-and-tensorflow-feature-engineering-4.jpg "Line Level")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
 
 From here we do some simple calculations to figure out our dataset level.
 
@@ -106,10 +101,7 @@ Again using our example from above:
 
 ```
 total_rows = len(fake_df)
-total_unique_encounters = len(fake_df[
-'encounter'
-].nunique())
-
+total_unique_encounters = len(fake_df['encounter'].nunique())
 ```
 
 if the output was
@@ -119,11 +111,7 @@ if the output was
 
 We could find out using
 
-* `print(total_rows `
-  `>`
-  ` total_unique_encounters)`
-  would evaluate to
-  `True`
+* `print(total_rows > total_unique_encounters) `would evaluate to `True`
 
 Therefore this dataset would be at the line level.
 
@@ -135,10 +123,7 @@ Again using our example from above:
 
 ```
 total_rows = len(fake_df)
-total_unique_encounters = len(fake_df[
-'encounter'
-].nunique())
-
+total_unique_encounters = len(fake_df['encounter'].nunique())
 ```
 
 if the output was
@@ -148,13 +133,11 @@ if the output was
 
 We could find out using
 
-* `print(total_rows == total_unique_encounters)`
-  would evaluate to
-  `True`
+* `print(total_rows == total_unique_encounters) `would evaluate to `True`
 
 Therefore this dataset would be at the encounter level.
 
-[![](https://video.udacity-data.com/topher/2020/April/5e908adf_l3-ehr-data-transformations-and-tensorflow-feature-engineering-6/l3-ehr-data-transformations-and-tensorflow-feature-engineering-6.jpg "Longitudinal Level")Longitudinal Level](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
+[![](https://video.udacity-data.com/topher/2020/April/5e908adf_l3-ehr-data-transformations-and-tensorflow-feature-engineering-6/l3-ehr-data-transformations-and-tensorflow-feature-engineering-6.jpg "Longitudinal Level")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/cfa9ae5d-50fc-45e0-9145-b158a80e6717#)
 
 ## Longitudinal Level {#longitudinal-level}
 
