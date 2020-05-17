@@ -111,7 +111,7 @@ if the output was
 
 We could find out using
 
-* `print(total_rows > total_unique_encounters) `would evaluate to `True`
+* `print(total_rows > total_unique_encounters)`would evaluate to `True`
 
 Therefore this dataset would be at the line level.
 
@@ -133,7 +133,7 @@ if the output was
 
 We could find out using
 
-* `print(total_rows == total_unique_encounters) `would evaluate to `True`
+* `print(total_rows == total_unique_encounters)`would evaluate to `True`
 
 Therefore this dataset would be at the encounter level.
 
@@ -142,4 +142,92 @@ Therefore this dataset would be at the encounter level.
 ## Longitudinal Level {#longitudinal-level}
 
 For the longitudinal or patient level, you will see multiple encounters grouped under a patient and you might not even see the encounter id field since this information is collapsed/aggregated under a unique patient id. In this case, the total number of rows should equal the total number of unique patients.
+
+## Encounter Representation Key Points {#encounter-representation-key-points}
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90ab5b_l3-ehr-data-transformations-and-tensorflow-feature-engineering-9/l3-ehr-data-transformations-and-tensorflow-feature-engineering-9.jpg "What is an Encounter?")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/906a7254-1ef6-47c9-8442-a9982addf173#)
+
+[**Encounter**](https://www.hl7.org/fhir/encounter-definitions.html): “An interaction between a patient and healthcare provider\(s\) for the purpose of providing healthcare service\(s\) or assessing the health status of a patient.”
+
+### What is an encounter? {#what-is-an-encounter-}
+
+The definition of an encounter commonly used for EHR records comes from the Health Level Seven International \(HL7\), the organization that sets the international standards for healthcare data. As the definition states, it is essentially an interaction between a patient and a healthcare professional\(s\). It usually refers to doctors visits and hospital stays.
+
+### How do we aggregate line level at encounter level? {#how-do-we-aggregate-line-level-at-encounter-level-}
+
+1. Create a column list for the columns you would use to group. Likely these would be:
+
+   * "encounter\_id"
+   * "patient\_id"
+   * "principal\_diagnosis\_code"
+
+2. Create column list for the other columns not in the grouping
+
+3. Transform your data into a new dataframe. You can use
+   `groupby()`
+   and
+   `agg()`
+   functions for this
+4. Then you can do a quick inspection of the result by grabbing one of the patient records and to compare the output of the original dataframe and the newly transformed encounter dataframe.
+
+**Note**: The data used in the walkthrough was created just to show you how this would work. You'll practice this more in later exercises as well.
+
+#### Additional Resources {#additional-resources}
+
+* [Encounter Definitions](https://www.hl7.org/fhir/encounter-definitions.html)
+
+# Longitudinal Representation Key Points {#longitudinal-representation-key-points}
+
+**Longitudinal Representation**: Patient History
+
+### What is a longitudinal data representation? {#what-is-a-longitudinal-data-representation-}
+
+Another way to view it is a patient history representation. It is basically a way to aggregate all of the visits/encounters that a patient may have in the healthcare system. Having all of this information is ideal to best analyze and diagnose correctly, but the reality is that patient records do not always come cleanly organized and aggregated correctly, in real-world datasets. Luckily, we can use the line and encounter levels to help with that!
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90abf8_l3-ehr-data-transformations-and-tensorflow-feature-engineering-7/l3-ehr-data-transformations-and-tensorflow-feature-engineering-7.jpg "Longitudinal Representation Example")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/c33cf4f5-e2f0-44aa-8c12-db17b80cf289#)
+
+Combining patients together into a dataset and finding a way to aggregate and represent the visits across a patient is the key to being able to unlock powerful insights and analysis.
+
+### Challenges and Benefits of Using the Longitudinal Level {#challenges-and-benefits-of-using-the-longitudinal-level}
+
+#### Challenges: {#challenges-}
+
+* Scaling with this type of data requires vast resources
+* Data representation and preparation requires more preparation and validation
+* Training vs production/deployment data differences can cause major issues with model predictions
+
+**Example**: You train this great Model, and it has fantastic results!
+
+However, the data you used for this model had an implicit assumption that you were unaware of :
+
+_Only the label for the last encounter for a patient history would be included._
+
+You think that you can always transform the data in production. Right?
+
+**Reality**: You have put your model into production and things start going haywire.
+
+You are not getting the same results that you anticipated from your trained model. Even with some cross-validation and other augmentation methods, you still see significant model drift. After some analysis of the production data pipeline, you find out that the production use case has an**Encounter selected at random**from the patient history and information has been duplicated by accident because the information was not leveled correctly.
+
+From this example, you can see how important it is to make sure you, or your data team, have properly aggregated the data.
+
+#### Benefits: {#benefits-}
+
+Even though data preparation and validation are more difficult, there are significant benefits to using a longitudinal representation as it allows you to use a full patient history. This helps to better model changes in state over time. When you can also aggregate other patients longitudinal data together, you can achieve some unbelievable results.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90ac1f_l3-ehr-data-transformations-and-tensorflow-feature-engineering-8/l3-ehr-data-transformations-and-tensorflow-feature-engineering-8.jpg "Deep Learning Potential Importance")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/e8ba701a-3efd-4d33-8e73-cbb55ab9a311/concepts/c33cf4f5-e2f0-44aa-8c12-db17b80cf289#)
+
+To further illustrate the importance of having a strong EHR longitudinal data representation, you can look through the links in this section about Google creating a data representation to feed into deep learning models from the Fast Healthcare Interoperability Resources or**FHIR**standards.
+
+In Google's[_Nature_](https://www.nature.com/articles/s41746-018-0029-1)article, they highlighted the aforementioned challenges with building a longitudinal representation. The 216K+ patients in the dataset were extrapolated to 46B data points! Now imagine attempting to scale this even further with more patients or other types of data like genomic data, clinical trial data, etc. This is where resources like cloud computing have become critical, but even these can be strained with this much data.
+
+As most practitioners know, the data preparation stage is one of the most time consuming, but impactful parts of a data science project. The representation and deep learning models outperformed clinically used traditional predictive models in**ALL**cases. It is still early days for the healthcare industry as they have just started to consider using deep learning and still barriers exist in using them due to concerns about interpretability. Hopefully, with more studies like this, critical attention to detail and eye on data security and privacy we can bring this practice to the forefront in healthcare.
+
+#### Additional Links {#additional-links}
+
+* [Google's Nature Paper](https://www.nature.com/articles/s41746-018-0029-1)
+* [Google's Patent](https://patents.google.com/patent/US20160042124)
+* [FHIR](https://www.hl7.org/fhir/overview.html)
+* [FHIR Overview](https://datica.com/blog/what-is-fhir/)
+
+
 
