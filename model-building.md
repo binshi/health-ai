@@ -146,7 +146,7 @@ It's important to note that bias within models can restrict or limit patient acc
 
 Programs using AI algorithms to help automate approvals of key government benefits are becoming more commonplace. However, it is just as important to consider how bias can unintentionally occur.
 
-[![](https://video.udacity-data.com/topher/2020/April/5e90dc4b_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-8/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-8.jpg "Why is bias in models important to consider?")Why is bias in models important to consider?](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/4c00ff99-adf2-47f7-8d2d-e77b2c5ccfe4#)
+[![](https://video.udacity-data.com/topher/2020/April/5e90dc4b_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-8/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-8.jpg "Why is bias in models important to consider?")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/4c00ff99-adf2-47f7-8d2d-e77b2c5ccfe4#)
 
 Another reason that you want to consider bias in models is that in order to create better treatments for patients we need to find better ways to select and recruit patients that represent the wider population that a drug/treatment would be targeted for.
 
@@ -167,6 +167,51 @@ Unintended biases represent the unconscious or unintentional biases that come wi
 * Developed by University of Chicago Data Science for Social Good
 * Addresses concerns about unintended bias unfairly affecting certain groups
 * Definitions and metrics for unintended bias in predictive models
+
+
+
+# Uncertainty Estimation Key Points {#uncertainty-estimation-key-points}
+
+### Why use Uncertainty Estimation? {#why-use-uncertainty-estimation-}
+
+A typical classification problem provides predictions with relative weightings across the prediction classes and is different than the confidence in a given prediction. Uncertainty estimation helps us with this.
+
+# Class Probabilities != confidence in a prediction. {#class-probabilities-confidence-in-a-prediction-}
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90dcb7_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-10/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-10.jpg "Uncertainty Weather Example")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/8eb25552-df38-44ee-b290-444c13d9cb7c#)
+
+### Example: {#example-}
+
+Which is better?
+
+1. A weather forecast with a simple Yes or No prediction it will rain with some icons?
+2. A forecast that also provides the percent chance of rain or how certain the model is of its prediction?
+
+Most people would prefer the second one and in healthcare this even more important.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90dcea_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-12/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-12.jpg "Review of Bayesian Probability")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/8eb25552-df38-44ee-b290-444c13d9cb7c#)
+
+## Bayesian Probability Review {#bayesian-probability-review}
+
+### Probabilistic Programming {#probabilistic-programming}
+
+To address uncertainty estimation we can use probabilistic programming, in particular, we can create Bayesian Neural Networks \(BNN\) using TensorFlow Probability. TF probability combines Bayesian probabilistic approaches with deep learning and since it is built on Tensorflow you can train with GPUs too.
+
+Bayesian statistical approaches can be very helpful for situations where you can leverage deep domain knowledge and have small datasets. Healthcare is an industry where you might have small datasets on patient data for a new drug or rare conditions. Also, healthcare is a field where you can leverage deep domain knowledge from medical professionals and medical literature which can help provide positive “bias” in your model with pertinent domain knowledge.
+
+### Review of Bayesian Probability {#review-of-bayesian-probability}
+
+* Prior distribution - P\(A\)
+* P\(A \| Evidence\) - Updating the prior with new evidence
+* P\(B\) - posterior probability
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90dd19_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-11/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-11.jpg "Response Differences for Bayesian Probability")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/8eb25552-df38-44ee-b290-444c13d9cb7c#)
+
+### Example: {#example-}
+
+Let’s say we want to assess whether a drug will pass a phase III clinical trial. The frequentist statistical response would be a yes or no response. However, the bayesian response would give a yes/no and the certainty/confidence in that prediction. This can be helpful when connecting it with metrics like Brier scores that can combine predictions from various models.
+
+If you are only 51% certain that you will pass the clinical trial, how certain would you be?
 
 
 
