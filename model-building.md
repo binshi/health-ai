@@ -77,13 +77,66 @@ Below I will walk through the simple steps to use the DenseFeatures layer.
   dense_feature_layer = tf.keras.layers.DenseFeatures(feature_columns)
   ```
 * Next, we simply add this 'dense\_feature\_layer' as the first layer to the model and this will handle the combining of feature inputs to the model.
+
   ```
     model = tf.keras.Sequential(**dense_feature_layer**,tf.keras.layers.Dense(
   64, activation='relu')
    ... additional layers
-
   ```
 
-  
+## Common EHR Metrics Key Points {#common-ehr-metrics-key-points}
+
+For this course, we will assume some exposure to common evaluation metrics used for classification and regression. These terms should hopefully be familiar and we will not cover them fully, but here is a quick review.
+
+### Common Classification Metrics {#common-classification-metrics}
+
+* [**ROC**](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc): receiver operating characteristic curve or ROC curve that shows a graph of the performance of a classification model. It is the True Positive Rate Vs. False Positive Rate across different thresholds.
+* [**AUC**](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc): Area under the ROC Curve measures the entire two-dimensional area underneath the entire ROC curve.
+* [**F1**](https://en.wikipedia.org/wiki/F1_score): Harmonic mean between precision and recall
+* [**Precision**](https://en.wikipedia.org/wiki/Precision_and_recall): the fraction of relevant instances among the retrieved instances
+* [**Recall**](https://en.wikipedia.org/wiki/Precision_and_recall): the fraction of the total amount of relevant instances that were actually retrieved.
+
+### Common Regression Metrics {#common-regression-metrics}
+
+* [**RMSE**](https://en.wikipedia.org/wiki/Root-mean-square_deviation): Root Mean Square Error- a measure of the differences between values predicted by a model.
+* [**MAPE**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error): Mean Absolute Percentage Error is a measure of quality for regression models loss.
+* [**MAE**](https://en.wikipedia.org/wiki/Mean_absolute_error): Mean Absolute Error is a measure of errors between paired observations.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90db6e_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-3/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-3.jpg "Precision Recall Tradeoff")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/933a24af-3859-4a7f-b79a-1d227798758c#)
+
+## Precision-Recall Tradeoff {#precision-recall-tradeoff}
+
+As a quick reminder, there is often some level of precision that you must align with and some capture rate or recall that you are trying to improve. This balance between the two is a necessary tradeoff and a key component that you must communicate with non-technical stakeholders who might have unrealistic views of the impact or capabilities of AI.
+
+## Brier Scores {#brier-scores}
+
+One metric that you might not be familiar with is a Brier score and it is often used in weather forecasting for estimating the probability certainty of a forecast. It can be a useful metric for comparing the performance of algorithms based on the degree of confidence in a given prediction. This can be helpful because the confidence and measurement of uncertainty can yield vastly different interpretations.
+
+For the actual definition, it is essentially the mean squared error of a given probability forecast and I walk through the formula step by step below. However, please note that you are not expected to know this formula or use it in this course because we are focusing on the predictions for a regression model. It is introduced as a relevant evaluation metric for if we had a binary classification problem with the associated prediction probabilities.
+
+### Brier Score Breakdown Part 1 {#brier-score-breakdown-part-1}
+
+Basically you take the probability forecast on a 0 to 1 scale which is_f of t_and subtract that from_O of t_which is the actual value which is a binary 0 and 1 value. You then square the difference of this value.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90db8c_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-4/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-4.jpg "Brier Score Breakdown Part 2")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/933a24af-3859-4a7f-b79a-1d227798758c#)
+
+1. Take the summation of these squared differences from t=1 to N, the total number of predictions.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90dbe8_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-5/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-5.jpg "Brier Score Breakdown Part 3")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/933a24af-3859-4a7f-b79a-1d227798758c#)2. Then divide by N the total number of predictions
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90dc18_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-6/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-6.jpg "Brier Score Breakdown Part 4")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/933a24af-3859-4a7f-b79a-1d227798758c#)
+
+The result is the Brier Score which ranges from 0 and 1.
+
+* Lower is better
+* 0 is the best score
+* 1 is the worst score.
+
+#### Additional Resources {#additional-resources}
+
+* [A Note on the Evaluation of Novel Biomarkers: Do Not Rely on Integrated Discrimination Improvement and Net Reclassification Index](https://pubmed.ncbi.nlm.nih.gov/23553436/)
+* [Brier Scores](https://en.wikipedia.org/wiki/Brier_score)
+* [Brier Score Limitations](https://diagnprognres.biomedcentral.com/articles/10.1186/s41512-017-0020-3)
+
 
 
