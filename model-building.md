@@ -315,8 +315,6 @@ NOTE: Before we go into the walkthrough I want to note that TF Probability is no
 
 * [Tensorflow Regression with Probabilistic Layers Tutorial](https://blog.tensorflow.org/2019/03/regression-with-probabilistic-layers-in.html)
 
-
-
 # Model Interpretability Key Points {#model-interpretability-key-points}
 
 **Note**: This section is included largely as a bonus and not required in the project, but it is very good to know about.
@@ -356,7 +354,7 @@ Shapley values are based on game theory and provide the marginal contributions o
 
 * [Shapley Value Explanation](https://www.analyticsvidhya.com/blog/2019/11/shapley-value-machine-learning-interpretability-game-theory/)
 * [Integrated Gradients](http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf)
-  - method that is specialized for deep learning models
+  * method that is specialized for deep learning models
 
 ## Shapley Value Walkthrough {#shapley-value-walkthrough}
 
@@ -370,37 +368,25 @@ Steps
 * Use Kmeans clustering to summarize data. As we mentioned earlier the issue with Shapley can be the computation time and a way to reduce this is to cluster the features with Kmeans. In this example, we arbitrarily use 25 clusters but you could use a different number.
 
   ```
-  df_train_normed_summary = shap.kmeans(normed_train_data.values, 
-  25
-  )
-
+  df_train_normed_summary = shap.kmeans(normed_train_data.values, 25)
   ```
 
 * Use Shapley package's model agnostic KernelExplainer class and pass in the Shapley model and the summarized training data that has already been normalized in the previous walkthrough.
 
   ```
-  explainer
-   = shap.KernelExplainer(shap_model.predict, df_train_normed_summary)
-
+  explainer = shap.KernelExplainer(shap_model.predict, df_train_normed_summary)
   ```
 
 * Extract Shapley values from the explainer.
-  ```
-  shap_values
-   = explainer.shap_values(normed_train_data.values)
 
   ```
+  shap_values = explainer.shap_values(normed_train_data.values)
+  ```
+
 * Summarize the Shapley values in a plot.
-  ```
-  shap
-  .summary_plot
-  (
-  shap_values
-  [0]
-  , 
-  normed_train_data
-  )
 
+  ```
+  shap.summary_plot(shap_values[0], normed_train_data)
   ```
 
 ### Explanation of Feature Importance Visual {#explanation-of-feature-importance-visual}
@@ -417,7 +403,4 @@ Steps
 * Larger Sample- Lastly let's take that last visual and expand it to a sample of 10 points. Hopefully, this better illustrates how certain features are pushing the value up or down relative to a base value.
 
 [![](https://video.udacity-data.com/topher/2020/April/5e9bc013_screen-shot-2020-04-18-at-8.04.33-pm/screen-shot-2020-04-18-at-8.04.33-pm.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/41954345-44f0-4f8e-b3a4-52fcb38e823a#)
-
-  
-
 
