@@ -58,5 +58,32 @@ You can only use certain TF Feature Columns with`DenseFeatures`:
 * [AutoKeras Titanic](https://autokeras.com/examples/titanic/)
 * [Evolved Transformer](https://arxiv.org/abs/1901.11117)
 
+### Tensorflow DenseFeatures Layer {#tensorflow-densefeatures-layer}
+
+Tensorflow provides the[DenseFeatures layer](https://www.tensorflow.org/api_docs/python/tf/keras/layers/DenseFeatures)as a way to combine some of the Tensorflow feature columns we learned earlier into a dense input tensor to your model. For this example, we use the[Sequential API](https://www.tensorflow.org/api_docs/python/tf/keras/Sequential)but you could use the[Functional API](https://www.tensorflow.org/guide/keras/functional)as well with some adjustments. Hopefully, the Tensorflow Keras modeling functions should be familiar to you and for the walkthrough, we again used the architecture from the[Tensorflow regression tutorial](https://www.tensorflow.org/tutorials/keras/regression).
+
+One key thing to note is that you can only use some Tensorflow Feature Column types with DenseFeatures so it is worth checking. At the time of writing this course, here are the features that you can use.
+
+* [Numeric Feature](https://www.tensorflow.org/api_docs/python/tf/feature_column/numeric_column)
+* [Embedding Feature](https://www.tensorflow.org/api_docs/python/tf/feature_column/embedding_column)
+* [Bucketized Feature](https://www.tensorflow.org/api_docs/python/tf/feature_column/bucketized_column)
+* [One hot encoded Feature](https://www.tensorflow.org/api_docs/python/tf/feature_column/indicator_column)
+
+Below I will walk through the simple steps to use the DenseFeatures layer.
+
+* First, combine all of your Tensorflow feature columns into a list that can be passed to the DenseFeatures layer. Please note that this is not the column name but the Tensorflow feature column metadata that you will get when you create a Tensorflow feature.
+  ```
+  feature_columns = tf_categorical_feature_list + tf_numerical_feature_list
+  dense_feature_layer = tf.keras.layers.DenseFeatures(feature_columns)
+  ```
+* Next, we simply add this 'dense\_feature\_layer' as the first layer to the model and this will handle the combining of feature inputs to the model.
+  ```
+    model = tf.keras.Sequential(**dense_feature_layer**,tf.keras.layers.Dense(
+  64, activation='relu')
+   ... additional layers
+
+  ```
+
+  
 
 
