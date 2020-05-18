@@ -402,5 +402,26 @@ Steps
 
 * Larger Sample- Lastly let's take that last visual and expand it to a sample of 10 points. Hopefully, this better illustrates how certain features are pushing the value up or down relative to a base value.
 
-[![](https://video.udacity-data.com/topher/2020/April/5e9bc013_screen-shot-2020-04-18-at-8.04.33-pm/screen-shot-2020-04-18-at-8.04.33-pm.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/41954345-44f0-4f8e-b3a4-52fcb38e823a#)
+[![](https://video.udacity-data.com/topher/2020/April/5e9bc013_screen-shot-2020-04-18-at-8.04.33-pm/screen-shot-2020-04-18-at-8.04.33-pm.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/41954345-44f0-4f8e-b3a4-52fcb38e823a#)esson Key Terms
+
+| Key Term | Definition |
+| :--- | :--- |
+| ROC | Receiver Operating Characteristic Curve or ROC curve that shows a graph of the performance of a classification model. It is the True Positive Rate Vs. False Positive Rate across different thresholds. |
+| AUC | Area under the ROC Curve measures the entire two-dimensional area underneath the entire ROC curve. |
+| Precision | The fraction of relevant instances among the retrieved instances |
+| Recall | The fraction of the total amount of relevant instances that were actually retrieved. |
+| F1 | Harmonic mean between precision and recall |
+| RMSE | Root Mean Square Error- a measure of the differences between values predicted by a model. |
+| MAPE | Mean Absolute Percentage Error is a measure of quality for regression model loss. |
+| MAE: | Mean Absolute Error is a measure of errors between paired observations. |
+| Unintended Biases: | A bias that is not intentional and often is not even apparent to the creator of a model |
+| Prior distribution | P\(A\) |
+| P\(A ~ Evidence\) | Updating the prior with new evidence |
+| P\(B\) | Posterior probability |
+| Aleatoric Uncertainty | Otherwise known as statistical uncertainty and are known unknowns. This type of uncertainty is inherent and just a part of the stochasticity that naturally exists. |
+| Epistemic Uncertainty | Also known as systemic uncertainty and are unknown unknowns. This type of uncertainty can be improved by adding parameters/features that might measure something in more detail or provide more knowledge. |
+| Black Box | Term often used in software when inputs go in and outputs come out of an algorithm and it is not clear how the outputs were arrived at. |
+| Model Agnostic | methods that can be used on deep learning models or traditional ml models |
+
+
 
