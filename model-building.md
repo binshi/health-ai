@@ -168,8 +168,6 @@ Unintended biases represent the unconscious or unintentional biases that come wi
 * Addresses concerns about unintended bias unfairly affecting certain groups
 * Definitions and metrics for unintended bias in predictive models
 
-
-
 # Uncertainty Estimation Key Points {#uncertainty-estimation-key-points}
 
 ### Why use Uncertainty Estimation? {#why-use-uncertainty-estimation-}
@@ -212,6 +210,150 @@ Bayesian statistical approaches can be very helpful for situations where you can
 Let’s say we want to assess whether a drug will pass a phase III clinical trial. The frequentist statistical response would be a yes or no response. However, the bayesian response would give a yes/no and the certainty/confidence in that prediction. This can be helpful when connecting it with metrics like Brier scores that can combine predictions from various models.
 
 If you are only 51% certain that you will pass the clinical trial, how certain would you be?
+
+
+
+## Types of Uncertainty {#types-of-uncertainty}
+
+* Aleatoric:
+  * Statistical Uncertainty - a natural, random process
+  * Known Unknowns
+
+Aleatoric uncertainty is otherwise known as statistical uncertainty and is known unknowns. This type of uncertainty is inherent, and just a part of the stochasticity that naturally exists. An example is rolling a dice, which will have an element of randomness always to it.
+
+* Epistemic:
+  * Systematic Uncertainty - lack of measurement, knowledge
+  * Unknown Unknowns
+
+Epistemic uncertainty is also known as systemic uncertainty and is unknown unknowns. This type of uncertainty can be improved by adding parameters/features that might measure something in more detail or provide more knowledge.
+
+#### Additional Resources {#additional-resources}
+
+* [Uncertainty](https://en.wikipedia.org/wiki/Uncertainty_quantification)
+
+## Key Points {#key-points}
+
+### Building a Basic Uncertainty Estimation Model with Tensorflow Probability {#building-a-basic-uncertainty-estimation-model-with-tensorflow-probability}
+
+* Using the MPG model from earlier, create uncertainty estimation model with TF Probability.
+* In particular, we will focus on building a model that accounts for Aleatoric Uncertainty.
+
+NOTE: Before we go into the walkthrough I want to note that TF Probability is not a v1 yet and documentation and standard patterns are evolving. That being said I wanted to expose you to a tool that might be good to have on your radar and this library can abstract away some of the challenging math behind the scenes.
+
+### Model with Aleatoric Uncertainty {#model-with-aleatoric-uncertainty}
+
+* Known Unknowns
+* 2 Main Model Changes
+
+  * Add a second unit to the last dense layer before passing it to Tensorflow Probability layer to model for the predictor y and the
+    [heteroscedasticity](https://en.wikipedia.org/wiki/Heteroscedasticity)
+    or unequal scattering of data
+    ```
+    tf.keras.layers.Dense(1 + 1)
+    ```
+
+  * DistributionLambda is a special Keras layer that uses a Python lambda to construct a distribution based on the layer inputs and the output of the final layer of the model is passed into the loss function. This model will return a distribution for both mean and standard deviation. The 'loc' argument is the mean and is sampled across the normal distribution as well as the 'scale' argument which is the standard deviation and in this case, is a slightly increasing with a positive slope. Important to note here is that we have prior knowledge that the relationship between the label and data is linear. However, for a more dynamic, flexible approach you can use the[VariationalGaussianProcess Layer](https://www.tensorflow.org/probability/api_docs/python/tfp/distributions/VariationalGaussianProcess). This is beyond the scope of this course but as mentioned can add more flexibility.
+
+    ```
+    tfp.layers.DistributionLambda(  
+            lambda t:tfp.distributions.Normal(
+                loc=t[..., :1],scale=1e-3 + tf.math.softplus(0.1 * t[...,1:])
+            )
+    ```
+
+* We can use different loss functions such as mean squared error\(MSE\) or negloglik. Note that if we decide to use the standard MSE metric that the scale or standard deviation will be fixed. Below is code from the regression tutorial for using negative log-likelihood loss, which through minimization is a way to maximize the probability of the continuous labels.
+
+  ```
+    negloglik = lambda y, rv_y: -rv_y.log_prob(y)
+    model.compile(optimizer='adam', loss=negloglik, metrics=[loss_metric])
+  ```
+
+* Extracting the mean and standard deviations for each prediction by passing the test dataset to the probability model. Then, we can call mean\(\) or stddev\(\) to extract these tensors.
+
+  ```
+  yhat = prob_model(x_tst)
+  m = yhat.mean()
+  s = yhat.stddev()
+  ```
+
+### Model with Epistemic Uncertainty {#model-with-epistemic-uncertainty}
+
+* Unknown Unknowns
+* Add [Tensorflow Probability DenseVariational Layer](https://www.tensorflow.org/probability/api_docs/python/tfp/layers/DenseVariational) with prior and posterior functions. Below are examples adapted from the [Tensorflow Probability Regression tutorial notebook](https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/jupyter_notebooks/Probabilistic_Layers_Regression.ipynb)
+  .
+  ```
+  def
+  posterior_mean_field
+  (kernel_size, bias_size=
+  0
+  , dtype=None)
+  :
+
+    n = kernel_size + bias_size
+    c = np.log(np.expm1(
+  1.
+  ))
+  
+  return
+   tf.keras.Sequential([
+        tfp.layers.VariableLayer(
+  2
+  *n, dtype=dtype),
+        tfp.layers.DistributionLambda(
+  lambda
+   t: tfp.distributions.Independent(
+            tfp.distributions.Normal(loc=t[..., :n],
+                                     scale=
+  1e-5
+   + tf.nn.softplus(c + t[..., n:])),
+            reinterpreted_batch_ndims=
+  1
+  )),
+    ])
+
+  def
+  prior_trainable
+  (kernel_size, bias_size=
+  0
+  , dtype=None)
+  :
+
+    n = kernel_size + bias_size
+  
+  return
+   tf.keras.Sequential([
+        tfp.layers.VariableLayer(n, dtype=dtype),
+        tfp.layers.DistributionLambda(
+  lambda
+   t: tfp.distributions.Independent(
+            tfp.distributions.Normal(loc=t, scale=
+  1
+  ),
+            reinterpreted_batch_ndims=
+  1
+  )),
+    ])
+
+  ```
+* Here is how the 'posterior\_mean\_field' and 'prior\_trainable' functions are added as arguments to the DenseVariational layer that precedes the DistributionLambda layer we covered earlier.
+  ```
+  tf.keras.layers.Dense(
+  75
+  , activation=
+  'relu'
+  ),
+           tfp.layers.DenseVariational(
+  1
+  +
+  1
+  , posterior_mean_field, prior_trainable),        
+        tfp.layers.DistributionLambda( ....
+
+  ```
+
+### Additional Resources {#additional-resources}
+
+* [Tensorflow Regression with Probabilistic Layers Tutorial](https://blog.tensorflow.org/2019/03/regression-with-probabilistic-layers-in.html)
 
 
 
