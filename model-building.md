@@ -116,7 +116,7 @@ For the actual definition, it is essentially the mean squared error of a given p
 
 ### Brier Score Breakdown Part 1 {#brier-score-breakdown-part-1}
 
-Basically you take the probability forecast on a 0 to 1 scale which is_f of t_and subtract that from_O of t_which is the actual value which is a binary 0 and 1 value. You then square the difference of this value.
+Basically you take the probability forecast on a 0 to 1 scale which is\_f of t\_and subtract that from\_O of t\_which is the actual value which is a binary 0 and 1 value. You then square the difference of this value.
 
 [![](https://video.udacity-data.com/topher/2020/April/5e90db8c_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-4/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-4.jpg "Brier Score Breakdown Part 2")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/933a24af-3859-4a7f-b79a-1d227798758c#)
 
@@ -137,6 +137,36 @@ The result is the Brier Score which ranges from 0 and 1.
 * [A Note on the Evaluation of Novel Biomarkers: Do Not Rely on Integrated Discrimination Improvement and Net Reclassification Index](https://pubmed.ncbi.nlm.nih.gov/23553436/)
 * [Brier Scores](https://en.wikipedia.org/wiki/Brier_score)
 * [Brier Score Limitations](https://diagnprognres.biomedcentral.com/articles/10.1186/s41512-017-0020-3)
+
+# Demographic Bias Analysis Points {#demographic-bias-analysis-key-points}
+
+## Why is bias important to consider in your models? {#why-is-bias-important-to-consider-in-your-models-}
+
+It's important to note that bias within models can restrict or limit patient access to key medical benefits from government aid programs.
+
+Programs using AI algorithms to help automate approvals of key government benefits are becoming more commonplace. However, it is just as important to consider how bias can unintentionally occur.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e90dc4b_l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-8/l4-building-evaluating-and-interpreting-models-for-bias-and-uncertainty-8.jpg "Why is bias in models important to consider?")Why is bias in models important to consider?](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/2ca838f8-e10d-4038-8426-d47eb4a20a62/modules/1644460b-a828-4443-ad8c-bbcca3151a30/lessons/9f2a59cc-ed42-475d-abe6-fdb731927eff/concepts/4c00ff99-adf2-47f7-8d2d-e77b2c5ccfe4#)
+
+Another reason that you want to consider bias in models is that in order to create better treatments for patients we need to find better ways to select and recruit patients that represent the wider population that a drug/treatment would be targeted for.
+
+In many cases, there may be systemic biases for key groups and while this cannot always be prevented, bringing awareness of limitations and biases can give a more accurate picture of a treatment's effectiveness across different demographics.
+
+In the example above, we can see that the purple parallelogram is representative of the population, while the blue circles and triangles are not and both are over-represented in the trial.
+
+### Unintended Bias {#unintended-bias}
+
+**Unintended biases**: a bias that is not intentional and often is not even apparent to the creator of a model
+
+Unintended biases represent the unconscious or unintentional biases that come with the AI models that we are building. Becoming more aware of these biases and how they impact different groups is key.
+
+**Note**: We usually associate bias with a negative connotation, but biases can be a source of valuable prior information. The problem can be when we are not aware of our biases and do not account for those that have a significant impact on the populations these models serve.
+
+## Aequitas {#aequitas}
+
+* Developed by University of Chicago Data Science for Social Good
+* Addresses concerns about unintended bias unfairly affecting certain groups
+* Definitions and metrics for unintended bias in predictive models
 
 
 
