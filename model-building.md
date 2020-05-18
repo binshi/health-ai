@@ -211,8 +211,6 @@ Let’s say we want to assess whether a drug will pass a phase III clinical tria
 
 If you are only 51% certain that you will pass the clinical trial, how certain would you be?
 
-
-
 ## Types of Uncertainty {#types-of-uncertainty}
 
 * Aleatoric:
@@ -245,9 +243,10 @@ NOTE: Before we go into the walkthrough I want to note that TF Probability is no
 * Known Unknowns
 * 2 Main Model Changes
 
-  * Add a second unit to the last dense layer before passing it to Tensorflow Probability layer to model for the predictor y and the
-    [heteroscedasticity](https://en.wikipedia.org/wiki/Heteroscedasticity)
+  * Add a second unit to the last dense layer before passing it to Tensorflow Probability layer to model for the predictor y and the  
+    [heteroscedasticity](https://en.wikipedia.org/wiki/Heteroscedasticity)  
     or unequal scattering of data
+
     ```
     tf.keras.layers.Dense(1 + 1)
     ```
@@ -279,76 +278,37 @@ NOTE: Before we go into the walkthrough I want to note that TF Probability is no
 ### Model with Epistemic Uncertainty {#model-with-epistemic-uncertainty}
 
 * Unknown Unknowns
-* Add [Tensorflow Probability DenseVariational Layer](https://www.tensorflow.org/probability/api_docs/python/tfp/layers/DenseVariational) with prior and posterior functions. Below are examples adapted from the [Tensorflow Probability Regression tutorial notebook](https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/jupyter_notebooks/Probabilistic_Layers_Regression.ipynb)
+* Add [Tensorflow Probability DenseVariational Layer](https://www.tensorflow.org/probability/api_docs/python/tfp/layers/DenseVariational) with prior and posterior functions. Below are examples adapted from the [Tensorflow Probability Regression tutorial notebook](https://github.com/tensorflow/probability/blob/master/tensorflow_probability/examples/jupyter_notebooks/Probabilistic_Layers_Regression.ipynb)  
   .
-  ```
-  def
-  posterior_mean_field
-  (kernel_size, bias_size=
-  0
-  , dtype=None)
-  :
 
+  ```
+  def posterior_mean_field(kernel_size, bias_size=0, dtype=None):
     n = kernel_size + bias_size
-    c = np.log(np.expm1(
-  1.
-  ))
-  
-  return
-   tf.keras.Sequential([
-        tfp.layers.VariableLayer(
-  2
-  *n, dtype=dtype),
-        tfp.layers.DistributionLambda(
-  lambda
-   t: tfp.distributions.Independent(
+    c = np.log(np.expm1(1.))
+    return tf.keras.Sequential([
+        tfp.layers.VariableLayer(2*n, dtype=dtype),
+        tfp.layers.DistributionLambda(lambda t: tfp.distributions.Independent(
             tfp.distributions.Normal(loc=t[..., :n],
-                                     scale=
-  1e-5
-   + tf.nn.softplus(c + t[..., n:])),
-            reinterpreted_batch_ndims=
-  1
-  )),
-    ])
+                                     scale=1e-5 + tf.nn.softplus(c + t[..., n:])),
+            reinterpreted_batch_ndims=1)),
+     ])
 
-  def
-  prior_trainable
-  (kernel_size, bias_size=
-  0
-  , dtype=None)
-  :
-
+  def prior_trainable(kernel_size, bias_size=0, dtype=None):
     n = kernel_size + bias_size
-  
-  return
-   tf.keras.Sequential([
+    return tf.keras.Sequential([
         tfp.layers.VariableLayer(n, dtype=dtype),
-        tfp.layers.DistributionLambda(
-  lambda
-   t: tfp.distributions.Independent(
-            tfp.distributions.Normal(loc=t, scale=
-  1
-  ),
-            reinterpreted_batch_ndims=
-  1
-  )),
+        tfp.layers.DistributionLambda(lambda t: tfp.distributions.Independent(
+            tfp.distributions.Normal(loc=t, scale=1),
+            reinterpreted_batch_ndims=1)),
     ])
-
   ```
+
 * Here is how the 'posterior\_mean\_field' and 'prior\_trainable' functions are added as arguments to the DenseVariational layer that precedes the DistributionLambda layer we covered earlier.
-  ```
-  tf.keras.layers.Dense(
-  75
-  , activation=
-  'relu'
-  ),
-           tfp.layers.DenseVariational(
-  1
-  +
-  1
-  , posterior_mean_field, prior_trainable),        
-        tfp.layers.DistributionLambda( ....
 
+  ```
+  tf.keras.layers.Dense(75, activation='relu'),
+           tfp.layers.DenseVariational(1+1, posterior_mean_field, prior_trainable),        
+        tfp.layers.DistributionLambda( ....
   ```
 
 ### Additional Resources {#additional-resources}
