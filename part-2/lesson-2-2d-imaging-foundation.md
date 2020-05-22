@@ -2,7 +2,7 @@
 
 #### X-ray {#x-ray}
 
-The most common type of 2D imaging is x-ray. This technique uses a machine to emit x-rays, which are absorbed differently by different tissues in the body. Bone has_high absorption_and therefore appears_bright white_. Soft tissues like the heart and diaphragm absorb a_medium amount_and appear_gray_. Air_does not absorb_any x-rays and thus appears_black_.
+The most common type of 2D imaging is x-ray. This technique uses a machine to emit x-rays, which are absorbed differently by different tissues in the body. Bone has_high absorption\_and therefore appears\_bright white_. Soft tissues like the heart and diaphragm absorb a_medium amount\_and appear\_gray_. Air_does not absorb\_any x-rays and thus appears\_black_.
 
 We usually think of x-rays to look for fractures/broken bones, but two of their other most common use cases are for assessing abnormalities in the lungs, and for assessing breast tissue \(mammograms\).
 
@@ -12,7 +12,7 @@ Ultrasound is a type of 2D imaging technique that isn't covered in the video. It
 
 #### Microscopy {#microscopy}
 
-Microscopy refers to_physical slides_of biological material taken from a patient that can be viewed at the_cell-level_through a microscope. These slides often have a stain applied to them that causes different cell structures to appear in different colors. These stains help pathologists tell the difference between cell structures.
+Microscopy refers to\_physical slides\_of biological material taken from a patient that can be viewed at the\_cell-level\_through a microscope. These slides often have a stain applied to them that causes different cell structures to appear in different colors. These stains help pathologists tell the difference between cell structures.
 
 #### Fundal Imaging {#fundal-imaging}
 
@@ -36,29 +36,51 @@ Every imaging center and hospital have a PACS. These systems allow for all medic
 
 #### Diagnostic Imaging {#diagnostic-imaging}
 
-In diagnostic situations, a clinician orders an imaging study because they believe that a disease_may be present_based on the patient's symptoms. Diagnostic imaging can be performed in_emergency_settings as well as_non-emergency_settings.
+In diagnostic situations, a clinician orders an imaging study because they believe that a disease\_may be present\_based on the patient's symptoms. Diagnostic imaging can be performed in\_emergency\_settings as well as\_non-emergency\_settings.
 
 #### Screening Imaging {#screening-imaging}
 
-Screening studies are performed on populations of individuals who_fall into risk groups_for certain diseases. These tend to be diseases that are relatively common, have serious consequences, but also have the potential of being reversed if detected and treated early. For example, individuals who are above a certain age with a long smoking history are candidates for lung cancer screening which is performed using x-rays on an annual basis.
-
-
+Screening studies are performed on populations of individuals who\_fall into risk groups\_for certain diseases. These tend to be diseases that are relatively common, have serious consequences, but also have the potential of being reversed if detected and treated early. For example, individuals who are above a certain age with a long smoking history are candidates for lung cancer screening which is performed using x-rays on an annual basis.
 
 ### Types of 2D Imaging Algorithms {#types-of-2d-imaging-algorithms}
 
 #### Classification {#classification}
 
-The classification algorithm assesses a whole image and returns an output stating_whether or not_a disease or abnormality is present in an image. These types of algorithms can be used for binary or multi-class classification, where a single algorithm can classify for the presence or absence of multiple types of findings or diseases.
+The classification algorithm assesses a whole image and returns an output stating\_whether or not\_a disease or abnormality is present in an image. These types of algorithms can be used for binary or multi-class classification, where a single algorithm can classify for the presence or absence of multiple types of findings or diseases.
 
 #### Localization {#localization}
 
-Localization algorithms are intended to aid radiologists in determining_where_in an image a particular finding is. These types of algorithms output a set of coordinates that create a_bounding box_around a section of the image where a particular type of finding is. These types of algorithms can be very useful for drawing radiologists'_attention_to certain types of findings that are difficult to see on imaging.
+Localization algorithms are intended to aid radiologists in determining\_where\_in an image a particular finding is. These types of algorithms output a set of coordinates that create a\_bounding box\_around a section of the image where a particular type of finding is. These types of algorithms can be very useful for drawing radiologists'\_attention\_to certain types of findings that are difficult to see on imaging.
 
 #### Segmentation {#segmentation}
 
-Segmentation algorithms return_a set of pixels_that contain the presence of a particular finding in an image, creating a_border_around a particular finding that allows for the calculation of its exact area. Segmentation algorithms are typically used to_measures the size_of particular findings or_count the number_of findings in an image. They are often used to count cells in microscopy data as well, where each cell in an image is segmented individually.
+Segmentation algorithms return\_a set of pixels\_that contain the presence of a particular finding in an image, creating a\_border\_around a particular finding that allows for the calculation of its exact area. Segmentation algorithms are typically used to\_measures the size\_of particular findings or\_count the number\_of findings in an image. They are often used to count cells in microscopy data as well, where each cell in an image is segmented individually.
 
 ### Clinical Impact of ML for 2D Imaging {#clinical-impact-of-ml-for-2d-imaging}
 
-You should be aware of the effect on_clinician workflows_when you are designing an algorithm that may be inserted into them.
+You should be aware of the effect on\_clinician workflows\_when you are designing an algorithm that may be inserted into them.
+
+### Performance of ML {#clinical-impact-of-ml-for-2d-imaging}
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9a40c6_l1-performance-2/l1-performance-2.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/602d9c5b-4079-4738-b9dc-c82b5aa56fca/concepts/2ebe640e-ffea-4bc3-95f8-928db4ae5029#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9a40d5_l1-performance-1/l1-performance-1.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/602d9c5b-4079-4738-b9dc-c82b5aa56fca/concepts/2ebe640e-ffea-4bc3-95f8-928db4ae5029#)
+
+### Performance Metrics {#performance-metrics}
+
+#### Sensitivity {#sensitivity}
+
+Sensitivity is a metric that tells us among ALL the_positive_cases in the dataset, how many of them are successfully identified by the algorithm, i.e. the true positive. In other words, it measures the proportion of accurately-identified_positive cases_.
+
+You can think of highly sensitive tests as being good for_ruling out_disease. If someone has a negative result on a highly sensitive algorithm, it is extremely likely that they don’t have the disease since a high sensitive algorithm has low_false negative_.
+
+#### Specificity {#specificity}
+
+Specificity measures ALL the_negative_cases in the dataset, how many of them are successfully identified by the algorithm, i.e. the true negatives. In other words, it measures the proportion of accurately-identified_negative_cases.
+
+You can think of highly specific tests as being good for_ruling in_disease. If someone has a positive result on a highly specific test, it is extremely likely that they have the disease since a high specific algorithm has low_false positive_.
+
+#### Dice coefficient {#dice-coefficient}
+
+The dice coefficient measures the_overlap_of algorithm output and true labels. It is used to assess the performance of segmentation and localization.
 
