@@ -453,5 +453,12 @@ We will not be using these two in this course and there are many other systems a
 * **Specificity:**
   Proportion of accurately identified negative cases that a test returns
 
+## Further reading {#further-reading}
+
+* The Radiology Society of North America \(RSNA\) publishes a journal called [Radiology](https://pubs.rsna.org/journal/radiology) that is the most widely-read journal by practicing radiologists. This a great resource for learning about new AI applications that are actually being used by clinical radiologists.
+* This [review](https://www.healthnewsreview.org/toolkit/tips-for-understanding-studies/understanding-medical-tests-sensitivity-specificity-and-positive-predictive-value/) is a great deep-dive into understanding sensitivity and specificity in medicine.
+* Radiopedia offers a slightly deeper overview of PACS in their post [here](https://radiopaedia.org/articles/picture-archiving-and-communication-system?lang=us)
+  .
+
 
 
