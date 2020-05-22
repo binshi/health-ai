@@ -70,17 +70,39 @@ You should be aware of the effect on\_clinician workflows\_when you are designin
 
 #### Sensitivity {#sensitivity}
 
-Sensitivity is a metric that tells us among ALL the_positive_cases in the dataset, how many of them are successfully identified by the algorithm, i.e. the true positive. In other words, it measures the proportion of accurately-identified_positive cases_.
+Sensitivity is a metric that tells us among ALL the_positive\_cases in the dataset, how many of them are successfully identified by the algorithm, i.e. the true positive. In other words, it measures the proportion of accurately-identified\_positive cases_.
 
-You can think of highly sensitive tests as being good for_ruling out_disease. If someone has a negative result on a highly sensitive algorithm, it is extremely likely that they don’t have the disease since a high sensitive algorithm has low_false negative_.
+You can think of highly sensitive tests as being good for_ruling out\_disease. If someone has a negative result on a highly sensitive algorithm, it is extremely likely that they don’t have the disease since a high sensitive algorithm has low\_false negative_.
 
 #### Specificity {#specificity}
 
-Specificity measures ALL the_negative_cases in the dataset, how many of them are successfully identified by the algorithm, i.e. the true negatives. In other words, it measures the proportion of accurately-identified_negative_cases.
+Specificity measures ALL the\_negative\_cases in the dataset, how many of them are successfully identified by the algorithm, i.e. the true negatives. In other words, it measures the proportion of accurately-identified\_negative\_cases.
 
-You can think of highly specific tests as being good for_ruling in_disease. If someone has a positive result on a highly specific test, it is extremely likely that they have the disease since a high specific algorithm has low_false positive_.
+You can think of highly specific tests as being good for_ruling in\_disease. If someone has a positive result on a highly specific test, it is extremely likely that they have the disease since a high specific algorithm has low\_false positive_.
 
 #### Dice coefficient {#dice-coefficient}
 
-The dice coefficient measures the_overlap_of algorithm output and true labels. It is used to assess the performance of segmentation and localization.
+The dice coefficient measures the\_overlap\_of algorithm output and true labels. It is used to assess the performance of segmentation and localization.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9a40f3_l1-stakeholder/l1-stakeholder.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/602d9c5b-4079-4738-b9dc-c82b5aa56fca/concepts/55370da0-f21b-4b74-9642-fa3f3c12d971#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9a4106_l1-stakeholderfda/l1-stakeholderfda.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/602d9c5b-4079-4738-b9dc-c82b5aa56fca/concepts/55370da0-f21b-4b74-9642-fa3f3c12d971#)
+
+## Summary {#summary}
+
+### Key Stakeholders {#key-stakeholders}
+
+#### Clinical Stakeholders {#clinical-stakeholders}
+
+Clinical stakeholders are radiologists, diagnosing clinicians and patients. Radiologists are likely the end-users of an AI application for 2D imaging. They care about low disruption to workflow and they play an important advisory role in the algorithm development process. Clinicians have less visibility into the inner workings of an algorithm. They also care about low disruption to workflows and they care about the interpretability of algorithm output. Patients may be the most important stakeholder, and the FDA looks at your algorithm through the lens of protecting the patient from all unnecessary risks. Patients may never know that AI is involved and they care about the timeliness of receiving accurate test results.
+
+#### Industry stakeholders {#industry-stakeholders}
+
+Industry stakeholders include medical device companies, software companies, and hospitals. Many medical device companies typically have accompanying imaging software. They also build their own AI algorithms to run on their hardware. Software companies can act more dynamically because they are not tied to a specific hardware system, but this also poses a regulatory challenge as the FDA wants to know if an algorithm performs the same across all hardware systems, and if not, which ones it is not appropriate for. Hospitals must be sure that they have the adequate infrastructure needed for algorithm deployment. In order to purchase an algorithm, a hospital must be convinced that it will save them money in the long run.
+
+#### Regulatory stakeholder {#regulatory-stakeholder}
+
+The main regulatory stakeholder in the medical imaging world is the Food and Drug Administration \(FDA\). The FDA treats AI algorithms as medical devices. Medical devices are broken down into three classes by the FDA, Class I, Class II, and Class III, based on their potential risks present to the patient. A device's class dictates the safety controls, which in turn dictates which regulatory pathway they must go down. The two main regulatory pathways for medical devices are**510\(k\)**and**Pre-market Approval \(PMA\).**Lower risk devices \(Classes I & II\) usually take a 501\(k\) submission pathway. Higher risk devices and algorithms \(Class III\) must go through PMA.
+
+
 
