@@ -97,8 +97,6 @@ Image augmentation allows us to create different versions of the original data. 
 
 CNNs have an input layer that specifies the size of the image they can process. Keras`flow_from_directory`have a`target_size`parameter to resize image.
 
-
-
 [![](https://video.udacity-data.com/topher/2020/April/5e9b95c6_l3-fine/l3-fine.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/d4e2d085-266c-4646-b8fc-4a69b304358f#)
 
 [![](https://video.udacity-data.com/topher/2020/April/5e9b95d1_l3-freeze/l3-freeze.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/d4e2d085-266c-4646-b8fc-4a69b304358f#)
@@ -110,4 +108,45 @@ CNNs have an input layer that specifies the size of the image they can process. 
 The first several layers of filters trained are only going to learn line- and shape-based features because their visual fields are so small. We can reuse or freeze the pre-trained weights of the first few layers and only need to train filter weights to detect higher-order features that are more relevant to your specific use cases. We call this process that only makes adjustment of weights in the last a few layers_fine-tuning_.
 
 One of the key pieces of fine-tuning is the last layer. We need to adjust the dimension of the last layer to match our specific use cases. We can also add new layers to train from scratch.
+
+
+
+![](/assets/import.png)
+
+Note: The`history.history`function stores the loss value. Then you can use your choice of plot function such as`matplotlib.pyplot.plot`to plot the loss values.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b9aff_l3-over/l3-over.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/9398154b-2f8c-4701-8915-05e1980a4663#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b9b26_l3-plot/l3-plot.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/9398154b-2f8c-4701-8915-05e1980a4663#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b9b4a_l3-batch/l3-batch.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/9398154b-2f8c-4701-8915-05e1980a4663#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b9b5b_l3-lr/l3-lr.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/9398154b-2f8c-4701-8915-05e1980a4663#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b9b68_l3-drop/l3-drop.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/9398154b-2f8c-4701-8915-05e1980a4663#)
+
+## Summary {#summary}
+
+#### Loss and loss function {#loss-and-loss-function}
+
+Each time the entire training data is passed through the CNN, we call this one_epoch_. At the end of each epoch, the model has a_loss function_to calculate how_different_its prediction from the ground truth of the_training image_, this difference is the_training loss_. The network then uses the training loss to_update_the weights of filters. This technique is called_back-propogation_.
+
+At the end of each epoch, we also use that loss function to evaluate the loss on the validation set and obtain a_validation loss_that measures how the prediction matches the_validation data_. But we_don’t_update weights using validation loss. The validation set is just to test the performance of the model.
+
+If the loss is small, it means the model did well classifying the images that it saw in that epoch.
+
+#### Overfitting {#overfitting}
+
+If the training loss keeps going down while the validation loss stops decreasing after a few epochs, we call the model is_overfitting_. It suggests the model is still learning how to better classify the training data but NOT the validation data.
+
+#### Prevent overfitting {#prevent-overfitting}
+
+To avoid overfitting, we can A\) changing your model’s architecture, or B\) changing some of the parameters. Some parameters you can change are:
+
+* Batch size
+* Learning rate
+* Dropout
+* More variation on training data
+
+
 
