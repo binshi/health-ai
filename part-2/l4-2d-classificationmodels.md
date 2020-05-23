@@ -8,19 +8,65 @@ It’s often used for background extraction and classification. It takes the int
 
 #### Convolutional neural network \(CNN\) {#convolutional-neural-network-cnn-}
 
-There are several sets of_convolutional layers_in a CNN model. Each layer is made up of a set of_filters_that are looking for features. Layers that come early in a CNN model look for very simple features such as directional lines and layers that come later look for complex features such as shapes.
+There are several sets of\_convolutional layers\_in a CNN model. Each layer is made up of a set of\_filters\_that are looking for features. Layers that come early in a CNN model look for very simple features such as directional lines and layers that come later look for complex features such as shapes.
 
-Note that the input image size must match the size of the_first_set of convolutional layers.
+Note that the input image size must match the size of the\_first\_set of convolutional layers.
 
 #### U-Net {#u-net}
 
-U-Net is used for_segmentation_problems and it is more commonly used in 3D medical imaging. It's important to note that a limitation of 2D imaging is the inability to measure the_volume_of structures. 2D medical imaging only measures the area with respect to the angle of the image taken, which limits its utility in segmenting the whole area.
+U-Net is used for\_segmentation\_problems and it is more commonly used in 3D medical imaging. It's important to note that a limitation of 2D imaging is the inability to measure the\_volume\_of structures. 2D medical imaging only measures the area with respect to the angle of the image taken, which limits its utility in segmenting the whole area.
 
 **L4-08 notebook**
 
-First, I used Otsu’s method to extract background pixels from all of my images using a threshold intensity value of 50. This allowed me to look at the_intensity distributions_for breast tissue ONLY in fatty tissues or ONLY in dense tissue. I then used`scipy.stats.mode`to identify the mode \(peak\) of each type of tissue’s intensity distribution.
+First, I used Otsu’s method to extract background pixels from all of my images using a threshold intensity value of 50. This allowed me to look at the\_intensity distributions\_for breast tissue ONLY in fatty tissues or ONLY in dense tissue. I then used`scipy.stats.mode`to identify the mode \(peak\) of each type of tissue’s intensity distribution.
 
 Here, fatty tissue had a peak at 140 and dense tissue had a peak at 176.
 
-I then looped through all of the fatty/dense images and again using Otsu’s method with an intensity threshold of 50 to extract background. I then calculated_how far_each image’s peak was from the peaks of the fatty and dense tissue distributions. Finally, which difference is_smaller_determines what type of tissue my image most likely is.
+I then looped through all of the fatty/dense images and again using Otsu’s method with an intensity threshold of 50 to extract background. I then calculated\_how far\_each image’s peak was from the peaks of the fatty and dense tissue distributions. Finally, which difference is\_smaller\_determines what type of tissue my image most likely is.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b5bdf_l3-split/l3-split.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/678c028b-f57a-49b4-9248-17b587234fd4#)
+
+### Split data using`train_test_split`with Sklearn {#split-data-using-train_test_split-with-sklearn}
+
+[![](https://video.udacity-data.com/topher/2020/May/5eb60740_l3-code/l3-code.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/678c028b-f57a-49b4-9248-17b587234fd4#)
+
+## Summary {#summary}
+
+You need to split your data into two sets before feeding it into the model.
+
+* A training set: DL algorithm will use this data to learn the features that differentiate between your classes.
+* A validation set: the algorithm will
+  _never_
+  use this set for learning. This is the set to determine if the algorithm is actually learning to discriminate between your classes.
+
+The general rule of thumb is to split your data 80 in the training set and 20 in the validation set. The data should be split to maximize the_prevalence_of positive cases \(i.e make sure 80% of your positive cases end up in the training set and 20% in the validation set\).
+
+We want to have a_balanced_training set so that the model has an equal number of cases in each class to learn. Even if one class is really rare in the wild. We want to have an_imbalanced_validation set to reflect the real-world situation.
+
+For all other variables in your dataset such as age, sex, and race, the distribution should follow the_same_distribution as your original_full_dataset.
+
+**Note:**an image should NEVER be used for both training and validation.
+
+#### Gold standard {#gold-standard}
+
+The_gold standard_for a particular type of data refers to the method that detects disease with the_highest_sensitivity and accuracy. Any new method that is developed can be compared to this to determine its performance. The gold standard is different for different diseases.
+
+#### Ground truth {#ground-truth}
+
+Often times, the gold standard is unattainable for an algorithm developer. So, you still need to establish the_ground truth_to compare your algorithm.
+
+Ground truths can be created in many different ways. Typical sources of ground truth are
+
+* Biopsy-based labeling.
+  **Limitations: **difficult and expensive to obtain.
+* NLP extraction.
+  **Limitations: **may not be accurate.
+* Expert \(radiologist\) labeling.
+  **Limitations: **expensive and requires a lot of time to come up with labeling protocols.
+* Labeling by another state-of-the-art algorithm.
+  **Limitations: **may not be accurate.
+
+#### Silver standard {#silver-standard}
+
+The silver standard involves hiring_several_radiologists to each make their own diagnosis of an image. The final diagnosis is then determined by a_voting_system across all of the radiologists’ labels for each image. Note, sometimes radiologists’ experience levels are taken into account and votes are weighted by years of experience.
 
