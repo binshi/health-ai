@@ -20,9 +20,41 @@ It was developed by the American College of Radiologists in 1993 to allow for in
 
 A DICOM file contains information about the imaging acquisition method, the actual medical images, and patient information. It has a header component that contains information about the acquired image and an image component that is a set of pixel data representing the actual images
 
-Protected Health Information \(PHI\) is part of DICOM and clinical data and radiologist report are_not_part of DICOM
+Protected Health Information \(PHI\) is part of DICOM and clinical data and radiologist report are\_not\_part of DICOM
 
 #### DICOM studies and series {#dicom-studies-and-series}
 
 With 2D imaging, a single 2D image is known as a single DICOM series. All image series combined comprise a study of the patient, known as a DICOM study.
+
+## Summary {#summary}
+
+Some metadata may come from the DICOM headers, patient history, and image labels. Once we have all of a dataset's metadata stored in a single place, we'll then want to explore data features.
+
+#### Histograms {#histograms}
+
+Histograms help us look at_distributions_of_single variables_. Sometimes we only want to look at distributions within a_single class_of our data.
+
+#### Scatterplots {#scatterplots}
+
+Scatterplots are useful for assessing_relationships_between_two variables_.
+
+#### Pearson Correlation Coefficient {#pearson-correlation-coefficient}
+
+Pearson Correlation Coefficient measures how two variables are linearly related. The value ranges from -1 to 1. A value of 1 or -1 means the two variables are perfectly linearly related. A value of 0 implies there is no linear relationship between the two variables.
+
+#### Co-Occurrence Matrices {#co-occurrence-matrices}
+
+Co-Occurrence Matrices are useful for assessing how frequently different classifications co-occur together.
+
+## Glossary {#glossary}
+
+* **DICOM:**Digital Imaging and Communications in Medicine \(DICOM\) is the standard for the communication and management of medical imaging information and related data
+* **Image artifact: **An object or distortion in an image that reduces its quality
+* **Foreign body: **An object in a medical image that is not biological material from the patient, such as a pacemaker or wire
+* **Metadata: **A set of data that describes another set of data
+* **Pathologist: **A special type of clinician who reads and interprets microscopy and digital pathology data
+* **intensity profile: **the distribution of all pixels' intensity values that comprise an image
+* **PHI: **any individually identifiable health information, including demographic data, insurance information, and other information used to identify a patient
+
+
 
