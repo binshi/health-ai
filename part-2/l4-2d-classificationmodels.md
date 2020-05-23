@@ -39,21 +39,21 @@ You need to split your data into two sets before feeding it into the model.
   _never_
   use this set for learning. This is the set to determine if the algorithm is actually learning to discriminate between your classes.
 
-The general rule of thumb is to split your data 80 in the training set and 20 in the validation set. The data should be split to maximize the_prevalence_of positive cases \(i.e make sure 80% of your positive cases end up in the training set and 20% in the validation set\).
+The general rule of thumb is to split your data 80 in the training set and 20 in the validation set. The data should be split to maximize the\_prevalence\_of positive cases \(i.e make sure 80% of your positive cases end up in the training set and 20% in the validation set\).
 
-We want to have a_balanced_training set so that the model has an equal number of cases in each class to learn. Even if one class is really rare in the wild. We want to have an_imbalanced_validation set to reflect the real-world situation.
+We want to have a\_balanced\_training set so that the model has an equal number of cases in each class to learn. Even if one class is really rare in the wild. We want to have an\_imbalanced\_validation set to reflect the real-world situation.
 
-For all other variables in your dataset such as age, sex, and race, the distribution should follow the_same_distribution as your original_full_dataset.
+For all other variables in your dataset such as age, sex, and race, the distribution should follow the\_same\_distribution as your original\_full\_dataset.
 
 **Note:**an image should NEVER be used for both training and validation.
 
 #### Gold standard {#gold-standard}
 
-The_gold standard_for a particular type of data refers to the method that detects disease with the_highest_sensitivity and accuracy. Any new method that is developed can be compared to this to determine its performance. The gold standard is different for different diseases.
+The\_gold standard\_for a particular type of data refers to the method that detects disease with the\_highest\_sensitivity and accuracy. Any new method that is developed can be compared to this to determine its performance. The gold standard is different for different diseases.
 
 #### Ground truth {#ground-truth}
 
-Often times, the gold standard is unattainable for an algorithm developer. So, you still need to establish the_ground truth_to compare your algorithm.
+Often times, the gold standard is unattainable for an algorithm developer. So, you still need to establish the\_ground truth\_to compare your algorithm.
 
 Ground truths can be created in many different ways. Typical sources of ground truth are
 
@@ -68,5 +68,34 @@ Ground truths can be created in many different ways. Typical sources of ground t
 
 #### Silver standard {#silver-standard}
 
-The silver standard involves hiring_several_radiologists to each make their own diagnosis of an image. The final diagnosis is then determined by a_voting_system across all of the radiologists’ labels for each image. Note, sometimes radiologists’ experience levels are taken into account and votes are weighted by years of experience.
+The silver standard involves hiring\_several\_radiologists to each make their own diagnosis of an image. The final diagnosis is then determined by a\_voting\_system across all of the radiologists’ labels for each image. Note, sometimes radiologists’ experience levels are taken into account and votes are weighted by years of experience.
+
+
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b9369_l3-goals/l3-goals.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/93f5a8cb-0731-4074-b926-dbd4db994d2d#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b9375_l3-augm/l3-augm.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/93f5a8cb-0731-4074-b926-dbd4db994d2d#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b9381_l3-resize/l3-resize.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/93f5a8cb-0731-4074-b926-dbd4db994d2d#)
+
+## Summary {#summary}
+
+#### Intensity normalization {#intensity-normalization}
+
+Intensity normalization is good practice and should always be done prior to using data for training. Making all of your intensity values fall within a small range that is close to zero helps the weights on our convolutional filters stay under control
+
+There are two types of normalization that you can perform.
+
+* zero-meaning: subtract that mean intensity value from every pixel.
+* standardization: subtract the mean from each pixel and divide by the image’s standard deviation.
+
+#### Image augmentation {#image-augmentation}
+
+Image augmentation allows us to create different versions of the original data. Keras provides`ImageDataGenerator`package for image augmentation.
+
+**Note:**not all image augmentation method is appropriate for medical imaging. A vertical flip should never be applied. And validation data should NEVER be augmented.
+
+#### Image resize {#image-resize}
+
+CNNs have an input layer that specifies the size of the image they can process. Keras`flow_from_directory`have a`target_size`parameter to resize image.
 
