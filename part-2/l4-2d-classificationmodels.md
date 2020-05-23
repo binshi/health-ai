@@ -162,3 +162,13 @@ To avoid overfitting, we can A\) changing your model’s architecture, or B\) ch
 
 
 
+## Further Reading: {#further-reading-}
+
+* This is a nice [overview](https://medium.com/@hbyacademic/otsu-thresholding-4337710dc519) of Otsu's method with some visual examples
+* See here for Keras' [documentation](https://keras.io/preprocessing/image/) for image pre-processing tools, including ImageDataGenerator
+* If you need or want more practice with deep learning, generalized beyond medical imaging, I highly recommend [this course](https://course.fast.ai/)
+  by Jeremy Howard
+* If you're interested in learning more about the human visual system and how it inspired CNNs, I recommend checking out two of the foundational papers in the field by Hubel and Wiesel written in [1959](https://physoc.onlinelibrary.wiley.com/doi/pdf/10.1113/jphysiol.1959.sp006308) and [1962](https://physoc.onlinelibrary.wiley.com/doi/pdf/10.1113/jphysiol.1962.sp006837)
+
+
+
