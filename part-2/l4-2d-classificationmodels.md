@@ -70,8 +70,6 @@ Ground truths can be created in many different ways. Typical sources of ground t
 
 The silver standard involves hiring\_several\_radiologists to each make their own diagnosis of an image. The final diagnosis is then determined by a\_voting\_system across all of the radiologists’ labels for each image. Note, sometimes radiologists’ experience levels are taken into account and votes are weighted by years of experience.
 
-
-
 [![](https://video.udacity-data.com/topher/2020/April/5e9b9369_l3-goals/l3-goals.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/93f5a8cb-0731-4074-b926-dbd4db994d2d#)
 
 [![](https://video.udacity-data.com/topher/2020/April/5e9b9375_l3-augm/l3-augm.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/93f5a8cb-0731-4074-b926-dbd4db994d2d#)
@@ -98,4 +96,18 @@ Image augmentation allows us to create different versions of the original data. 
 #### Image resize {#image-resize}
 
 CNNs have an input layer that specifies the size of the image they can process. Keras`flow_from_directory`have a`target_size`parameter to resize image.
+
+
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b95c6_l3-fine/l3-fine.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/d4e2d085-266c-4646-b8fc-4a69b304358f#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9b95d1_l3-freeze/l3-freeze.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/5f4b34f1-86c8-4be5-921c-2bb2578918b7/concepts/d4e2d085-266c-4646-b8fc-4a69b304358f#)
+
+## Summary {#summary}
+
+#### Fine-tuning {#fine-tuning}
+
+The first several layers of filters trained are only going to learn line- and shape-based features because their visual fields are so small. We can reuse or freeze the pre-trained weights of the first few layers and only need to train filter weights to detect higher-order features that are more relevant to your specific use cases. We call this process that only makes adjustment of weights in the last a few layers_fine-tuning_.
+
+One of the key pieces of fine-tuning is the last layer. We need to adjust the dimension of the last layer to match our specific use cases. We can also add new layers to train from scratch.
 
