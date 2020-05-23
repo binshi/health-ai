@@ -109,8 +109,6 @@ The first several layers of filters trained are only going to learn line- and sh
 
 One of the key pieces of fine-tuning is the last layer. We need to adjust the dimension of the last layer to match our specific use cases. We can also add new layers to train from scratch.
 
-
-
 ![](/assets/import.png)
 
 Note: The`history.history`function stores the loss value. Then you can use your choice of plot function such as`matplotlib.pyplot.plot`to plot the loss values.
@@ -129,9 +127,9 @@ Note: The`history.history`function stores the loss value. Then you can use your 
 
 #### Loss and loss function {#loss-and-loss-function}
 
-Each time the entire training data is passed through the CNN, we call this one_epoch_. At the end of each epoch, the model has a_loss function_to calculate how_different_its prediction from the ground truth of the_training image_, this difference is the_training loss_. The network then uses the training loss to_update_the weights of filters. This technique is called_back-propogation_.
+Each time the entire training data is passed through the CNN, we call this one_epoch_. At the end of each epoch, the model has a_loss function\_to calculate how\_different\_its prediction from the ground truth of the\_training image_, this difference is the_training loss_. The network then uses the training loss to_update\_the weights of filters. This technique is called\_back-propogation_.
 
-At the end of each epoch, we also use that loss function to evaluate the loss on the validation set and obtain a_validation loss_that measures how the prediction matches the_validation data_. But we_don’t_update weights using validation loss. The validation set is just to test the performance of the model.
+At the end of each epoch, we also use that loss function to evaluate the loss on the validation set and obtain a_validation loss\_that measures how the prediction matches the\_validation data_. But we\_don’t\_update weights using validation loss. The validation set is just to test the performance of the model.
 
 If the loss is small, it means the model did well classifying the images that it saw in that epoch.
 
@@ -147,6 +145,20 @@ To avoid overfitting, we can A\) changing your model’s architecture, or B\) ch
 * Learning rate
 * Dropout
 * More variation on training data
+
+## Glossary {#glossary}
+
+* **Training set: **Set of data that your ML or DL model uses to learn its parameters, usually 80% of your entire dataset
+* **Validation set: **Set of data that the algorithm developer uses to establish whether or not their algorithm is learning the correct features and parameters
+* **Gold standard:**The method that detects your disease with the highest sensitivity and accuracy.
+* **Ground truth: **A label used to compare against your algorithm's output and establish its performance
+* **Silver standard: **A method to create a ground truth that takes into account several different label sources
+* **Image augmentation: **The process of altering training data slightly to expand the training dataset
+* **Fine-tuning: **The process of using an existing algorithm's architecture and weights created for a different task, and re-training them for a new task
+* **Batch size: **The number of images used at a time to train an algorithm
+* **Epoch: **A single run of sending the entire set of training data through an algorithm
+* **Learning rate **The speed at which your optimizer function moves towards a minimum by updating algorithm weights through back-propagation
+* **Overfitting: **A phenomenon that happens when an algorithm specifically learns features of a training dataset that do not generalize beyond that specific dataset
 
 
 
