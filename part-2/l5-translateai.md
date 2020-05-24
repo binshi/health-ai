@@ -86,9 +86,34 @@ For your validation plan, you need evidence to support your reasoning. As a resu
 
 Depending on the use case for your algorithm, part of your validation plan may need to include assessing\_how fast\_your algorithm can read a study.
 
+# Designing an FDA Validation Plan Exercise {#designing-an-fda-validation-plan-exercise}
+
+You just learned about how to design a validation plan for an algorithm that's been developed for 2D medical imaging. This is the_final_exercise of this course, and so this exercise will try to synthesize a lot of what you've learned and prepared you for your final project. Below are intended use statements with some indications for use and algorithmic limitations of two separate algorithms, both used for screening mammography studies.
+
+### Algorithm A: {#algorithm-a-}
+
+**Intended Use:**Assisting a radiologist with_classifying breast density_
+
+**Indications for Use:**indicated for use in screening mammography studies in women of ages 40-80._Not_indicated for use in women with artificial implants.
+
+_Hint:_Breast density falls into four categories: A, B, C, D and can only be determined from an image. It is notoriously difficult to determine breast density on a mammography study, but that's because there is no "correct" answer. It's a sliding scale that radiologists tend to disagree on when a patient is right on the border between two density levels. Also, in the real world, breast densities A & D are both about 10% prevalent, while breast densities B & C are both about 40% prevalent.
+
+### Algorithm B: {#algorithm-b-}
+
+**Intended Use:**Assisting a radiologist with identifying_breast abnormalities_.
+
+**Indications for Use:**indicated for use in screening mammography studies in women for ages 40-80._Not_indicated for women with a prior history of breast cancer.
+
+_Hint:_Radiologists are_really_good at detecting a wide range of abnormalities on screening mammograms, and a radiologists' read is considered the gold standard for determining 'normal' vs. 'abnormal' for an imaging study.
+
+### In the free response section, compare and contrast how you would do the following for your FDA validation plan for each of the two algorithms: {#in-the-free-response-section-compare-and-contrast-how-you-would-do-the-following-for-your-fda-validation-plan-for-each-of-the-two-algorithms-}
+
+* Define the clinical population needed for the validation data set that you obtain from your clinical partner
+* Choose the method of obtaining a ground truth
+
 **Intended Use:**
 
-* A statement given to the FDA that concisely describes _what _your algorithm does
+* A statement given to the FDA that concisely describes \_what \_your algorithm does
 * **510\(k\): **An FDA regulatory pathway for medical devices of all three risk categories that is appropriate when a predicate device exists
 * **PMA: **An FDA regulatory pathway for Class II and III devices that is mandated when a predicate device does not exist
 
