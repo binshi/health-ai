@@ -12,3 +12,53 @@ The FDA will require you to provide an intended use statement and an indication 
 
 You can use the indications for use statement to make more\_specific suggestions\_about how your algorithm could be used. Indications for use statement describes precise situations and reasons\_where and why\_you would use this device.
 
+![](/assets/Screenshot 2020-05-24 at 8.46.54 AM.png)
+
+#### Algorithm limitations {#algorithm-limitations}
+
+When the FDA talks about limitations, they want to know more about scenarios where your algorithm is not safe and effective to use. In other words, they want to know where our algorithm will_fail_.
+
+#### Computational limitations {#computational-limitations}
+
+If your algorithm needs to work in an emergency workflow, you need to consider computational limitations and inform the FDA that the algorithm does not achieve fast performance in the absence of certain types of computational infrastructure. This would let your end consumers know if the device is right for them.
+
+#### Medical device reporting {#medical-device-reporting}
+
+After your algorithm is cleared by the FDA and released, the FDA has a system called_Medical Device Reporting_to continuously monitor. Any time one of your end-users discovers a malfunction in your software, they report this back to you, the manufacturer, and you are required to report it back to the FDA. Depending on the severity of the malfunction, and whether or not it is life-threatening, the FDA will either completely recall your device or require you to update its labeling and explicitly state new limitations that have been encountered.
+
+# Translate Performance into Clinical Utility {#translate-performance-into-clinical-utility}
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9ba677_l4-pre/l4-pre.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/7d14ac87-b711-44a9-95b7-0c79ae6c8d25/concepts/453a4e07-8266-4c58-8ced-882a3cb9dd37#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9ba683_l4-prc/l4-prc.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/7d14ac87-b711-44a9-95b7-0c79ae6c8d25/concepts/453a4e07-8266-4c58-8ced-882a3cb9dd37#)
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9ba68d_l4-f1/l4-f1.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/7d14ac87-b711-44a9-95b7-0c79ae6c8d25/concepts/453a4e07-8266-4c58-8ced-882a3cb9dd37#)
+
+## Summary {#summary}
+
+#### Precision {#precision}
+
+Precision looks at the number of positive cases accurately identified by an algorithm divided by all of the cases identified as positive by the algorithm_no matter whether they are identified right or wrong_. This metric is also commonly referred to as the positive predictive value.
+
+#### Precision and recall {#precision-and-recall}
+
+A high precision test gives you more confidence that a positive test result is actually positive since a high precision test has low false positive. This metric, however, does not take false negatives into account. So a high precision test could still miss a lot of positive cases. Because of this, high-precision tests don’t necessarily make for great stand-alone diagnostics but are beneficial when you want to_confirm_a suspected diagnosis.
+
+When a high recall test returns a negative result, you can be confident that the result is truly negative since a high recall test has low false negatives. Recall does not take false positives into account though, so you may have high recall but are still labeling a lot of negative cases as positive. Because of this, high recall tests are good for things like screening studies, where you want to make sure someone_doesn’t_have a disease or worklist prioritization where you want to make sure that people_without_the disease are being de-prioritized.
+
+Optimizing one of these metrics usually comes at the expense of sacrificing the other.
+
+#### Threshold {#threshold}
+
+CNN models output a probability ranging from 0-1 that indicates how likely the image belongs to a class. We will need a cut-off value called threshold to assist in making the decision if the probability is high enough to belong to one class. Recall and precision vary when a different threshold is chosen.
+
+#### Precision-recall curve {#precision-recall-curve}
+
+Precision-recall curve plots recall in the x-axis and precision in the y-axis. Each point along the curve represents precision and recall under a different threshold value.
+
+#### F1 score {#f1-score}
+
+For binary classification problems, the F1 score combines both precision and recall. F1 score allows us to better measure a test’s accuracy when there are class_imbalances_. Mathematically, it is the harmonic mean of precision and recall.
+
+
+
