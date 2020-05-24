@@ -60,8 +60,6 @@ Precision-recall curve plots recall in the x-axis and precision in the y-axis. E
 
 For binary classification problems, the F1 score combines both precision and recall. F1 score allows us to better measure a test’s accuracy when there are class_imbalances_. Mathematically, it is the harmonic mean of precision and recall.
 
-
-
 [![](https://video.udacity-data.com/topher/2020/April/5e9ba9c8_l4-fda/l4-fda.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/7d14ac87-b711-44a9-95b7-0c79ae6c8d25/concepts/f77a9787-4260-47e6-8aea-7071a4d10c3b#)
 
 ## Summary {#summary}
@@ -70,7 +68,7 @@ For binary classification problems, the F1 score combines both precision and rec
 
 #### FDA validation set {#fda-validation-set}
 
-You'll need to perform a standalone clinical assessment of your tool that uses an_FDA validation set_from a real-world_clinical setting_to prove to the FDA that your algorithm works. You will run this FDA validation set through your algorithm just ONCE.
+You'll need to perform a standalone clinical assessment of your tool that uses an\_FDA validation set\_from a real-world\_clinical setting\_to prove to the FDA that your algorithm works. You will run this FDA validation set through your algorithm just ONCE.
 
 You’ll need to identify a clinical partner who you can work with to gather the “BEST” data for your validation plan. This partner will collect data from a real-world clinical setting that you describe so that you can then see how your algorithm performs under these specifications.
 
@@ -80,11 +78,22 @@ You need to identify a clinical partner to gather the FDA validation set. First,
 
 #### Establish the ground truth {#establish-the-ground-truth}
 
-You need to gather the ground truth that can be used to compare the model output tested on the FDA validation set. The choice of your ground truth method ties back to your_intended use_statement. Depending on the intended use of the algorithm, the ground truth can be very different.
+You need to gather the ground truth that can be used to compare the model output tested on the FDA validation set. The choice of your ground truth method ties back to your\_intended use\_statement. Depending on the intended use of the algorithm, the ground truth can be very different.
 
 #### Performance standard {#performance-standard}
 
 For your validation plan, you need evidence to support your reasoning. As a result, you need a performance standard. This step usually involves a lot of literature searching.
 
-Depending on the use case for your algorithm, part of your validation plan may need to include assessing_how fast_your algorithm can read a study.
+Depending on the use case for your algorithm, part of your validation plan may need to include assessing\_how fast\_your algorithm can read a study.
+
+
+
+## Further reading {#further-reading}
+
+* The FDA's [website](https://www.fda.gov/medical-devices/digital-health/software-medical-device-samd) should be your go-to for how they view software as a medical device
+* [Greenlight Guru](https://www.greenlight.guru/blog) produces an excellent blog about the FDA process for medical devices
+* Qualio produces a Quality Management System \(QMS\) for actually getting through the FDA process and their [blog](https://www.qualio.com/blog)
+  is also a great resource
+
+
 
