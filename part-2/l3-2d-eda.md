@@ -70,14 +70,9 @@ In the last section, we talked about metadata. Metadata can come from several so
 
 ## Further reading {#further-reading}
 
-* [This website](https://www.dicomstandard.org/)
-  will tell you pretty much everything you ever wanted to know about DICOM
-* The
-  [github repo](https://pydicom.github.io/)
-  for pydicom has lots of documentation, as well as examples of how to use pydicom with DICOM and some sample datasets
-* This
-  [review article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6289005/)
-  provides a really thorough overview of digital pathology and its history
+* [This website](https://www.dicomstandard.org/) will tell you pretty much everything you ever wanted to know about DICOM
+* The [github repo](https://pydicom.github.io/) for pydicom has lots of documentation, as well as examples of how to use pydicom with DICOM and some sample datasets
+* This [review article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6289005/) provides a really thorough overview of digital pathology and its history
 
 
 
