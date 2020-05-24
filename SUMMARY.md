@@ -7,5 +7,6 @@
   * [L2-2D Imaging Foundation](part-2/lesson-2-2d-imaging-foundation.md)
   * [L3-2D-EDA](part-2/l3-2d-eda.md)
   * [L4-2D- ClassificationModels](part-2/l4-2d-classificationmodels.md)
+  * [L5-TranslateAI](part-2/l5-translateai.md)
 * part-3
 
