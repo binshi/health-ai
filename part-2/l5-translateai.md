@@ -24,7 +24,7 @@ If your algorithm needs to work in an emergency workflow, you need to consider c
 
 #### Medical device reporting {#medical-device-reporting}
 
-After your algorithm is cleared by the FDA and released, the FDA has a system called_Medical Device Reporting_to continuously monitor. Any time one of your end-users discovers a malfunction in your software, they report this back to you, the manufacturer, and you are required to report it back to the FDA. Depending on the severity of the malfunction, and whether or not it is life-threatening, the FDA will either completely recall your device or require you to update its labeling and explicitly state new limitations that have been encountered.
+After your algorithm is cleared by the FDA and released, the FDA has a system called\_Medical Device Reporting\_to continuously monitor. Any time one of your end-users discovers a malfunction in your software, they report this back to you, the manufacturer, and you are required to report it back to the FDA. Depending on the severity of the malfunction, and whether or not it is life-threatening, the FDA will either completely recall your device or require you to update its labeling and explicitly state new limitations that have been encountered.
 
 # Translate Performance into Clinical Utility {#translate-performance-into-clinical-utility}
 
@@ -42,9 +42,9 @@ Precision looks at the number of positive cases accurately identified by an algo
 
 #### Precision and recall {#precision-and-recall}
 
-A high precision test gives you more confidence that a positive test result is actually positive since a high precision test has low false positive. This metric, however, does not take false negatives into account. So a high precision test could still miss a lot of positive cases. Because of this, high-precision tests don’t necessarily make for great stand-alone diagnostics but are beneficial when you want to_confirm_a suspected diagnosis.
+A high precision test gives you more confidence that a positive test result is actually positive since a high precision test has low false positive. This metric, however, does not take false negatives into account. So a high precision test could still miss a lot of positive cases. Because of this, high-precision tests don’t necessarily make for great stand-alone diagnostics but are beneficial when you want to\_confirm\_a suspected diagnosis.
 
-When a high recall test returns a negative result, you can be confident that the result is truly negative since a high recall test has low false negatives. Recall does not take false positives into account though, so you may have high recall but are still labeling a lot of negative cases as positive. Because of this, high recall tests are good for things like screening studies, where you want to make sure someone_doesn’t_have a disease or worklist prioritization where you want to make sure that people_without_the disease are being de-prioritized.
+When a high recall test returns a negative result, you can be confident that the result is truly negative since a high recall test has low false negatives. Recall does not take false positives into account though, so you may have high recall but are still labeling a lot of negative cases as positive. Because of this, high recall tests are good for things like screening studies, where you want to make sure someone\_doesn’t\_have a disease or worklist prioritization where you want to make sure that people\_without\_the disease are being de-prioritized.
 
 Optimizing one of these metrics usually comes at the expense of sacrificing the other.
 
@@ -61,4 +61,30 @@ Precision-recall curve plots recall in the x-axis and precision in the y-axis. E
 For binary classification problems, the F1 score combines both precision and recall. F1 score allows us to better measure a test’s accuracy when there are class_imbalances_. Mathematically, it is the harmonic mean of precision and recall.
 
 
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9ba9c8_l4-fda/l4-fda.png)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f5541bd6-560d-4ac8-b612-9db9b4420eba/modules/004715e8-0ef7-45d6-94b5-00b792a53bdd/lessons/7d14ac87-b711-44a9-95b7-0c79ae6c8d25/concepts/f77a9787-4260-47e6-8aea-7071a4d10c3b#)
+
+## Summary {#summary}
+
+### FDA validation plan {#fda-validation-plan}
+
+#### FDA validation set {#fda-validation-set}
+
+You'll need to perform a standalone clinical assessment of your tool that uses an_FDA validation set_from a real-world_clinical setting_to prove to the FDA that your algorithm works. You will run this FDA validation set through your algorithm just ONCE.
+
+You’ll need to identify a clinical partner who you can work with to gather the “BEST” data for your validation plan. This partner will collect data from a real-world clinical setting that you describe so that you can then see how your algorithm performs under these specifications.
+
+#### Collect the FDA validation set {#collect-the-fda-validation-set}
+
+You need to identify a clinical partner to gather the FDA validation set. First, you need to describe who you want the data from. Second, you need to specify what types of images you’re looking for.
+
+#### Establish the ground truth {#establish-the-ground-truth}
+
+You need to gather the ground truth that can be used to compare the model output tested on the FDA validation set. The choice of your ground truth method ties back to your_intended use_statement. Depending on the intended use of the algorithm, the ground truth can be very different.
+
+#### Performance standard {#performance-standard}
+
+For your validation plan, you need evidence to support your reasoning. As a result, you need a performance standard. This step usually involves a lot of literature searching.
+
+Depending on the use case for your algorithm, part of your validation plan may need to include assessing_how fast_your algorithm can read a study.
 
