@@ -61,5 +61,39 @@ Recently the ACR has been actively working with clinicians and regulators to def
 * the ACR has been keeping track of FDA cleared tools for radiological imaging:
   [https://www.acrdsi.org/DSI-Services/FDA-Cleared-AI-Algorithms](https://www.acrdsi.org/DSI-Services/FDA-Cleared-AI-Algorithms)
 
+# What’s included? {#what-s-included-}
+
+This course will focus on teaching you the following:
+
+* Basics of biomedical imaging for software engineers and data scientists, complete with clinical motivation
+* Application of machine learning techniques for 3D medical imaging data
+* Principles of end-to-end design of medical imaging AI systems
+
+The course is structured around an intro lesson, four content lessons, and final project as follows:
+
+| Lesson | Content |
+| :--- | :--- |
+| 1 | Introduction to 3D Medical Imaging \(this lesson!\) |
+| 2 | Clinical Background and Physics of 3D Medical Imaging |
+| 3 | 3D medical imaging data formats and dataset analysis |
+| 4 | Machine Learning for 3D medical imaging and segmentation hands-on |
+| 5 | Deploying machine learning algorithms in the real world |
+| Final Project | **Quantifying Hippocampal Volume for Alzheimer's Progression** You will clean up a 3D medical imaging dataset, train a segmentation model, and plug it into a functional medical imaging environment so that it automatically produces AI-powered reports for radiologists to reference. |
+
+# What’s not included? {#what-s-not-included-}
+
+This course will not focus on teaching the following:
+
+* **Deep Learning fundamentals**
+  - there are plenty of very deep courses on the subject. If you feel like you need to get a deeper understanding of the subject, we recommend looking for some of the Udacity courses, like the [Deep Learning Nanodegree](https://www.udacity.com/course/deep-learning-nanodegree--nd101) or some of the free resources like Stanford’s [video lectures](https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv) and [tutorial](http://ufldl.stanford.edu/tutorial/supervised/LinearRegression/). Another good resource is the [fast.ai](https://www.fast.ai/) course which has been built by Jeremy Howard who has co-founded a medical imaging AI startup, Enlitic.
+* **PyTorch or any other specific libraries**
+  . If you want to get a fundamental grasp of PyTorch specifically, we recommend PyTorch’s [tutorial](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html) or the [free Udacity course](https://www.udacity.com/course/deep-learning-pytorch--ud188)
+  . We will also use NumPy quite a lot and if you need a quick intro into that, the [official tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html) gives you everything you need to understand the code in this course.
+* **High-performance/large-scale computing on massive medical imaging datasets**
+  . Medical imaging datasets may become big \(we are talking hundreds of gigabytes\). Using them efficiently would tap into generic software architecture skills for building distributed systems, most likely using the major clouds. Every cloud provider offers a set of resources on the optimal use of their technologies. For example, you can take a look at
+  [Microsoft’s design patterns for machine learning at scale](https://docs.microsoft.com/en-us/azure/architecture/data-guide/big-data/machine-learning-at-scale)
+* **Diagnostic medical imaging**
+  . While you will hopefully gain some intuition required for an understanding of radiological images and clinicians' thought process better, it takes years of medical school and residency to become proficient with using 3D medical imaging for clinical purposes. [Radiopaedia](https://radiopaedia.org/) is a great resource to look at the variety of sample radiological cases and get familiar with how various conditions present in radiological studies.
+
 
 
