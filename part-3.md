@@ -24,3 +24,31 @@ The dark blue color is used for those concepts which we spend more time on, whil
 
 Some of these may be familiar to you, and some may be new. We will try to provide links at the end of each lesson to help you explore these in further detail.
 
+
+
+## “AI” and “AI Engineers” {#-ai-and-ai-engineers-}
+
+In 1955 some of the fathers of modern information theory and what has become “AI” these days introduced the following definition of “artificial intelligence problem”:
+
+> An attempt will be made to find how to make machines use language, form abstractions and concepts, solve kinds of problems now reserved for humans, and improve themselves. … For the present purpose the artificial intelligence problem is taken to be that of making a machine behave in ways that would be called intelligent if a human were so behaving.  
+> [McCarthy, Shannon, Minsky et al. A proposal for the Dartmouth summer research project on artificial intelligence, 1955](http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html)
+
+The summer research project proposal, which introduced this definition, is thought to have laid the foundation of the field of artificial intelligence study.
+
+For the purpose of this course, we think of AI as an:
+
+> Application of Machine Learning techniques to a real-world problem, improving human productivity and capability.
+
+We would like to focus on the “real world” aspect of technology, and teach you the two sides of the implementation of AI for the purpose of 3D medical image analysis:
+
+* the thought processes of clinicians and radiologists and what kind of ML-powered technology would be most impactful to them
+* data, tools, and algorithms that need to come together to bring about a machine learning algorithm which could produce an analysis of a 3D medical volume
+
+Our vision is that firmly grasping of both sides makes someone a good AI engineer, that is someone who understands all of the following:
+
+* how data is produced and curated
+* what kinds of machine learning algorithms and statistical models can utilize this data to solve clinical problems, and in what way
+* how trained models need to be integrated into a clinical environment, and how some of the related fields apply; fields such as human-computer interaction, user experience design, regulatory frameworks, ethics, and data privacy
+
+If you share these views and you want to get to know the field better, there is a good chance that you will find this course quite useful.
+
