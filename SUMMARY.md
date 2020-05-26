@@ -8,5 +8,6 @@
   * [L3-2D-EDA](part-2/l3-2d-eda.md)
   * [L4-2D- ClassificationModels](part-2/l4-2d-classificationmodels.md)
   * [L5-TranslateAI](part-2/l5-translateai.md)
-* part-3
+* [part-3](part-3.md)
+  * L1-AIFor3DImage
 
