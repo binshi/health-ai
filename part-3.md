@@ -24,8 +24,6 @@ The dark blue color is used for those concepts which we spend more time on, whil
 
 Some of these may be familiar to you, and some may be new. We will try to provide links at the end of each lesson to help you explore these in further detail.
 
-
-
 ## “AI” and “AI Engineers” {#-ai-and-ai-engineers-}
 
 In 1955 some of the fathers of modern information theory and what has become “AI” these days introduced the following definition of “artificial intelligence problem”:
@@ -51,4 +49,17 @@ Our vision is that firmly grasping of both sides makes someone a good AI enginee
 * how trained models need to be integrated into a clinical environment, and how some of the related fields apply; fields such as human-computer interaction, user experience design, regulatory frameworks, ethics, and data privacy
 
 If you share these views and you want to get to know the field better, there is a good chance that you will find this course quite useful.
+
+AI for 3D medical imaging is garnering a lot of attention recently because of all the advances in the deep learning space. Some of the early applications are very promising.
+
+To get an idea of the growth of this industry, take a look at what the American College of Radiology \(ACR\) has been doing. The ACR is a US professional society that develops guidelines for the use of medical imaging technology.
+
+Recently the ACR has been actively working with clinicians and regulators to define the use cases for AI in radiology and help the FDA find the proper regulatory frameworks for various AI techniques. Two initiatives are worth taking a look now:
+
+* ACR has been developing a comprehensive list of use cases for AI in radiology:
+  [https://www.acrdsi.org/DSI-Services/Define-AI](https://www.acrdsi.org/DSI-Services/Define-AI)
+* the ACR has been keeping track of FDA cleared tools for radiological imaging:
+  [https://www.acrdsi.org/DSI-Services/FDA-Cleared-AI-Algorithms](https://www.acrdsi.org/DSI-Services/FDA-Cleared-AI-Algorithms)
+
+
 
