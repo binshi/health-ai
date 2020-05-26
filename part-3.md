@@ -85,7 +85,7 @@ The course is structured around an intro lesson, four content lessons, and final
 This course will not focus on teaching the following:
 
 * **Deep Learning fundamentals**
-  - there are plenty of very deep courses on the subject. If you feel like you need to get a deeper understanding of the subject, we recommend looking for some of the Udacity courses, like the [Deep Learning Nanodegree](https://www.udacity.com/course/deep-learning-nanodegree--nd101) or some of the free resources like Stanford’s [video lectures](https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv) and [tutorial](http://ufldl.stanford.edu/tutorial/supervised/LinearRegression/). Another good resource is the [fast.ai](https://www.fast.ai/) course which has been built by Jeremy Howard who has co-founded a medical imaging AI startup, Enlitic.
+  * there are plenty of very deep courses on the subject. If you feel like you need to get a deeper understanding of the subject, we recommend looking for some of the Udacity courses, like the [Deep Learning Nanodegree](https://www.udacity.com/course/deep-learning-nanodegree--nd101) or some of the free resources like Stanford’s [video lectures](https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv) and [tutorial](http://ufldl.stanford.edu/tutorial/supervised/LinearRegression/). Another good resource is the [fast.ai](https://www.fast.ai/) course which has been built by Jeremy Howard who has co-founded a medical imaging AI startup, Enlitic.
 * **PyTorch or any other specific libraries**
   . If you want to get a fundamental grasp of PyTorch specifically, we recommend PyTorch’s [tutorial](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html) or the [free Udacity course](https://www.udacity.com/course/deep-learning-pytorch--ud188)
   . We will also use NumPy quite a lot and if you need a quick intro into that, the [official tutorial](https://docs.scipy.org/doc/numpy/user/quickstart.html) gives you everything you need to understand the code in this course.
@@ -94,6 +94,77 @@ This course will not focus on teaching the following:
   [Microsoft’s design patterns for machine learning at scale](https://docs.microsoft.com/en-us/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 * **Diagnostic medical imaging**
   . While you will hopefully gain some intuition required for an understanding of radiological images and clinicians' thought process better, it takes years of medical school and residency to become proficient with using 3D medical imaging for clinical purposes. [Radiopaedia](https://radiopaedia.org/) is a great resource to look at the variety of sample radiological cases and get familiar with how various conditions present in radiological studies.
+
+## Tools and libraries {#tools-and-libraries}
+
+In this course, you will use standard data science/machine learning tools:
+
+* [PyTorch](https://pytorch.org/)
+* [NumPy](https://numpy.org/)
+* [Python](https://www.python.org/)
+* [Jupyter Notebook](https://jupyter.org/)
+
+We will learn and use some of the libraries specific to medical imaging:
+
+* [PyDicom](https://pydicom.github.io/)
+* [NiBabel](https://nipy.org/nibabel/)
+
+And some of the interactive tools for working with images and debugging networks :
+
+* [3D Slicer](https://www.slicer.org/)
+* [Microdicom](http://www.microdicom.com/)
+* [Radiant](https://www.radiantviewer.com/)
+* [Dcmtk](https://dcmtk.org/)
+
+## Environments {#environments}
+
+For all the exercises and the final projects, all the tools and libraries will be available to you through Udacity Workspaces right here on this website, i.e., you do not have to worry about configuring anything locally or setting up some cloud-based infrastructure.
+
+### A. Udacity Environment {#a-udacity-environment}
+
+Everything is set up, but here are some notes on how to use the different functionality enabled for this course. Most of the workspaces will be jupyter notebooks and are ready to go. Below is a list of the other types of workspaces you will encounter and how to use their functionality.
+
+#### JupyterGPU {#jupytergpu}
+
+This workspace is a jupyter notebook but has GPU as an option for you to use. At the bottom left of that workspace you will be able to enable/disable GPU. You will only be allocated a set amount for the course so while you are just coding you should disable the code. And when you want to run any machine learning then you can run the GPU to speed that process up.
+
+#### VNC {#vnc}
+
+This workspace will include the ability to access a VNC or virtual desktop. These environments will use the GPU to access the VNC and the environment, medai. You can also disable this when you are coding \(and not running the code\) or writing an explanation in the starter files. You will also be able access a couple of different functions listed below when it is necessary for the exercise:
+
+* **Jupyter Notebooks**
+  - In any terminal use the following command
+  `bash launch_jupyter.sh`
+  And from there you can find the URL contained in the box created by the asterisks\(\*\) and paste this in the address bar of the web browser you are using to open a jupyter notebook with the relevant files in the
+  `home`
+  directory.
+* **Slicer**
+  - You will need to enable the GPU as Slicer is already configured on the VNC. When you enter the VNC with the Desktop button at the bottom right hand corner, you can find a Slicer as a shortcut on the desktop.
+
+### B. Local Machine {#b-local-machine}
+
+However, if you would like to run the exercises on your own local machines, below is a list of things you need to install on your local machine before running exercises.
+
+First, you would need a Python 3.7+ environment with the following libraries:
+
+* [PyTorch](https://pytorch.org/)
+  \(preferably with CUDA\)
+* [nibabel](https://nipy.org/nibabel/)
+* [matplotlib](https://matplotlib.org/users/installing.html)
+* [numpy](https://numpy.org/)
+* [pydicom](https://pydicom.github.io/pydicom/stable/tutorials/installation.html)
+* [Pillow](https://pillow.readthedocs.io/en/stable/installation.html)
+  \(should be installed with pytorch\)
+* [tensorboard](https://pypi.org/project/tensorboard/)
+
+In the final lesson of the course, the exercises will have you work with some extra tools:
+
+* [3D Slicer](https://www.slicer.org/)
+  for viewing and annotating 3D volumes
+* [DCMTK tools](https://dcmtk.org/)
+  for testing and emulating a medical imaging device. Note that if you are running a Linux distribution, you might be able to install dcmtk directly from the package manager \(e.g.
+  `apt-get install dcmtk`
+  in Ubuntu\)
 
 
 
