@@ -25,9 +25,9 @@ Per the ACR-DSI, the assigned task is to provide a likelihood of a diagnosis com
 
 The main operating agents of a CT scanner are X-rays, which are a form of electromagnetic radiation. A reminder on electromagnetic spectrum below:
 
-[![](https://video.udacity-data.com/topher/2020/April/5e9bf43d_l1-em-spectrum/l1-em-spectrum.png "Electromagnetic spectrum
+\[!\[\]\([https://video.udacity-data.com/topher/2020/April/5e9bf43d\_l1-em-spectrum/l1-em-spectrum.png](https://video.udacity-data.com/topher/2020/April/5e9bf43d_l1-em-spectrum/l1-em-spectrum.png) "Electromagnetic spectrum
 
-em\_spectrum.png")Electromagnetic spectrum](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/7ab3170c-e20f-4a47-8425-7ba7482c0eca/modules/c2693991-fbab-4ea4-9ef2-a01b62b7a88e/lessons/d8617924-a6e1-4c49-9bdb-3388e95fc3b7/concepts/23e69e45-ff28-439f-bf0c-4d142d5802f8#)
+em\_spectrum.png"\)Electromagnetic spectrum\]\([https://classroom.udacity.com/nanodegrees/nd320-beta/parts/7ab3170c-e20f-4a47-8425-7ba7482c0eca/modules/c2693991-fbab-4ea4-9ef2-a01b62b7a88e/lessons/d8617924-a6e1-4c49-9bdb-3388e95fc3b7/concepts/23e69e45-ff28-439f-bf0c-4d142d5802f8\#](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/7ab3170c-e20f-4a47-8425-7ba7482c0eca/modules/c2693991-fbab-4ea4-9ef2-a01b62b7a88e/lessons/d8617924-a6e1-4c49-9bdb-3388e95fc3b7/concepts/23e69e45-ff28-439f-bf0c-4d142d5802f8#)\)
 
 X-rays are a form of ionizing radiation, which means that they carry enough energy to detach electrons from atoms. This presents certain health risks, but the short wavelength of this part of the electromagnetic spectrum allows the radiation to interact with the many structures that compose a human body, thus allowing us to measure the amount of photons that reach detectors and make deductions about the structures that were in the way of photons as they were traveling from the source to the detector, with a high precision.
 
@@ -35,11 +35,11 @@ X-rays are a form of ionizing radiation, which means that they carry enough ener
 
 ![](/assets/Screenshot 2020-05-27 at 8.20.26 AM.png)
 
-
-
 ![](/assets/Screenshot 2020-05-27 at 8.19.35 AM.png)
 
-As you have seen, the CT scanner operates by projecting X-rays through the subject’s body.
+As you have seen, the CT scanner operates by projecting X-rays through the subject’s body. 
+
+**CT scanner**: computed tomography scanner
 
 X-rays get absorbed or scattered by the anatomy and thus detectors measure the amount of this attenuation that happens along each path that the ray is taking. A collimator shapes the beam and ensures that the X-rays only pass through a narrow slice of the object being imaged. Rotation of a source inside a gantry makes sure that projections happen from different angles so that we can get a good 2D representation of the slice. The moving table ensures that multiple such slices are imaged. A collection of slices makes up a 3-dimensional CT image.
 
