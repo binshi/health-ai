@@ -113,16 +113,93 @@ One of the things to keep in mind when dealing with a labeled \(segmented\) data
 
 When it comes to tooling for creating ground truth,[3D Slicer](https://www.slicer.org/)is a popular free tool used in the research community, and I will walk you through using it for creation and review of segmentation labels in the next lessons.[MITK](http://www.mitk.org/wiki/MITK)is another one. However, many medical imaging startups and larger companies use tools of their own.
 
-![](/assets/Screenshot 2020-05-27 at 8.26.44 PM.png)![](/assets/Screenshot 2020-05-27 at 8.27.27 PM.png)![](/assets/Screenshot 2020-05-27 at 8.28.11 PM.png)![](/assets/Screenshot 2020-05-27 at 8.29.11 PM.png)
-
-
+![](/assets/Screenshot 2020-05-27 at 8.26.44 PM.png)![](/assets/Screenshot 2020-05-27 at 8.27.27 PM.png)![](/assets/Screenshot 2020-05-27 at 8.28.11 PM.png)![](/assets/Screenshot 2020-05-27 at 8.29.11 PM.png)![](/assets/Screenshot 2020-05-27 at 8.31.25 PM.png)
 
 We have discussed four metrics that you can use to evaluate the performance of your segmentation models. As usual, a great explanation of these can also be found on Wikipedia which I’m linking here if you are looking for additional details:
 
 * [Sensitivity and Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)
-* [Dice Similarity Coefficient](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient)
+* [Dice Similarity Coefficient](https://en.wikipedia.org/wiki/Sørensen–Dice_coefficient)
 * [Jaccard Index](https://en.wikipedia.org/wiki/Jaccard_index)
 * [Hausdorff Distance](https://en.wikipedia.org/wiki/Hausdorff_distance)
 
 Note these metrics as they are very handy as you are publishing your model’s validation reports, but also they could be used to construct more elaborate cost functions.
+
+# Evaluating Performance as a Clinician {#evaluating-performance-as-a-clinician}
+
+Below, Mazen will present a clinician’s perspective on assessing the performance of assistive systems in general, not only segmentation models. It is important to understand this perspective for a data scientist so that you can speak with clinicians in common terms.
+
+As a clinician, I need to make decisions about the presence of conditions or selecting the course of treatment. For that, clinicians operate in terms of Likelihood Ratios.
+
+The likelihood ratio for a diagnostic test result can be calculated if the predictive characteristics \(sensitivity and specificity\) of that test are known. Likelihood ratios are known for common diagnostic tests performed by humans \(e.g., correctly identifying viral pneumonia from chest CT scans\). This means that for example, your ML segmentation algorithm may be measuring the volume of a specific anomaly in the lung very accurately, but this measurement, while important to quantify the degree of lung involvement by some disease state, may be not specific at all for predicting whether that state is due to a viral pneumonia \(e.g., presence of such anomalies could mean viral pneumonia, bacterial pneumonia or non-infectious causes like hemorrhage or edema\). Thus, your algorithm with high Dice scores may end up being not very useful to solve a clinical task if the goal is a specific diagnosis.
+
+
+
+The skills that you have learned through watching videos and doing exercises will help you in the final project where you will build your own AI system using a U-net implementation, and apply it to DICOM datasets.
+
+In this lesson, we have covered the following:
+
+* A quick refresher on how convolutional neural networks operate and a took a closer look at the different types of convolutions that underlie the operation of these networks.
+* Ways to approach segmentation and classification problems for 3D medical imaging
+* We did an exercise where we trained our own segmentation network on a medical imaging dataset
+* Technical methods for evaluating performance of CNNs for 3D medical image analysis, and talked about the clinical aspect of evaluating performance.
+
+Before we are ready to implement the full-scale AI solution in the final project, there is one final set of concepts that I want you to get familiar with - how to integrate such algorithms into real-world systems, and what these real-world systems look like. This would be the topic of our next lesson.
+
+# Further Resources {#further-resources}
+
+## More problems {#more-problems}
+
+As mentioned in my closing remarks, machine learning problems in 3D medical imaging do not boil down to only classification and segmentation. The two problems we’ve looked at here help you understand the principles, but there is so much more you can do. Here are some pointers for some amazing things people do with deep neural networks in 3D medical imaging:
+
+* Using deep learning to increase the resolution of low-res scans:
+  [Chaudhari AS, Fang Z, Kogan F, et al. Super-resolution musculoskeletal MRI using deep learning. Magn Reson Med. 2018;80\(5\):2139–2154. doi:10.1002/mrm.27178](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6107420/)
+* GANs for synthetic MRI:
+  [Frid-Adar, M., Diamant, I., Klang, E., Amitai, M., Goldberger, J., & Greenspan, H. \(2018\). GAN-based synthetic medical image augmentation for increased CNN performance in liver lesion classification. Neurocomputing, 321, 321–331. doi: 10.1016/j.neucom.2018.09.013](https://arxiv.org/pdf/1803.01229.pdf)
+* A survey of deep learning methods for medical image registration:
+  [Haskins, G., Kruger, U. & Yan, P. Deep learning in medical image registration: a survey. Machine Vision and Applications 31, 8 \(2020\). https://doi.org/10.1007/s00138-020-01060-x](https://arxiv.org/abs/1903.02026)
+* Overview of opportunities for deep learning on MRIs:
+  [Lundervold, A. S., & Lundervold, A. \(2019\). An overview of deep learning in medical imaging focusing on MRI. Zeitschrift Für Medizinische Physik, 29\(2\), 102–127. doi: 10.1016/j.zemedi.2018.11.002](https://www.sciencedirect.com/science/article/pii/S0939388918301181)
+
+## Tools and libraries {#tools-and-libraries}
+
+We tried to minimize the dependency on external libraries and focus on understanding some key concepts. At the same time, there are many tools that the community has developed, which will help you get moving faster with the tasks typical for medical imaging ML workflows.
+
+A few tools/repos worthy of attention are:
+
+* Fast.ai - python library for medical image analysis, with focus on ML:
+  [https://dev.fast.ai/medical.imaging](https://dev.fast.ai/medical.imaging)
+* MedPy - a library for medical image processing with lots of various higher-order processing methods:
+  [https://pypi.org/project/MedPy/](https://pypi.org/project/MedPy/)
+* Deepmedic, a library for 3D CNNs for medical image segmentation:
+  [https://github.com/deepmedic/deepmedic](https://github.com/deepmedic/deepmedic)
+* Work by the German Cancer Research Institute:
+  * [https://github.com/MIC-DKFZ/trixi](https://github.com/MIC-DKFZ/trixi)
+    - a boilerplate for machine learning experiment
+  * [https://github.com/MIC-DKFZ/batchgenerators](https://github.com/MIC-DKFZ/batchgenerators)
+    - tooling for data augmentation
+* A publication about a project dedicated to large-scale medical imaging ML model evaluation which includes a comprehensive overview of annotation tools and related problems \(including inter-observer variability\):
+  [https://link.springer.com/chapter/10.1007%2F978-3-319-49644-3\_4](https://link.springer.com/chapter/10.1007%2F978-3-319-49644-3_4)
+
+## Books {#books}
+
+Some resources readily available online for free will help you grasp the basic concepts of computer vision and overall machine learning.
+
+* [https://d2l.ai/](https://d2l.ai/)
+  - deep learning with a special section on computer vision by Alexander Smola et al. Alexander has a strong history of publications on machine learning algorithms and statistical analysis and is presently serving as a director for machine learning at Amazon Web Services in Palo Alto, CA
+* [http://www.mbmlbook.com/](http://www.mbmlbook.com/)
+  - a book on general concepts of machine learning by Christopher Bishop et al. Christopher has a distinguished career as a machine learning scientist and presently is in charge of Microsoft Research lab in Cambridge, UK, where I had the honor to work on
+  [project InnerEye](https://www.microsoft.com/en-us/research/project/medical-image-analysis/)
+  for several years.
+
+## More notable papers {#more-notable-papers}
+
+* If you’re curious about segmentation space specifically, you may appreciate a foray into non-ML-based methods for segmentation. A couple of papers that can provide an introduction into that space are:
+  * [Boykov, Y., & Jolly, M.-P. \(2000\). Interactive Organ Segmentation Using Graph Cuts. Medical Image Computing and Computer-Assisted Intervention – MICCAI 2000 Lecture Notes in Computer Science, 276–286. doi: 10.1007/978-3-540-40899-4\_28](https://cs.uwaterloo.ca/~yboykov/Papers/miccai00.pdf)
+  * [Probabilistic Graphical Models for Medical Image Segmentation](https://www.researchgate.net/publication/280664591_Probabilistic_Graphical_Models_for_Medical_Image_Segmentation)
+* This GitHub repo provides an excellent overview of CNN-based seg methods for general image domain:
+  [https://github.com/mrgloom/awesome-semantic-segmentation](https://github.com/mrgloom/awesome-semantic-segmentation)
+
+
+
+
 
