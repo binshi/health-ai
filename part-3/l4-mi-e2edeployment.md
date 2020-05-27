@@ -24,9 +24,30 @@ We have seen some of the examples of problems that lend themselves well to solut
 
 * Screening and monitoring scenarios, such as the presented scenario of**screening for lung nodules**, can be quite tedious because objects that are sought can hide well, and meticulous scrolling through slices is required. Pointing human attention to areas which are likely to be suspicious is helpful and saves time
 
-* The presented scenario of**incidental findings**deals with an interesting phenomenon of_selective attention_where humans tend to ignore certain stimuli when multiple are applied. Thus, even trained observers may ignore something otherwise quite obvious, like an adrenal cyst when they know that image was taken with the purpose of evaluating potential vertebral disc degeneration. The famous “[gorilla study](https://www.npr.org/sections/health-shots/2013/02/11/171409656/why-even-radiologists-can-miss-a-gorilla-hiding-in-plain-sight)” represents this marvelously.
+* The presented scenario of**incidental findings**deals with an interesting phenomenon of\_selective attention\_where humans tend to ignore certain stimuli when multiple are applied. Thus, even trained observers may ignore something otherwise quite obvious, like an adrenal cyst when they know that image was taken with the purpose of evaluating potential vertebral disc degeneration. The famous “[gorilla study](https://www.npr.org/sections/health-shots/2013/02/11/171409656/why-even-radiologists-can-miss-a-gorilla-hiding-in-plain-sight)” represents this marvelously.
 
 > **Note**: when choosing a medical imaging problem to be solved by machine learning, it is tempting to assume that automated detection of certain conditions would be the most valuable thing to solve. However, this is not usually the case. Quite often detecting if a condition is present is not so difficult for a human observer who is already looking for such a condition. Things that bring most value usually lie in the area of productivity increase. Helping prioritize the more important exams, helping focus the attention of a human reader on small things or speed up tedious tasks usually is much more valuable. Therefore it is important to understand the clinical use case that the algorithm will be used well and think of end-user value first.
 
 When it comes to classification and object detection problems, the key to solving those is identifying relevant features in the images, or_feature extraction_. Not so long ago, machine learning methods relied on manual feature design. With the advent of CNNs, feature extraction is done automatically by the network, and the job of a machine learning engineer is to define the general shape of such features. As the name implies, features in Convolutional Neural Networks take the shape of_convolutions_. In the next section, let’s take a closer look at some of the types of convolutions that are used for 3D medical image analysis.
+
+We have discussed some methods for feature extraction such as 2D, 2.5D, and 3D convolutions.
+
+A convolution is an operation that applies a convolutional filter to each pixel of an image. A more detailed explanation could be found in[this great Wikipedia article](https://en.wikipedia.org/wiki/Kernel_%28image_processing)\#Convolution\).
+
+A simple 2D convolution with a 3x3 kernel could be visualized by the following animation:
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9bf445_l3-conv/l3-conv.gif "\[conv.gif\]
+Animation of image convolution")Animation of image convolution with a 3x3 convolutional filter \[\[1,0,1\],\[0,1,0\],\[1,0,1\]\]](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/7ab3170c-e20f-4a47-8425-7ba7482c0eca/modules/c2693991-fbab-4ea4-9ef2-a01b62b7a88e/lessons/bb342b71-8ca8-4e51-8309-6333cbea25a0/concepts/470859d7-57a1-4964-a7d9-152814f4fa99#)
+
+We have just discussed several types of convolutions that could be used for feature extraction of 3D medical images:
+
+**2D Convolution**is an operation visualized in the image above, where a convolutional filter is applied to a single 2D image. Applying a 2D convolution approach to a 3D medical image would mean applying it to every single slice of the image. A neural network can be constructed to either process slices one at a time, or to stack such convolutions into a stack of 2D feature maps. Such an approach is fastest of all and uses least memory, but fails to use any information about the topology of the image in the 3rd dimension.
+
+**2.5D Convolution**is an approach where 2D convolutions are applied independently to areas around each voxel \(either in neighboring planes or in orthogonal planes\) and their results are summed up to form a 2D feature map. Such an approach leverages some dimensional information.
+
+**3D Convolution**is an approach where the convolutional kernel is 3 dimensional and thus combines information from all 3 dimensions into the feature map. This approach leverages the 3-dimensional nature of the image, but uses the most memory and compute resources.
+
+Understanding these is essential to being able to put together efficient deep neural networks where convolutions together with downsampling are used to extract higher-order semantic features from the image.
+
+Next up, we will take a closer look at how convolutions operate by running through a notebook and performing an exercise.
 
