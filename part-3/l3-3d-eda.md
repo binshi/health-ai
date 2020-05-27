@@ -99,3 +99,47 @@ Also, here are some other tools that were not covered in the lesson, but could a
 
 
 
+We have learned about some of the important parameters that you should be on the lookout for when analyzing medical imaging datasets.
+
+These are parameters that have to do with geometric and photometric aspects of medical images.
+
+## Orientation parameters {#orientation-parameters}
+
+For DICOM two parameters that define the relative position of a 2D in the 3D space would be:
+
+**\(0020,0037\) Image Orientation Patient**- a parameter that stores two vectors \(directional cosines to be precise\) that define the orientation of the first row and first column of the image.
+
+**\(0020,0032\) Image Position Patient**- a parameter that stores x, y, and z coordinates of the upper left-hand corner of the image.
+
+Both of these are Type 1 \(mandatory\) parameters for MR and CT IODs, so it is generally safe to rely on them.
+
+For NIFTI, the same purpose is served by srow\_\*, qoffset\_\* vectors.
+
+## Physical spacing parameters {#physical-spacing-parameters}
+
+**\(0028,0030\) Pixel Spacing**- two values that store the physical distance between centers of pixels across x and y axes.
+
+**\(0018,0050\) Slice Thickness**- thickness of a single slice. Note that this one is a Type 2 \(required, but can be zero\) parameter for CT and MR data. If you find those unavailable, you can deduce slice thickness from IPP parameters. This can happen if your volume has non-uniform slice thickness.
+
+## Photometric parameters {#photometric-parameters}
+
+There are quite a few of those, as DICOM can store both grayscale and color data, so lots of parameters deal with color palettes. CT and MR images usually have monochrome pixel representation \(defined by tag_\(0028,0004\) Photometric Interpretation_\).
+
+Most notable ones of this group are:
+
+**\(0028,0100\) Bits Allocated**- parameter that defines the number of bits allocated per pixel \(since we have CPUs that operate in bytes, this parameter is always a multiple of 8\).
+
+**\(0028,0101\) Bits Stored**- parameter that defines the number of bits that are actually used - quite often, you could see Bits Allocated set to 16, but Bits Stored set to 12.
+
+### Image size parameters {#image-size-parameters}
+
+Of worthy mention are parameters that define the size of the 3D volume. There are Type 1 parameters that define the width and height of each 2D slice:
+
+**\(0020,0010\) Rows**- this is the height of the slice, in voxels
+
+**\(0020,0011\) Columns**- width of the slice, in voxels
+
+Both of these need to be consistent across all DICOM files that comprise a series.
+
+Note that there isn’t really anything in DICOM metadata that has to tell you how many slices you have in the series. There are tags that can hint at this \(like_\(0054,0081\) Number of Slices_, or_\(0020,0013\) Instance Number_\), but none of them are mandatory, Type 1 tags for CT or MR data. The most reliable way to determine the number of slices in the DICOM series is to look at the number of files that you have, and ideally validate that they make up a correct volume by checking for the consistency of IPP values.
+
