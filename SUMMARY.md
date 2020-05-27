@@ -10,4 +10,5 @@
   * [L5-TranslateAI](part-2/l5-translateai.md)
 * [part-3](part-3.md)
   * L1-AIFor3DImage
+  * [L2-3D-Fundamentals](part-3/l2-3d-fundamentals.md)
 
