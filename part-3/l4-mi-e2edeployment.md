@@ -3,6 +3,7 @@ In this lesson, we will do a quick refresher on how **convolutional neural netwo
 * We will talk about some ways to approach **segmentation and classification **problems.
 
 * After that, we will jump in and **train our own segmentation network**.
+
 * Then we will discuss some of the technical methods for **evaluating performance of CNNs for medical image analysis **, and talk about the clinical aspect of evaluating performance.
 
 But before we jump in, I would like to take a brief detour and align on the basic definitions. We will be using terms like Artificial Intelligence, Computer Vision, Deep Learning, Machine Learning, and it’s important to get on the same page with regards to how they are related. Here is a diagram that represents this:
@@ -101,8 +102,6 @@ A couple of final remarks below.
 
 I hope you enjoyed the exercise. You can find the solution for the**Exercise 2: Segmentation Hands On**[here](https://github.com/udacity/nd320-c3-3d-med-imaging/tree/master/3d-imaging-end-to-end-deep-learning-applications/exercises/2-segmentation-hands-on/solution). If you managed to complete it - you are officially well versed with DICOM, NIFTI, and PyTorch to begin training and designing your own neural networks for medical imaging classification, object detection, and segmentation problems! However, a few important pieces remain. For example, you have noticed that we used simple cross-entropy loss as our cost function. Is this the best cost function possible? Also, after you have your segmentation - how do you efficiently compare it to your ground truth and evaluate performance? We will talk about these things further in this lesson.
 
-
-
 Some of the challenges in creating the ground truth for segmentation have to do with the fact that it is rarely routinely created in clinical practice. Radiation oncology is one of the few fields where segmentation is generated as part of the treatment path, but normally segmentation projects require custom labeling efforts.
 
 One of the things to keep in mind when dealing with a labeled \(segmented\) dataset is that interpretation of radiological images is ambiguous and quite often, two independent clinicians \(observers\) would not label things in the same way. This phenomenon is called Interobserver Variability and has been studied in the literature.
@@ -112,5 +111,18 @@ One of the things to keep in mind when dealing with a labeled \(segmented\) data
 * While I worked on Microsoft’s Project InnerEye we also did our own IOV study for how conformant people are in contouring pelvic anatomy in prostate cancer patients, and included it into our paper which you can read here:
   [Macomber, M. W., Phillips, M., Tarapov, I., Jena, R., Nori, A., Carter, D., … Nyflot, M. J. \(2018\). Autosegmentation of prostate anatomy for radiation treatment planning using deep decision forests of radiomic features. Physics in Medicine & Biology, 63\(23\), 235002. doi: 10.1088/1361-6560/aaeaa4](https://www.researchgate.net/publication/328485616_Autosegmentation_of_prostate_anatomy_for_radiation_treatment_planning_using_deep_decision_forests_of_radiomic_features)
 
-When it comes to tooling for creating ground truth,[3D Slicer](https://www.slicer.org/)is a popular free tool used in the research community, and I will walk you through using it for creation and review of segmentation labels in the next lessons.[MITK](http://www.mitk.org/wiki/MITK)is another one. However, many medical imaging startups and larger companies use tools of their own.Lesson Summary
+When it comes to tooling for creating ground truth,[3D Slicer](https://www.slicer.org/)is a popular free tool used in the research community, and I will walk you through using it for creation and review of segmentation labels in the next lessons.[MITK](http://www.mitk.org/wiki/MITK)is another one. However, many medical imaging startups and larger companies use tools of their own.
+
+![](/assets/Screenshot 2020-05-27 at 8.26.44 PM.png)![](/assets/Screenshot 2020-05-27 at 8.27.27 PM.png)![](/assets/Screenshot 2020-05-27 at 8.28.11 PM.png)![](/assets/Screenshot 2020-05-27 at 8.29.11 PM.png)
+
+
+
+We have discussed four metrics that you can use to evaluate the performance of your segmentation models. As usual, a great explanation of these can also be found on Wikipedia which I’m linking here if you are looking for additional details:
+
+* [Sensitivity and Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)
+* [Dice Similarity Coefficient](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient)
+* [Jaccard Index](https://en.wikipedia.org/wiki/Jaccard_index)
+* [Hausdorff Distance](https://en.wikipedia.org/wiki/Hausdorff_distance)
+
+Note these metrics as they are very handy as you are publishing your model’s validation reports, but also they could be used to construct more elaborate cost functions.
 
