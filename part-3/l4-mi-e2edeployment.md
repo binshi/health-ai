@@ -51,3 +51,25 @@ Understanding these is essential to being able to put together efficient deep ne
 
 Next up, we will take a closer look at how convolutions operate by running through a notebook and performing an exercise.
 
+
+
+Note that we did not spend too much time on the actual methods for building networks for classification and object detection, and as you will see further in the lesson, there is more focus on segmentation, especially on performance metrics and coding exercises.
+
+The reason for that is that classification problems in 3D medical imaging can leverage a lot of techniques used for 2D image classification, and the course on AI for 2D medical image analysis, which is a part of this nanodegree, already provides an excellent deep dive into some of the approaches for classification and object detection problems. We talked about some of the differences between 2D and 3D classification problems such as 3D and 2.5D convolutions and hopefully, through our convolutions exercise, got you a feel of how these work and how you would code one yourself. But if you want to ground yourself better in applying CNNs for classification and object detection problems, I suggest going through the course on AI for 2D medical image analysis.
+
+# Further Resources {#further-resources}
+
+* If you think you’re lost in convolutions - check out this
+  [2D Visualization of a Convolutional Neural Network](https://www.cs.ryerson.ca/~aharley/vis/conv/flat.html)
+  by Adam W. Harley.
+* [A guide to convolution arithmetic for deep learning](https://arxiv.org/pdf/1603.07285.pdf)
+  is a great overview of the arithmetic of the various convolution operations.
+* The paper I had mentioned in the slides where the authors use 2.5D convolutions for a variety of pathology classifiers:
+  [H. R. Roth et al., "Improving Computer-Aided Detection Using Convolutional Neural Networks and Random View Aggregation," in IEEE Transactions on Medical Imaging, vol. 35, no. 5, pp. 1170-1181, May 2016.](https://arxiv.org/pdf/1505.03046.pdf)
+* Another paper by the same authors presenting a 2.5D convolutions approach for lymph node detection:
+  [Roth, Holger R., et al. “A New 2.5D Representation for Lymph Node Detection Using Random Sets of Deep Convolutional Neural Network Observations.” Medical Image Computing and Computer-Assisted Intervention – MICCAI 2014 Lecture Notes in Computer Science, 2014, pp. 520–527., doi:10.1007/978-3-319-10404-1\_65.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4295635/)
+* This paper is comparing 3D and 2D network architectures for lung nodule classification problem:
+  [Kang G, Liu K, Hou B, Zhang N \(2017\) 3D multi-view convolutional neural networks for lung nodule classification. PLoS ONE 12\(11\): e0188290. https://doi.org/10.1371/journal.pone.0188290](https://doi.org/10.1371/journal.pone.0188290)
+
+
+
