@@ -72,5 +72,30 @@ Some things that distinguish NIFTI from DICOM, though are:
 * A great blog post on NIFTI file format:
   [https://brainder.org/2012/09/23/the-nifti-file-format/](https://brainder.org/2012/09/23/the-nifti-file-format/)
 
+# Viewing 3D medical images {#viewing-3d-medical-images}
+
+In this section, I will show you briefly two free tools that you could use to view medical images.
+
+## MicroDicom {#microdicom}
+
+One tool is called MicroDicom and is available for Windows OS. This tool is a lightweight DICOM image viewer and provides a very convenient way to explore the DICOM tags.
+
+## 3D Slicer {#3d-slicer}
+
+Another tool is called 3D slicer and is available for Windows, Linux, and Mac.It is an open-source modular 3D medical image viewer with a focus on a research community that can view both DICOM and NIFTI. It is quite complex and has a bit of a learning curve to it, but it is very powerful for a variety of tasks.
+
+We have seen a quick intro into a couple of tools that you could use for viewing DICOM images. There are many more, both free and commercial. Slicer is particularly powerful for more advanced scenarios and we will get into it in a later lesson.
+
+If you want to play with these tools now, here are some links:
+
+* Microdicom \(Windows only\): [http://www.microdicom.com/](http://www.microdicom.com/)
+* 3D Slicer: [https://www.slicer.org/](https://www.slicer.org/)
+
+Also, here are some other tools that were not covered in the lesson, but could also come in handy:
+
+* Radiant - another medical image viewer: [https://www.radiantviewer.com/](https://www.radiantviewer.com/)
+* Osirix \(Mac only\): [https://www.osirix-viewer.com/](https://www.osirix-viewer.com/)
+* ViewMyScans - a quick online viewer that doesn’t require a local installation: [https://viewmyscans.com/viewer/](https://viewmyscans.com/viewer/)
+
 
 
