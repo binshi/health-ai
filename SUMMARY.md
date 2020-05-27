@@ -12,4 +12,5 @@
   * L1-AIFor3DImage
   * [L2-3D-Fundamentals](part-3/l2-3d-fundamentals.md)
   * [L3-3D-EDA](part-3/l3-3d-eda.md)
+  * [L4-MI-E2EDeployment](part-3/l4-mi-e2edeployment.md)
 

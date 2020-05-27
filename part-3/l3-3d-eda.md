@@ -153,3 +153,13 @@ If you want to dive deeper into the subjects of coordinate spaces for medical im
 
 
 
+Methods for dataset analysis basically boil down to using the same tricks as you’d do for individual volume analysis and being on the lookout for inconsistencies in data.
+
+Inconsistencies usually boil down to two classes:
+
+* **Clinical anomalies**- the things related to either anatomical anomalies like missing organs, pathologies like tumors or implants such as limb prosthesis, ports/cannulas, surgical implants, presence of contrast media, etc. Sometimes these things can result in artifacts in the images, so it’s good to be aware of them
+
+* **Informatics anomalies**- things related to specifics of data acquisition or variations in DICOM encoding coming from different scanners. These would be things like slice spacing consistency, image dimensions, variations in photometric encoding, etc
+
+Basic knowledge of DICOM and intuition for what things could go wrong are always useful when analyzing the datasets. I will post some examples of great dataset EDA at the end of this lesson as well.
+
