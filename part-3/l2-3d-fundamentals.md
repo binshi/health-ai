@@ -131,5 +131,28 @@ As you have seen,**3D reconstruction**is creating a 3D image or individual voxel
 
 ![](/assets/Screenshot 2020-05-27 at 9.01.42 AM.png)
 
-![](/assets/Screenshot 2020-05-27 at 9.03.19 AM.png)
+![](/assets/Screenshot 2020-05-27 at 9.03.19 AM.png)We have touched on some of the most typical tasks that you would likely need to deal with when working with 3D imaging data.
+
+You will probably use**3D reconstruction**to visualize your volumes. Typically 3D reconstruction capabilities are incorporated into medical imaging viewers and range from basic to very elaborate. In later lessons, we will take a look at some of the tools that you can leverage for this.
+
+**Multi-planar reconstruction**is something that you will do naturally as you will want to extract slices from volumes. MPR is something that any 3D medical image viewer can do, but a data scientist would likely be dealing with cuts through different planes a lot too. We will see examples of MPR further in this course, and you will be writing your own code to do this.
+
+**Windowing**task would have you map 10 or more bits of grayscale to the 256 colors your screen could display \(or maybe the RGB colorspace\). Windowing is the very standard very basic operation of any medical image viewer \(not only 3D one\)
+
+**Registration**will pop up if you are looking at tasks that involve combining data from multiple imaging modalities or change of structures in the same patient over time. Registration on its own is not a strictly defined task. There are options - you need to decide e.g. if distances should be preserved in the moving image, or if parallel lines need to be preserved, but the image can be shrunken or expanded. Because of such tradeoffs, registration is always defined within a context of a clinical task. Registration sometimes is available in more advanced image viewers, and there are also tools and libraries that you can lean upon to do it programmatically
+
+An interesting thing about registration is that it can be formulated as an optimization problem. This problem is quite well studied and has some good analytical solutions, but can also be addressed by deep learning methods.
+
+# Further Resources {#further-resources}
+
+* A great overview of registration, methods, and various issues:
+  [Alam, Fakhre & Ur Rahman, Sami & Din, Aziz & Qayum, Fawad. \(2018\). Medical image registration: Classification, applications and issues. Journal of Postgraduate Medical Institute. 32. 300-3007.](https://www.researchgate.net/publication/329363455_Medical_image_registration_Classification_applications_and_issues)
+* A couple of papers looking at registration as an optimization problem and applying deep learning methods:
+  * [Song G, Han J, Zhao Y, Wang Z, Du H. A Review on Medical Image Registration as an Optimization Problem. Curr Med Imaging Rev. 2017;13\(3\):274–283. doi:10.2174/1573405612666160920123955](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5543570/)
+  * [Haskins G, Kruger U, Yan P. \(2020\). Deep Learning in Medical Image Registration: A Survey. Retrieved Mar 2020 from the arXiv database](https://arxiv.org/pdf/1903.02026.pdf)
+    .
+* Siemens Healthineers is doing some great research around the photorealistic rendering of medical volumes. Check out their related webpage to see some of the very compelling ways to do 3D reconstruction:
+  [https://www.siemens-healthineers.com/medical-imaging-it/advanced-visualization-solutions/syngovia-cinematic](https://www.siemens-healthineers.com/medical-imaging-it/advanced-visualization-solutions/syngovia-cinematic)
+
+
 
