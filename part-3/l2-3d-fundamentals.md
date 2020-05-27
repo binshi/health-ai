@@ -115,6 +115,11 @@ Another idea would be trying to use all colors of the display or somehow optimiz
 ### New Vocab {#new-vocab}
 
 * **Windowing**: mapping high dynamic range of medical images onto the screen-space gray color scale
+* **MPR**: multi-planar reconstruction - extraction of non-primary imaging planes from a 3D volume
+
+![](/assets/Screenshot 2020-05-27 at 8.53.22 AM.png)
 
 
+
+![](/assets/Screenshot 2020-05-27 at 8.55.45 AM.png)
 
