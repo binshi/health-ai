@@ -106,5 +106,15 @@ MRI scanners are very versatile machines that can provide great non-invasive ins
 
 * Finally, if you want to try and wrap your head around spatial frequency decomposition for image analysis, here is a good overview from the University of New Mexico:[https://www.cs.unm.edu/~brayer/vision/fourier.html](https://www.cs.unm.edu/~brayer/vision/fourier.html)
 
+As you have seen,**windowing**is a fairly straightforward color mapping procedure. An interesting thing to keep in mind about windowing is that historically we have been mapping linear scales in which scanners acquire data to the linear grayscale which has the limitation of being only able to display 255 colors. People have been coming up with ideas on how to circumvent this limitation.
+
+One such idea was building special medical monitors that use more than 8 bits per single color channel or are optimized specifically for grayscale representations \(e.g., look up Barco monitors that have 10- and 12-bit grayscale technology\). If you think that HDR TVs are new, think again - the medical imaging industry has been building those for decades!
+
+Another idea would be trying to use all colors of the display or somehow optimizing the representation to fit the grayscale range better. We will post a link to some interesting experiments in this area in the next lesson, once you’ve had the chance to learn how medical images are stored.
+
+### New Vocab {#new-vocab}
+
+* **Windowing**: mapping high dynamic range of medical images onto the screen-space gray color scale
+
 
 
