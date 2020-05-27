@@ -78,5 +78,9 @@ The reason for that is that classification problems in 3D medical imaging can le
 
 * **Novel Scenarios**: Segmentation is a tedious process that is not quite often done in clinical practice. However, knowing the sizes and extents of the objects holds a lot of promise, especially when combined with other data types. Thus, the field of**radiogenomics**refers to the study of how the quantitative information obtained from radiological images can be combined with the genetic-molecular features of the organism to discover information not possible before.
 
+A U-Net architecture has been very successful in analyzing 3D medical images and has spawned multiple offshoots. You will get a chance to get more familiar with it in the exercise that follows, but if you would like to understand the principles better, I recommend that you check out the webpage on U-net created by one of the authors of the original paper, Olaf Ronneberger:[https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/index.html](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/index.html). You will find the link to the original paper and a few materials explaining how and why this architecture works.
+
+Now, let’s move on to the exercise where you will have a chance to train your own segmentation network.
+
 
 
