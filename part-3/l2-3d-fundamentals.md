@@ -74,7 +74,7 @@ Gradient fields are used to vary the static magnetic field, and thus precession 
 
 The currents measured by RF coils get turned into a digital format, and represented as vectors in “**K-space**”. The concept of K-space goes back to the wave theory in physics and basically defines a space of vectors that describe characteristics of electromagnetic waves.
 
-In our case, these wave vectors carry information about the characteristics of the matter in the space that has been measured. Essentially, these vectors record the spatial frequency of signal intensity, and thus, through the process that involves an Inverse Fourier Transform and a lot of de-noising and other optimizations, get turned into a familiar 2D image that represents a slice through a human body with different anatomy having different pixel intensity. This process is referred to as**image reconstruction**in MR physics. Typically, image reconstruction is performed on a computer that is directly embedded into an MR scanner, and the problem of optimizing or scaling image reconstruction alone is a very interesting one.
+In our case, these wave vectors carry information about the characteristics of the matter in the space that has been measured. Essentially, these vectors record the spatial frequency of signal intensity, and thus, through the process that involves an Inverse Fourier Transform and a lot of de-noising and other optimizations, get turned into a familiar 2D image that represents a slice through a human body with different anatomy having different pixel intensity. This process is referred to as **image reconstruction **in MR physics. Typically, image reconstruction is performed on a computer that is directly embedded into an MR scanner, and the problem of optimizing or scaling image reconstruction alone is a very interesting one.
 
 > If you are familiar with Fourier Transforms, but the concept of “spatial frequency” still seems way too mind-boggling - don’t worry, it could be. However, image analysis through FTs is a common technique in image processing. I have a link to some good materials on the subject later which will hopefully help you understand this concept a bit better if you are interested.
 
@@ -119,7 +119,13 @@ Another idea would be trying to use all colors of the display or somehow optimiz
 
 ![](/assets/Screenshot 2020-05-27 at 8.53.22 AM.png)
 
-
-
 ![](/assets/Screenshot 2020-05-27 at 8.55.45 AM.png)
+
+As you have seen,**3D reconstruction**is creating a 3D image or individual voxels using 2D slices. And we learned about the 2 major methods to do this, either surface meshes or volume meshes. Most 3D medical images will use volume meshes.
+
+### New Vocab {#new-vocab}
+
+* **3D reconstruction**: constructing a 3D model from multiple slices of 3D medical imaging data
+
+
 
