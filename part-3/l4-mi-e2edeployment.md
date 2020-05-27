@@ -71,8 +71,7 @@ The reason for that is that classification problems in 3D medical imaging can le
 
 # Segmentation in 3D medical imaging:
 
-* **Longitudinal follow up**
-  : Measuring volumes of things and monitoring how they change over time. These methods are very valuable in, e.g., oncology for tracking slow-growing tumors.
+* **Longitudinal follow up**: Measuring volumes of things and monitoring how they change over time. These methods are very valuable in, e.g., oncology for tracking slow-growing tumors.
 * **Quantifying disease severity**: Quite often, it is possible to identify structures in the organism whose size correlates well with the progression of the disease. For example, the size of the hippocampus can tell clinicians about the progression of Alzheimer's disease.
 
 * **Radiation Therapy Planning**: One of the methods of treating cancer is exposing the tumor to ionizing radiation. In order to target the radiation, an accurate plan has to be created first, and this plan requires careful delineation of all affected organs on a CT scan
