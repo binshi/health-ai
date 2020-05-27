@@ -97,8 +97,6 @@ Also, here are some other tools that were not covered in the lesson, but could a
 * Osirix \(Mac only\): [https://www.osirix-viewer.com/](https://www.osirix-viewer.com/)
 * ViewMyScans - a quick online viewer that doesn’t require a local installation: [https://viewmyscans.com/viewer/](https://viewmyscans.com/viewer/)
 
-
-
 We have learned about some of the important parameters that you should be on the lookout for when analyzing medical imaging datasets.
 
 These are parameters that have to do with geometric and photometric aspects of medical images.
@@ -142,4 +140,16 @@ Of worthy mention are parameters that define the size of the 3D volume. There ar
 Both of these need to be consistent across all DICOM files that comprise a series.
 
 Note that there isn’t really anything in DICOM metadata that has to tell you how many slices you have in the series. There are tags that can hint at this \(like_\(0054,0081\) Number of Slices_, or_\(0020,0013\) Instance Number_\), but none of them are mandatory, Type 1 tags for CT or MR data. The most reliable way to determine the number of slices in the DICOM series is to look at the number of files that you have, and ideally validate that they make up a correct volume by checking for the consistency of IPP values.
+
+# Further Resources {#further-resources}
+
+If you want to dive deeper into the subjects of coordinate spaces for medical images, and parameters of DICOM files in general, some useful resources:
+
+* Section on IPP and IOP parameters in the DICOM standard: [http://dicom.nema.org/medical/dicom/2020a/output/chtml/part03/sect\_C.7.6.2.html](http://dicom.nema.org/medical/dicom/2020a/output/chtml/part03/sect_C.7.6.2.html)
+* A solid explanation of how coordinate systems work in NIFTI:
+  [https://nipy.org/nibabel/coordinate\_systems.html](https://nipy.org/nibabel/coordinate_systems.html)
+* A company called Innolitics \(a vendor of various DICOM software\) maintains a great reference of the DICOM standard which sometimes could be quite a bit more convenient than the official standard:
+  [https://dicom.innolitics.com/ciods](https://dicom.innolitics.com/ciods)
+
+
 
