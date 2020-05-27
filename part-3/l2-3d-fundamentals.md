@@ -127,5 +127,9 @@ As you have seen,**3D reconstruction**is creating a 3D image or individual voxel
 
 * **3D reconstruction**: constructing a 3D model from multiple slices of 3D medical imaging data
 
+![](/assets/Screenshot 2020-05-27 at 9.00.52 AM.png)
 
+![](/assets/Screenshot 2020-05-27 at 9.01.42 AM.png)
+
+![](/assets/Screenshot 2020-05-27 at 9.03.19 AM.png)
 
