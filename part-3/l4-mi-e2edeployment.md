@@ -1,4 +1,13 @@
-# Lesson Summary {#lesson-summary}
+# Some of the challenges in creating the ground truth for segmentation have to do with the fact that it is rarely routinely created in clinical practice. Radiation oncology is one of the few fields where segmentation is generated as part of the treatment path, but normally segmentation projects require custom labeling efforts. {#lesson-summary}
+
+One of the things to keep in mind when dealing with a labeled \(segmented\) dataset is that interpretation of radiological images is ambiguous and quite often, two independent clinicians \(observers\) would not label things in the same way. This phenomenon is called Interobserver Variability and has been studied in the literature.
+
+* This is the paper that I have mentioned where the authors present results of measuring the variability between radiation oncologists segmenting structures in the head and neck region:
+  [Mukesh, M et al. “Interobserver variation in clinical target volume and organs at risk segmentation in post-parotidectomy radiotherapy: can segmentation protocols help?.” The British journal of radiology vol. 85,1016 \(2012\): e530-6. doi:10.1259/bjr/66693547](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3587102/)
+* While I worked on Microsoft’s Project InnerEye we also did our own IOV study for how conformant people are in contouring pelvic anatomy in prostate cancer patients, and included it into our paper which you can read here:
+  [Macomber, M. W., Phillips, M., Tarapov, I., Jena, R., Nori, A., Carter, D., … Nyflot, M. J. \(2018\). Autosegmentation of prostate anatomy for radiation treatment planning using deep decision forests of radiomic features. Physics in Medicine & Biology, 63\(23\), 235002. doi: 10.1088/1361-6560/aaeaa4](https://www.researchgate.net/publication/328485616_Autosegmentation_of_prostate_anatomy_for_radiation_treatment_planning_using_deep_decision_forests_of_radiomic_features)
+
+When it comes to tooling for creating ground truth,[3D Slicer](https://www.slicer.org/)is a popular free tool used in the research community, and I will walk you through using it for creation and review of segmentation labels in the next lessons.[MITK](http://www.mitk.org/wiki/MITK)is another one. However, many medical imaging startups and larger companies use tools of their own.Lesson Summary
 
 * In this lesson, we will do a quick refresher on how **convolutional neural networks **operate and specifically dive into the **different types of convolutions **that underlie the operation of these networks.
 * We will talk about some ways to approach **segmentation and classification **problems.
@@ -99,128 +108,9 @@ A couple of final remarks below.
 * An overview of radiogenomics:
   [Bodalal, Z., Trebeschi, S., Nguyen-Kim, T.D.L. et al. Radiogenomics: bridging imaging and genomics. Abdom Radiol 44, 1960–1984 \(2019\). https://doi.org/10.1007/s00261-019-02028-w](https://link.springer.com/article/10.1007/s00261-019-02028-w)
 
-NEXT
-
-  
 I hope you enjoyed the exercise. You can find the solution for the**Exercise 2: Segmentation Hands On**[here](https://github.com/udacity/nd320-c3-3d-med-imaging/tree/master/3d-imaging-end-to-end-deep-learning-applications/exercises/2-segmentation-hands-on/solution). If you managed to complete it - you are officially well versed with DICOM, NIFTI, and PyTorch to begin training and designing your own neural networks for medical imaging classification, object detection, and segmentation problems! However, a few important pieces remain. For example, you have noticed that we used simple cross-entropy loss as our cost function. Is this the best cost function possible? Also, after you have your segmentation - how do you efficiently compare it to your ground truth and evaluate performance? We will talk about these things further in this lesson.
 
-A couple of final remarks below.
-
-# Further Resources {#further-resources}
-
-* If you looked closer at the code for the segmentation network that you have trained in this exercise, you should have noticed the ConvTranspose2D layers and you might be wondering what those are. Remember the upsampling path in the U-net? This is how this upsampling is done. Going into details of those would be straying too far from this course, so if you are curious to learn more about transposed convolutions, how they work, and why, you can read up this blog post:
-  [Up-sampling with Transposed Convolution](https://medium.com/activating-robotic-minds/up-sampling-with-transposed-convolution-9ae4f2df52d0)
-  by Naoki Shibuya.
-* A deep dive into the general approach to building segmentation networks:
-  [Long, Jonathan et al. “Fully convolutional networks for semantic segmentation.” 2015 IEEE Conference on Computer Vision and Pattern Recognition \(CVPR\) \(2015\): 3431-3440.](https://arxiv.org/pdf/1605.06211v1.pdf)
-* [A UNet page by the author, Olaf Ronneberger, with a nice video explaining its principles of operation](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/index.html)
-* [UNet and overall CNN/DeepLearning content](http://deeplearning.net/tutorial/unet.html)
-* [Another great explanation of UNet](https://spark-in.me/post/unet-adventures-part-one-getting-acquainted-with-unet)
-* An overview of radiogenomics:
-  [Bodalal, Z., Trebeschi, S., Nguyen-Kim, T.D.L. et al. Radiogenomics: bridging imaging and genomics. Abdom Radiol 44, 1960–1984 \(2019\). https://doi.org/10.1007/s00261-019-02028-w](https://link.springer.com/article/10.1007/s00261-019-02028-w)
-
-NEXT
-
-  
-I hope you enjoyed the exercise. You can find the solution for the**Exercise 2: Segmentation Hands On**[here](https://github.com/udacity/nd320-c3-3d-med-imaging/tree/master/3d-imaging-end-to-end-deep-learning-applications/exercises/2-segmentation-hands-on/solution). If you managed to complete it - you are officially well versed with DICOM, NIFTI, and PyTorch to begin training and designing your own neural networks for medical imaging classification, object detection, and segmentation problems! However, a few important pieces remain. For example, you have noticed that we used simple cross-entropy loss as our cost function. Is this the best cost function possible? Also, after you have your segmentation - how do you efficiently compare it to your ground truth and evaluate performance? We will talk about these things further in this lesson.
-
-A couple of final remarks below.
-
-# Further Resources {#further-resources}
-
-* If you looked closer at the code for the segmentation network that you have trained in this exercise, you should have noticed the ConvTranspose2D layers and you might be wondering what those are. Remember the upsampling path in the U-net? This is how this upsampling is done. Going into details of those would be straying too far from this course, so if you are curious to learn more about transposed convolutions, how they work, and why, you can read up this blog post:
-  [Up-sampling with Transposed Convolution](https://medium.com/activating-robotic-minds/up-sampling-with-transposed-convolution-9ae4f2df52d0)
-  by Naoki Shibuya.
-* A deep dive into the general approach to building segmentation networks:
-  [Long, Jonathan et al. “Fully convolutional networks for semantic segmentation.” 2015 IEEE Conference on Computer Vision and Pattern Recognition \(CVPR\) \(2015\): 3431-3440.](https://arxiv.org/pdf/1605.06211v1.pdf)
-* [A UNet page by the author, Olaf Ronneberger, with a nice video explaining its principles of operation](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/index.html)
-* [UNet and overall CNN/DeepLearning content](http://deeplearning.net/tutorial/unet.html)
-* [Another great explanation of UNet](https://spark-in.me/post/unet-adventures-part-one-getting-acquainted-with-unet)
-* An overview of radiogenomics:
-  [Bodalal, Z., Trebeschi, S., Nguyen-Kim, T.D.L. et al. Radiogenomics: bridging imaging and genomics. Abdom Radiol 44, 1960–1984 \(2019\). https://doi.org/10.1007/s00261-019-02028-w](https://link.springer.com/article/10.1007/s00261-019-02028-w)
-
-NEXT
-
-  
-I hope you enjoyed the exercise. You can find the solution for the**Exercise 2: Segmentation Hands On**[here](https://github.com/udacity/nd320-c3-3d-med-imaging/tree/master/3d-imaging-end-to-end-deep-learning-applications/exercises/2-segmentation-hands-on/solution). If you managed to complete it - you are officially well versed with DICOM, NIFTI, and PyTorch to begin training and designing your own neural networks for medical imaging classification, object detection, and segmentation problems! However, a few important pieces remain. For example, you have noticed that we used simple cross-entropy loss as our cost function. Is this the best cost function possible? Also, after you have your segmentation - how do you efficiently compare it to your ground truth and evaluate performance? We will talk about these things further in this lesson.
-
-A couple of final remarks below.
-
-# Further Resources {#further-resources}
-
-* If you looked closer at the code for the segmentation network that you have trained in this exercise, you should have noticed the ConvTranspose2D layers and you might be wondering what those are. Remember the upsampling path in the U-net? This is how this upsampling is done. Going into details of those would be straying too far from this course, so if you are curious to learn more about transposed convolutions, how they work, and why, you can read up this blog post:
-  [Up-sampling with Transposed Convolution](https://medium.com/activating-robotic-minds/up-sampling-with-transposed-convolution-9ae4f2df52d0)
-  by Naoki Shibuya.
-* A deep dive into the general approach to building segmentation networks:
-  [Long, Jonathan et al. “Fully convolutional networks for semantic segmentation.” 2015 IEEE Conference on Computer Vision and Pattern Recognition \(CVPR\) \(2015\): 3431-3440.](https://arxiv.org/pdf/1605.06211v1.pdf)
-* [A UNet page by the author, Olaf Ronneberger, with a nice video explaining its principles of operation](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/index.html)
-* [UNet and overall CNN/DeepLearning content](http://deeplearning.net/tutorial/unet.html)
-* [Another great explanation of UNet](https://spark-in.me/post/unet-adventures-part-one-getting-acquainted-with-unet)
-* An overview of radiogenomics:
-  [Bodalal, Z., Trebeschi, S., Nguyen-Kim, T.D.L. et al. Radiogenomics: bridging imaging and genomics. Abdom Radiol 44, 1960–1984 \(2019\). https://doi.org/10.1007/s00261-019-02028-w](https://link.springer.com/article/10.1007/s00261-019-02028-w)
-
-NEXT
-
-  
-I hope you enjoyed the exercise. You can find the solution for the**Exercise 2: Segmentation Hands On**[here](https://github.com/udacity/nd320-c3-3d-med-imaging/tree/master/3d-imaging-end-to-end-deep-learning-applications/exercises/2-segmentation-hands-on/solution). If you managed to complete it - you are officially well versed with DICOM, NIFTI, and PyTorch to begin training and designing your own neural networks for medical imaging classification, object detection, and segmentation problems! However, a few important pieces remain. For example, you have noticed that we used simple cross-entropy loss as our cost function. Is this the best cost function possible? Also, after you have your segmentation - how do you efficiently compare it to your ground truth and evaluate performance? We will talk about these things further in this lesson.
-
-A couple of final remarks below.
-
-# Further Resources {#further-resources}
-
-* If you looked closer at the code for the segmentation network that you have trained in this exercise, you should have noticed the ConvTranspose2D layers and you might be wondering what those are. Remember the upsampling path in the U-net? This is how this upsampling is done. Going into details of those would be straying too far from this course, so if you are curious to learn more about transposed convolutions, how they work, and why, you can read up this blog post:
-  [Up-sampling with Transposed Convolution](https://medium.com/activating-robotic-minds/up-sampling-with-transposed-convolution-9ae4f2df52d0)
-  by Naoki Shibuya.
-* A deep dive into the general approach to building segmentation networks:
-  [Long, Jonathan et al. “Fully convolutional networks for semantic segmentation.” 2015 IEEE Conference on Computer Vision and Pattern Recognition \(CVPR\) \(2015\): 3431-3440.](https://arxiv.org/pdf/1605.06211v1.pdf)
-* [A UNet page by the author, Olaf Ronneberger, with a nice video explaining its principles of operation](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/index.html)
-* [UNet and overall CNN/DeepLearning content](http://deeplearning.net/tutorial/unet.html)
-* [Another great explanation of UNet](https://spark-in.me/post/unet-adventures-part-one-getting-acquainted-with-unet)
-* An overview of radiogenomics:
-  [Bodalal, Z., Trebeschi, S., Nguyen-Kim, T.D.L. et al. Radiogenomics: bridging imaging and genomics. Abdom Radiol 44, 1960–1984 \(2019\). https://doi.org/10.1007/s00261-019-02028-w](https://link.springer.com/article/10.1007/s00261-019-02028-w)
-
-NEXT
-
-  
-I hope you enjoyed the exercise. You can find the solution for the**Exercise 2: Segmentation Hands On**[here](https://github.com/udacity/nd320-c3-3d-med-imaging/tree/master/3d-imaging-end-to-end-deep-learning-applications/exercises/2-segmentation-hands-on/solution). If you managed to complete it - you are officially well versed with DICOM, NIFTI, and PyTorch to begin training and designing your own neural networks for medical imaging classification, object detection, and segmentation problems! However, a few important pieces remain. For example, you have noticed that we used simple cross-entropy loss as our cost function. Is this the best cost function possible? Also, after you have your segmentation - how do you efficiently compare it to your ground truth and evaluate performance? We will talk about these things further in this lesson.
-
-A couple of final remarks below.
-
-# Further Resources {#further-resources}
-
-* If you looked closer at the code for the segmentation network that you have trained in this exercise, you should have noticed the ConvTranspose2D layers and you might be wondering what those are. Remember the upsampling path in the U-net? This is how this upsampling is done. Going into details of those would be straying too far from this course, so if you are curious to learn more about transposed convolutions, how they work, and why, you can read up this blog post:
-  [Up-sampling with Transposed Convolution](https://medium.com/activating-robotic-minds/up-sampling-with-transposed-convolution-9ae4f2df52d0)
-  by Naoki Shibuya.
-* A deep dive into the general approach to building segmentation networks:
-  [Long, Jonathan et al. “Fully convolutional networks for semantic segmentation.” 2015 IEEE Conference on Computer Vision and Pattern Recognition \(CVPR\) \(2015\): 3431-3440.](https://arxiv.org/pdf/1605.06211v1.pdf)
-* [A UNet page by the author, Olaf Ronneberger, with a nice video explaining its principles of operation](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/index.html)
-* [UNet and overall CNN/DeepLearning content](http://deeplearning.net/tutorial/unet.html)
-* [Another great explanation of UNet](https://spark-in.me/post/unet-adventures-part-one-getting-acquainted-with-unet)
-* An overview of radiogenomics:
-  [Bodalal, Z., Trebeschi, S., Nguyen-Kim, T.D.L. et al. Radiogenomics: bridging imaging and genomics. Abdom Radiol 44, 1960–1984 \(2019\). https://doi.org/10.1007/s00261-019-02028-w](https://link.springer.com/article/10.1007/s00261-019-02028-w)
-
-NEXT
-
-  
-I hope you enjoyed the exercise. You can find the solution for the**Exercise 2: Segmentation Hands On**[here](https://github.com/udacity/nd320-c3-3d-med-imaging/tree/master/3d-imaging-end-to-end-deep-learning-applications/exercises/2-segmentation-hands-on/solution). If you managed to complete it - you are officially well versed with DICOM, NIFTI, and PyTorch to begin training and designing your own neural networks for medical imaging classification, object detection, and segmentation problems! However, a few important pieces remain. For example, you have noticed that we used simple cross-entropy loss as our cost function. Is this the best cost function possible? Also, after you have your segmentation - how do you efficiently compare it to your ground truth and evaluate performance? We will talk about these things further in this lesson.
-
-A couple of final remarks below.
-
-# Further Resources {#further-resources}
-
-* If you looked closer at the code for the segmentation network that you have trained in this exercise, you should have noticed the ConvTranspose2D layers and you might be wondering what those are. Remember the upsampling path in the U-net? This is how this upsampling is done. Going into details of those would be straying too far from this course, so if you are curious to learn more about transposed convolutions, how they work, and why, you can read up this blog post:
-  [Up-sampling with Transposed Convolution](https://medium.com/activating-robotic-minds/up-sampling-with-transposed-convolution-9ae4f2df52d0)
-  by Naoki Shibuya.
-* A deep dive into the general approach to building segmentation networks:
-  [Long, Jonathan et al. “Fully convolutional networks for semantic segmentation.” 2015 IEEE Conference on Computer Vision and Pattern Recognition \(CVPR\) \(2015\): 3431-3440.](https://arxiv.org/pdf/1605.06211v1.pdf)
-* [A UNet page by the author, Olaf Ronneberger, with a nice video explaining its principles of operation](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/index.html)
-* [UNet and overall CNN/DeepLearning content](http://deeplearning.net/tutorial/unet.html)
-* [Another great explanation of UNet](https://spark-in.me/post/unet-adventures-part-one-getting-acquainted-with-unet)
-* An overview of radiogenomics:
-  [Bodalal, Z., Trebeschi, S., Nguyen-Kim, T.D.L. et al. Radiogenomics: bridging imaging and genomics. Abdom Radiol 44, 1960–1984 \(2019\). https://doi.org/10.1007/s00261-019-02028-w](https://link.springer.com/article/10.1007/s00261-019-02028-w)
 
 
-
-  
 
 
