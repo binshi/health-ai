@@ -34,17 +34,43 @@ DICOM standard defines Information Entities that represent various real-world en
 
 There are many more entities defined by the DICOM standard, but we will focus on these for the purposes of this course. You can look up the comprehensive list in[Section A.1.2 of Part 3](http://dicom.nema.org/medical/dicom/2020a/output/html/part03.html#sect_A.1.2)of the standard.
 
-One of the important things to capture here is that per the DICOM standard, 3D medical images are stored as files on a file system where each file represents an instance of Image DICOM Information Entity. In the case of 3D medical images, each such instance shares context with other instances that belong to the same series and same study. Thus, each DICOM file stores metadata that describes attributes of study and series that the respective instance is a part of, and this metadata is replicated across other instances that belong to the same study. DICOM files are usually stored with_.dcm_extension and are usually grouped in directories \(but they don’t have to be\) to represent data from series, studies and patients. Relationships between individual .dcm files are defined by the metadata stored within them.
+One of the important things to capture here is that per the DICOM standard, 3D medical images are stored as files on a file system where each file represents an instance of Image DICOM Information Entity. In the case of 3D medical images, each such instance shares context with other instances that belong to the same series and same study. Thus, each DICOM file stores metadata that describes attributes of study and series that the respective instance is a part of, and this metadata is replicated across other instances that belong to the same study. DICOM files are usually stored with\_.dcm\_extension and are usually grouped in directories \(but they don’t have to be\) to represent data from series, studies and patients. Relationships between individual .dcm files are defined by the metadata stored within them.
 
 # New Vocabulary {#new-vocabulary}
 
 **SOP**- Service-Object Pair. DICOM standard defines the concept of an Information Object, which is the representation of a real-world persistent object, such as an MRI image \(DICOM Information Objects consist of Information Entities\). The standard also defines the concept of Services that could be performed on Information Objects. One such service is the Storage service \(we will touch on others later in the course\), and a DICOM image stored as a file on a file system is an instance of Storage service performed on an Image Information Object. Such Service-Object Pairs have unique identifiers that help unambiguously define what type of data we are dealing with. A list of SOP Classes can be found in[Part 4 of the Standard](http://dicom.nema.org/MEDICAL/DICOM/2020a/output/chtml/part04/sect_B.5.html). This list is a useful reference for all possible data types that could be stored per the DICOM standard.
 
-**Data Element**- a DICOM metadata “field”, which is uniquely identified by a tuple of integer numbers called_group id_and_element id_. The convention is to write the element identifier as group id followed by the element id in parentheses like so: \(0008,0020\) - this one is the DICOM Element for Study Date. DICOM data elements are usually called “tags”. You can find the list of all possible DICOM tags in[Part 6, Chapter 6 of the standard](http://dicom.nema.org/medical/dicom/2020a/output/chtml/part06/chapter_6.html).
+**Data Element**- a DICOM metadata “field”, which is uniquely identified by a tuple of integer numbers called_group id\_and\_element id_. The convention is to write the element identifier as group id followed by the element id in parentheses like so: \(0008,0020\) - this one is the DICOM Element for Study Date. DICOM data elements are usually called “tags”. You can find the list of all possible DICOM tags in[Part 6, Chapter 6 of the standard](http://dicom.nema.org/medical/dicom/2020a/output/chtml/part06/chapter_6.html).
 
 **VR**- Value Representation. This is the data type of a DICOM data element. DICOM standard imposes some restrictions on what form the data can take. There are short strings, long strings, integers, floats, datetime types, and more. You can find the reference for DICOM data types in[Part 5, Section 6 of the standard](http://dicom.nema.org/medical/dicom/2020a/output/chtml/part05/sect_6.2.html)
 
 **Data Element Type**- identifiers that are used by Information Object Definitions to specify if Data Elements are mandatory, conditional or optional. Data Element Type reference can be found in[Part 5, Section 7 of the standard](http://dicom.nema.org/medical/dicom/2020a/output/html/part05.html#sect_7.4)
 
 **IOD**- Information Object Definition. Information Object Definition specifies what metadata fields have to be in place for a DICOM Information Object to be valid. Scanner manufacturers follow the relevant parts of the DICOM standard when saving the digital data acquired by the scanner. When parsing DICOM data, it is often useful to reference the relevant IODs to see what data elements could be expected in the particular class of information objects, and what they mean. For example, in Part 3 of the standard, you can find[MR Image IOD](http://dicom.nema.org/medical/dicom/2020a/output/chtml/part03/sect_A.4.3.html)and[CT Image IOD](http://dicom.nema.org/medical/dicom/2020a/output/chtml/part03/sect_A.3.3.html)which we will use in this course quite a bit. You might have noticed that the table with all DICOM data elements does not really provide any description of what these elements mean. The reason for that is that elements may mean slightly different things depending on what Information Object Definition uses them, therefore, to find the real meaning of the element you need to look them up in the respective IOD.
+
+Like DICOM, NIFTI, which stands for Neuroimaging Informatics Technology Initiative, is an open standard that is available at[https://nifti.nimh.nih.gov/nifti-2](https://nifti.nimh.nih.gov/nifti-2). The standard has started out as a format to store neurological imaging data and has slowly seen a larger adoption across other types of biomedical imaging fields.
+
+Some things that distinguish NIFTI from DICOM, though are:
+
+* NIFTI is optimized to store serial data and thus can store entire image series \(and even study\) in a single file.
+* NIFTI is not generated by scanners; therefore, it does not define nearly as many data elements as DICOM does. Compared to DICOM, there are barely any, and mostly they have to do with geometric aspects of the image. Therefore, NIFTI files by themselves can not constitute a valid patient record but could be used to optimize storage, alongside some sort of patient info database.
+* NIFTI files have fields that define units of measurements and while DICOM files store all dimensions in mm, it’s always a good idea to check what units of measurement are used by NIFTI.
+* When addressing voxels, DICOM uses a
+  [_right-handed coordinate system_](https://en.wikipedia.org/wiki/Right-hand_rule)
+  for X, Y and Z axes, while NIFTI uses a
+  _left-handed coordinate system_
+  . Something to keep in mind, especially when mixing NIFTI and DICOM data.
+
+# Further Resources {#further-resources}
+
+* Background and history of the NIFTI:
+  [https://nifti.nimh.nih.gov/background/](https://nifti.nimh.nih.gov/background/)
+* The most “official” reference of NIFTI data fields could be found in this C header file, published on the standard page:
+  [https://nifti.nimh.nih.gov/pub/dist/src/niftilib/nifti1.h](https://nifti.nimh.nih.gov/pub/dist/src/niftilib/nifti1.h)
+  or on this, slightly better-organized page:
+  [https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields](https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields)
+* A great blog post on NIFTI file format:
+  [https://brainder.org/2012/09/23/the-nifti-file-format/](https://brainder.org/2012/09/23/the-nifti-file-format/)
+
+
 
