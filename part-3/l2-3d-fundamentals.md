@@ -7,5 +7,5 @@ New Vocab
 
 EG: SPECT/PET, Ultrasound, MRI, CT
 
-![](/assets/Screenshot 2020-05-27 at 7.42.53 AM.png)![](/assets/Screenshot 2020-05-27 at 7.45.28 AM.png)![](/assets/Screenshot 2020-05-27 at 7.46.50 AM.png)
+![](/assets/Screenshot 2020-05-27 at 7.42.53 AM.png)![](/assets/Screenshot 2020-05-27 at 7.45.28 AM.png)![](/assets/Screenshot 2020-05-27 at 7.46.50 AM.png)![](/assets/Screenshot 2020-05-27 at 7.59.38 AM.png)![](/assets/Screenshot 2020-05-27 at 7.59.29 AM.png)![](/assets/Screenshot 2020-05-27 at 7.58.56 AM.png)
 
