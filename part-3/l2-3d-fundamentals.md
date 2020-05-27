@@ -37,9 +37,36 @@ X-rays are a form of ionizing radiation, which means that they carry enough ener
 
 ![](/assets/Screenshot 2020-05-27 at 8.19.35 AM.png)
 
-As you have seen, the CT scanner operates by projecting X-rays through the subject’s body. 
+As you have seen, the CT scanner operates by projecting X-rays through the subject’s body.
 
 **CT scanner**: computed tomography scanner
 
 X-rays get absorbed or scattered by the anatomy and thus detectors measure the amount of this attenuation that happens along each path that the ray is taking. A collimator shapes the beam and ensures that the X-rays only pass through a narrow slice of the object being imaged. Rotation of a source inside a gantry makes sure that projections happen from different angles so that we can get a good 2D representation of the slice. The moving table ensures that multiple such slices are imaged. A collection of slices makes up a 3-dimensional CT image.
+
+# Physical principles of MR scanners {#physical-principles-of-mr-scanners}
+
+MR \(magnetic resonance\) scanner is arguably quite a bit more complex from the underlying computation and physics standpoint than a CT machine, and also quite a bit more flexible.
+
+Let me take you through a very basic introduction into how these wonderful machines operate and produce images.
+
+![](/assets/Screenshot 2020-05-27 at 8.27.35 AM.png)
+
+MR scanner leverages a basic physical property of protons \(charged elementary particles that make up atoms\) to align themselves along the vector of magnetic fields. This effect is particularly pronounced in protons that make up hydrogen atoms. Hydrogen atoms make up water molecules, and water makes up to 50-70% of a human body.
+
+The thing with protons is that they possess a property called spin which could be thought of as spinning around an axis. In a normal environment, the direction of this axis is randomly distributed across different protons. In the presence of a strong magnetic field, though, the proton spins get aligned along the direction of the magnetic field, and start precessing \(think of what a spinning top that’s lost some of its momentum is doing\):
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9bf442_l1-proton/l1-proton.gif "Proton.gif
+A proton orienting itself along the lines of a magnetic field")](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/7ab3170c-e20f-4a47-8425-7ba7482c0eca/modules/c2693991-fbab-4ea4-9ef2-a01b62b7a88e/lessons/d8617924-a6e1-4c49-9bdb-3388e95fc3b7/concepts/0b3c6e1a-2ae1-435f-9764-78ab788ee614#)
+
+> Fun fact: “strong magnetic field” means really strong. Look up “[MRI metal chair experiment](https://www.youtube.com/watch?v=6BBx8BwLhqg)” on YouTube to get a sense of what that is like. Such a static magnet can rip metal from a patient’s body - that is why anyone going into a scan will get asked if they have any magnetic implants and will be asked to remove any jewelry. That is also why certain patients \(e.g. with metal shards left over from a trauma\) would not be able to get imaged in an MRI scanner.
+
+When an external radiofrequency pulse is applied, of a frequency proportional to the frequency of precession, the protons respond to this pulse in unison, or_resonate_, and flip the orientation of their spins. Once this pulse is gone, they return to their original orientation \(along the static magnetic field\).
+
+The way in which protons return to their original orientation is different and depends on the tissue type that protons are a part of.
+
+Since many protons are returning to their original orientation at once, they generate electrical currents in the coils that are placed nearby. Due to the resonance effect these currents are not insignificant and can be measured - these measurements constitute the data about the tissue being studied which is collected by the MRI scanner.
+
+Gradient fields are used to vary the static magnetic field, and thus precession frequency, spatially. This allows the MR scanner to isolate a part of the body \(i.e. a slice\) that is being imaging. Further gradient fields are used to isolate information coming from specific locations within a slice.
+
+[![](https://video.udacity-data.com/topher/2020/April/5e9bffe5_l1-em-fields/l1-em-fields.png "Electromagnetic fields of an MR scanner")Electromagnetic fields of an MR scanner](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/7ab3170c-e20f-4a47-8425-7ba7482c0eca/modules/c2693991-fbab-4ea4-9ef2-a01b62b7a88e/lessons/d8617924-a6e1-4c49-9bdb-3388e95fc3b7/concepts/0b3c6e1a-2ae1-435f-9764-78ab788ee614#)
 
