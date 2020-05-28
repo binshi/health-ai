@@ -72,5 +72,13 @@ In this section, we have discussed some of the basics of the DICOM networking, i
 * This book has a comprehensive overview of the standard and is a must-have for any deep DICOM development: Digital Imaging and Communications in Medicine \(DICOM\). A Practical Introduction and Survival Guide. Authors: Pianykh, Oleg S.
   [http://www.springer.com/us/book/9783642108495](http://www.springer.com/us/book/9783642108495)
 
+Here, we used some of the tools from the[DCMTK toolkit](https://dcmtk.org/)to emulate the operation of a DICOM network. We have done the following:
+
+* Used `dcmdump `tool to view the DICOM metadata of a DICOM file
+* Used `storecsp `command to bring up an SCP listening to incoming C-STORE requests. The following is the command line that we used: `storescp 109 -v -aet TESTSCP -od . --sort-on-study-uid st`. This starts listening on port 109, with verbose logging, with AE Title “TESTSCP”, putting all incoming files into the current directory and organizing studies into directories named as study instance UIDs, with prefix _st_
+* Used `echoscu `command to verify that our SCP instance is alive and listening by running the following on the command line: `echoscu localhost 109 -v`
+* Used `storescu `command to issue a set of C-STORE requests to our SCP and send several DICOM studies. We used the following command to accomplish this:`storescu localhost 109 -v -aec TESTSCU +r +sd .`. Here, `-aec`
+  parameter specifies the AE title that our SCU will use to identify itself \(some SCPs might only receive data from known AE titles\); `+r `parameter tells our tool to process directories recursively and `+sd `parameter specifies a directory to send.
+
 
 
