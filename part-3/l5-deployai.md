@@ -93,6 +93,14 @@ Note some challenges that were immediately seen as well:
 
 * It is not that easy or practical to measure volumes of tumors. Such measurement was substituted by several linear measurements
 * I was looking for a change of the tumor over time, but it was not really easy to see what exactly changed as images belonged to different studies and were not exactly matching up, spatially
+* Windowing is used to map the high dynamic range of medical imaging to the grayscale range of your monitor, and clinicians use it to focus on the specific anatomy.
 
+OHIF, Open Health Imaging Foundation is an organization supported by both academic and commercial collaborators, which aims to deliver an open-source framework for building modern \(as of 2020\) web-based medical imaging applications.
 
+As you have probably noticed throughout this lesson, a lot of imaging IT technologies have been created back in the '70s and '80s in the pre-Internet, pre-UI era. This legacy lives on and it is not uncommon these days to find widely used clinical medical imaging applications that have the UX language of the '90s. OHIF set out to take an open-source project for Javascript-based medical image interactions, called Cornerstone and build a state-of-the-art responsive web application on it, using the latest and greatest in web development. A lot of viewers that have been commercialized by many recent AI startups are based on Cornerstone or OHIF.
+
+If you are looking to prototype a UX solution for your AI technology, this would be a solid choice.
+
+OHIF website:[http://ohif.org/](http://ohif.org/)  
+Cornerstone GitHub repository:[https://github.com/cornerstonejs/cornerstone](https://github.com/cornerstonejs/cornerstone)
 
