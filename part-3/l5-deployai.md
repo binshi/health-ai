@@ -23,7 +23,7 @@ In the following few concepts, we will be talking about DICOM networking service
 To summarize, here are the key things to remember about DICOM networking:
 
 1. There are two types of DICOM networking: DIMSE \(DICOM Message Service Element\) and DICOMWeb. The former is designed to support data exchange in protected clinical networks that are largely isolated from the Internet. The latter is a set of RESTful APIs \([link to the Standard](https://www.dicomstandard.org/dicomweb/)\) that are designed to communicate over the Internet. DIMSE networking does not have a notion of authentication and is prevalent inside hospitals.
-2. DICOM DIMSE networking defines how DICOM _Application Entities _talk to each other on protected networks
+2. DICOM DIMSE networking defines how DICOM \_Application Entities \_talk to each other on protected networks
 3. DICOM Application Entities that talk to each other take on roles of **S**ervice **C**lass **U**sers and **S**ervice **C**lass **P**roviders.
 4. SCPs typical respond to requests and SCUs issue them
 5. Full list of DIMSE services could be found in the [Part 7 of the DICOM Standard](http://dicom.nema.org/medical/dicom/current/output/chtml/part07/sect_7.5.html#sect_7.5.1), ones that you are most likely run into are:
@@ -58,6 +58,19 @@ When you start thinking of deploying your AI algorithms, you will want to set so
 * Imaging protocols. There are lots of ways images can be acquired - we’ve talked about MR pulse sequences, and there are just physiological parameters, like contrast media or FoV. How do you make sure that your algorithm processes images that are consistent with what it has been trained on?
 * Workflow disruptions. If the algorithm introduces something new into the radiologists' workflow - how is this interaction going to happen?
 * Interfaces with existing systems. If your algorithm produces an output - where does it go? What should the systems processing your algorithm’s output be capable of doing?
+
+## Clinical Network Architecture Summary
+
+In this section, we have discussed some of the basics of the DICOM networking, including services such as C-ECHO and C-STORE. We looked at how clinical networks are built and what actors are there. We considered possible integration points for AI algorithms and some of the requirements to keep in mind when integrating the AI tools.
+
+## Further Resources {#further-resources}
+
+* As usual, DICOM standard is a great reference for DICOM networking:
+  [http://dicom.nema.org/medical/dicom/2020a/output/chtml/part07/sect\_7.5.html\#sect\_7.5.1](http://dicom.nema.org/medical/dicom/2020a/output/chtml/part07/sect_7.5.html#sect_7.5.1)
+* This paper from NIH offers \(a bit dated, but still very valid\) overview of the networking portion of DICOM:
+  [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC61235/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC61235/)
+* This book has a comprehensive overview of the standard and is a must-have for any deep DICOM development: Digital Imaging and Communications in Medicine \(DICOM\). A Practical Introduction and Survival Guide. Authors: Pianykh, Oleg S.
+  [http://www.springer.com/us/book/9783642108495](http://www.springer.com/us/book/9783642108495)
 
 
 
