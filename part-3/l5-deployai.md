@@ -135,5 +135,65 @@ Hopefully, this section gave you a better understanding of some of the tools tha
 * Orthanc \([https://www.orthanc-server.com/](https://www.orthanc-server.com/)\) is a tool that we have not really discussed in the lesson, but will use in the final project. Orthanc is a free open-source implementation of a medical imaging archive that provides many features similar to a clinical PACS when it comes to storage
 * Radiant \([https://www.radiantviewer.com/](https://www.radiantviewer.com/)\) is another freeware viewer that has been used by Mazen in the clinical viewers video
 
+## Regulatory Landscape
+
+In this final section, I will cover the basics of some of the regulatory standards that control the use of software in medicine. This video introduced the concepts of a “_medical device_”, which is central to many regulatory systems across the world. This is the concept that regulatory agencies use to draw the line between software that has to comply with regulations and the one that does not.
+
+Here is how the US Foods and Drugs Administration \(the main government regulatory body in all things healthcare\)[defines a medical device](https://www.fda.gov/medical-devices/classify-your-medical-device/how-determine-if-your-product-medical-device):
+
+> ... An instrument, apparatus, implement, machine, contrivance, implant, in vitro reagent, or other similar or related article, including a component part, or accessory which is:
+>
+> 1. recognized in the official National Formulary, or the United States Pharmacopoeia, or any supplement to them,
+> 2. intended for use in the diagnosis of disease or other conditions, or in the cure, mitigation, treatment, or prevention of disease, in man or other animals, or
+> 3. intended to affect the structure or any function of the body of man or other animals, and which does not achieve its primary intended purposes through chemical action within or on the body of man or other animals …
+>  
+>    For comparison, this is how
+>    [European Medical Device Regulation \(MDR\)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2017.117.01.0001.01.ENG&toc=OJ:L:2017:117:TOC)
+>    defines the term:
+
+> ‘medical device’ means any instrument, apparatus, appliance, software, implant, reagent, material or other article intended by the manufacturer to be used, alone or in combination, for human beings for one or more of the following specific medical purposes:
+>
+> * diagnosis, prevention, monitoring, prediction, prognosis, treatment or alleviation of disease,
+> * diagnosis, monitoring, treatment, alleviation of, or compensation for, an injury or disability,
+> * investigation, replacement or modification of the anatomy or of a physiological or pathological process or state,
+> * providing information by means of in vitro examination of specimens derived from the human body, including organ, blood and tissue donations,
+
+You can see the pattern here - something that is built with the purpose of diagnosing, preventing, or treating the disease is potentially a medical device that should conform with certain standards of safety and engineering rigor. The degree of this rigor that the regulatory bodies require depends on the risk class of the said device. Thus, for a device with lesser risk class \(like a sterile bandage\) often it is sufficient to just notify the respective regulatory body that device is being launched into the market while with high-risk devices \(like an implantable defibrillator\) there are requirements to clinical testing and engineering practices.
+
+While “medical device” may sound like something that does not have much to do with software, the regulatory bodies actually include software in this notion as well, often operating with concepts of “software-as-a-medical-device”. Sometimes a distinction is made between “medical device with embedded software” \(like a CT scanner\) or “software-only medical device” \(like a PACS\).
+
+Key thing that determines whether something is a medical device or not, and what class it is, is its ”intended use”. The same device may have different risk classes \(or not qualify as a medical device at all\) depending on what use you have in mind for it. A key takeaway here is that the presence of an “AI algorithm” in a system that is used by clinicians does not automatically make it a medical device. You need to articulate the intended use of the system before you try to find out what the regulatory situation is for your product.
+
+A couple of additional notes:
+
+* Further in this section, I will be using USA regulations as an example, just to keep my examples simple. For fundamental things, regulations across all countries are quite similar.
+* This section is not legal advice - it is meant to provide a general understanding of the process and the place of an AI engineer in it. If you are seeking to classify your medical device or prepare a 510\(k\) package, you could use this section for reference, but you should consult a trained professional to evaluate legal risks and determine the correct regulatory strategy
+
+Regulatory process typically involves two big steps:
+
+1. Submitting a document package - called “510\(k\)” for Class II medical devices or “PMA” for Class III devices. This document package needs to include engineering artifacts providing evidence that you have followed the process and your process resulted in certain deliverables. For example, a PMA package has to include things like “Design Review notes” or “Software Verification plans”.
+2. Establishing a Quality Management System. This system is a set of processes that are designed to ensure that you maintain a level of quality in your engineering and operations that is commensurate with the risk that your device presents to patients and operators. For example, the QMS might define the need for a “post-launch surveillance” process that would ensure that you keep track of usage of the device in the field and have a feedback mechanism that has you reviewing potential risks that have been realized in the field and responding to them.
+
+The former communicates your intent to launch a product to the regulatory body, and the FDA would review your documentation package to ensure that you have followed the prescribed procedures while developing it. The latter establishes certain engineering processes.
+
+Note that the FDA or other agencies do not actually tell you_what_exactly do you have to produce. The rules are designed to ensure that you have the right process. It is up to you to decide how to apply this process to what you are doing.
+
+An aspect of a QMS that is probably the most relevant to an AI engineer is the_validation process_. A QMS might define the need to perform product validation before you release a new version of a product, which means that you need to provide evidence that your software indeed performs. If the product has an AI component at its heart, you may need to provide input along the following lines:
+
+* What is the intended use of the product?
+* How was the training data collected?
+* How did you label your training data?
+* How was the performance of the algorithm measured and how was the real-world performance estimated?
+* What data will the algorithm perform well in the real world and what data it might not perform well on?
+
+As the owner of an AI algorithm, you would be best positioned to answer these questions and your input would be instrumental.
+
+# Further Resources {#further-resources}
+
+* FDA actually [publishes all clearances](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm) that it issues, so you can take a look at how people described their medical devices and what the intended use was. For example, here is Arterys’ submission for their Medical Imaging Cloud AI Platform:
+  [https://www.accessdata.fda.gov/cdrh\_docs/pdf19/K192437.pdf](https://www.accessdata.fda.gov/cdrh_docs/pdf19/K192437.pdf)
+* FDA’s Quality Management System requirements are available online as [21 CFR Part 820](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfCFR/CFRSearch.cfm?CFRPart=820). European and Canadian regulators require compliance with [ISO 13485 standard](https://www.iso.org/standard/59752.html) \(which is not publicly available\)
+
+  
 
 
