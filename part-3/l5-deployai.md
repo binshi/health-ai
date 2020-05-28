@@ -104,3 +104,26 @@ If you are looking to prototype a UX solution for your AI technology, this would
 OHIF website:[http://ohif.org/](http://ohif.org/)  
 Cornerstone GitHub repository:[https://github.com/cornerstonejs/cornerstone](https://github.com/cornerstonejs/cornerstone)
 
+## Tools of the Trade - Viewers - 3D Slicer
+
+So far, you should be familiar with 3D Slicer - we have talked about this tool early on and maybe you even used it to view some of the images. Here, we will take a deeper dive, look at some features in more detail and particularly focus on segmentation.
+
+Here, we took a closer look at how to work with segmentation masks in Slicer, walking you through loading a NIFTI volume and corresponding mask, displaying one on top of the other, and creating your own segmentation mask.
+
+## Segmentation formats {#segmentation-formats}
+
+Let me take a bit of a sidetrack here and say a few words on formats for storing segmentations since this is how your segmentation ground truth data may come in and this is what you would be using a Slicer-like tool with. There are a few that are commonly used:
+
+* **NIFTI**, which you are already familiar with, allows you to define what essentially is a scalar field - every point in some rectangular subset of a 3D space has a value \(intensity\) associated with it. Thus, a segmentation mask could be stored in NIFTI by using “one-hot” encoding, as we’ve seen in the machine learning lesson. Such a mask would assign one class label to all voxels inside the structure and another one outside. Due to convenience, NIFTI masks are very widespread in the ML community.
+
+* **DICOM RT**is a DICOM IOD for “[Radiation Therapy Structure Set](http://dicom.nema.org/medical/Dicom/2020a/output/chtml/part03/sect_A.19.3.html#table_A.19.3-1)”. We had mentioned radiation therapy in this course before - it is the treatment of cancers with radiation, and it relies on accurate mapping of the human anatomy which serves as an input into the radiation machine \(typically called linac\). The DICOM standard has several separate IODs that are specific just to radiation therapy space and one such IOD is the RT Structure Set, which is designed to store contours of the human anatomy, which will be used to target radiation. DICOM RT, unlike NIFTI, stores information about contours, i.e., curves within given slices, to define where structure boundaries are.
+
+* **DICOM Segmentation**is[another DICOM IOD](http://dicom.nema.org/medical/Dicom/2020a/output/chtml/part03/sect_A.51.3.html)for segmentations. It is specifically used for storing structure delineations for general purpose use, and this one is more similar to NIFTI in that segmentation masks are stored allocating a class to every voxel.
+
+A couple of other notable formats which are not specific to medical imaging, but are still sometimes used are:
+
+* [NRRD](https://en.wikipedia.org/wiki/Nrrd) - generic format for storing multidimensional raster data, and
+* [HDF5](https://en.wikipedia.org/wiki/Hierarchical_Data_Format) - format for storing hierarchical multimodal data \(including multidimensional raster data, like segmentations\)
+
+
+
