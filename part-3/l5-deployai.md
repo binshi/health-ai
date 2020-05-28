@@ -125,5 +125,15 @@ A couple of other notable formats which are not specific to medical imaging, but
 * [NRRD](https://en.wikipedia.org/wiki/Nrrd) - generic format for storing multidimensional raster data, and
 * [HDF5](https://en.wikipedia.org/wiki/Hierarchical_Data_Format) - format for storing hierarchical multimodal data \(including multidimensional raster data, like segmentations\)
 
+Hopefully, this section gave you a better understanding of some of the tools that you might be integrating with or using in your endeavors. In the next and final section, we will touch on the regulatory landscape that you will likely be dealing with, and for now, allow me to link to some resources.
+
+# Further Resources {#further-resources}
+
+* DCMTK - the swiss-army-knife for DICOM debugging: [https://dcmtk.org/dcmtk.php.en](https://dcmtk.org/dcmtk.php.en)
+* Cornerstone - the open-source Javascript framework for viewing medical images: [https://github.com/cornerstonejs/cornerstone](https://github.com/cornerstonejs/cornerstone)
+* OHIF - the open-source radiological image viewer: [http://ohif.org/](http://ohif.org/)
+* Orthanc \([https://www.orthanc-server.com/](https://www.orthanc-server.com/)\) is a tool that we have not really discussed in the lesson, but will use in the final project. Orthanc is a free open-source implementation of a medical imaging archive that provides many features similar to a clinical PACS when it comes to storage
+* Radiant \([https://www.radiantviewer.com/](https://www.radiantviewer.com/)\) is another freeware viewer that has been used by Mazen in the clinical viewers video
+
 
 
