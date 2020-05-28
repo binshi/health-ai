@@ -74,11 +74,25 @@ In this section, we have discussed some of the basics of the DICOM networking, i
 
 Here, we used some of the tools from the[DCMTK toolkit](https://dcmtk.org/)to emulate the operation of a DICOM network. We have done the following:
 
-* Used `dcmdump `tool to view the DICOM metadata of a DICOM file
-* Used `storecsp `command to bring up an SCP listening to incoming C-STORE requests. The following is the command line that we used: `storescp 109 -v -aet TESTSCP -od . --sort-on-study-uid st`. This starts listening on port 109, with verbose logging, with AE Title “TESTSCP”, putting all incoming files into the current directory and organizing studies into directories named as study instance UIDs, with prefix _st_
-* Used `echoscu `command to verify that our SCP instance is alive and listening by running the following on the command line: `echoscu localhost 109 -v`
-* Used `storescu `command to issue a set of C-STORE requests to our SCP and send several DICOM studies. We used the following command to accomplish this:`storescu localhost 109 -v -aec TESTSCU +r +sd .`. Here, `-aec`
-  parameter specifies the AE title that our SCU will use to identify itself \(some SCPs might only receive data from known AE titles\); `+r `parameter tells our tool to process directories recursively and `+sd `parameter specifies a directory to send.
+* Used `dcmdump`tool to view the DICOM metadata of a DICOM file
+* Used `storecsp`command to bring up an SCP listening to incoming C-STORE requests. The following is the command line that we used: `storescp 109 -v -aet TESTSCP -od . --sort-on-study-uid st`. This starts listening on port 109, with verbose logging, with AE Title “TESTSCP”, putting all incoming files into the current directory and organizing studies into directories named as study instance UIDs, with prefix _st_
+* Used `echoscu`command to verify that our SCP instance is alive and listening by running the following on the command line: `echoscu localhost 109 -v`
+* Used `storescu`command to issue a set of C-STORE requests to our SCP and send several DICOM studies. We used the following command to accomplish this:`storescu localhost 109 -v -aec TESTSCU +r +sd .`. Here, `-aec`
+  parameter specifies the AE title that our SCU will use to identify itself \(some SCPs might only receive data from known AE titles\); `+r`parameter tells our tool to process directories recursively and `+sd`parameter specifies a directory to send.
+
+## Tools of the Trade - Radiologists' Tools
+
+We have observed the use of a clinical-grade medical image viewer system used by a clinician to analyze a radiological study. Note the following things that happened in this walkthrough:
+
+* Inspection of several MR pulse sequences side-by-side, drawing upon the fact that tissues present differently in different types of series
+* Measurement of a lesion was taken. Note how exactly the measurement was done - through taking two linear measurements of the largest diameters. This is a fairly standard way of taking measurements of lesions
+* Image inspection tools were used - zoom, pan and window center/width adjustments
+* The analysis ended with a “report” - a formal description of important findings on the image. Such a report would be converted into text, stored in EHR over HL7 and presented to the ordering physician when they review the results of the test
+
+Note some challenges that were immediately seen as well:
+
+* It is not that easy or practical to measure volumes of tumors. Such measurement was substituted by several linear measurements
+* I was looking for a change of the tumor over time, but it was not really easy to see what exactly changed as images belonged to different studies and were not exactly matching up, spatially
 
 
 
