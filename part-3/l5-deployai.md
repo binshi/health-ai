@@ -146,11 +146,11 @@ Here is how the US Foods and Drugs Administration \(the main government regulato
 > 1. recognized in the official National Formulary, or the United States Pharmacopoeia, or any supplement to them,
 > 2. intended for use in the diagnosis of disease or other conditions, or in the cure, mitigation, treatment, or prevention of disease, in man or other animals, or
 > 3. intended to affect the structure or any function of the body of man or other animals, and which does not achieve its primary intended purposes through chemical action within or on the body of man or other animals …
->  
->    For comparison, this is how
->    [European Medical Device Regulation \(MDR\)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2017.117.01.0001.01.ENG&toc=OJ:L:2017:117:TOC)
+>
+>    For comparison, this is how  
+>    [European Medical Device Regulation \(MDR\)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2017.117.01.0001.01.ENG&toc=OJ:L:2017:117:TOC)  
 >    defines the term:
-
+>
 > ‘medical device’ means any instrument, apparatus, appliance, software, implant, reagent, material or other article intended by the manufacturer to be used, alone or in combination, for human beings for one or more of the following specific medical purposes:
 >
 > * diagnosis, prevention, monitoring, prediction, prognosis, treatment or alleviation of disease,
@@ -176,7 +176,7 @@ Regulatory process typically involves two big steps:
 
 The former communicates your intent to launch a product to the regulatory body, and the FDA would review your documentation package to ensure that you have followed the prescribed procedures while developing it. The latter establishes certain engineering processes.
 
-Note that the FDA or other agencies do not actually tell you_what_exactly do you have to produce. The rules are designed to ensure that you have the right process. It is up to you to decide how to apply this process to what you are doing.
+Note that the FDA or other agencies do not actually tell you\_what\_exactly do you have to produce. The rules are designed to ensure that you have the right process. It is up to you to decide how to apply this process to what you are doing.
 
 An aspect of a QMS that is probably the most relevant to an AI engineer is the_validation process_. A QMS might define the need to perform product validation before you release a new version of a product, which means that you need to provide evidence that your software indeed performs. If the product has an AI component at its heart, you may need to provide input along the following lines:
 
@@ -194,6 +194,46 @@ As the owner of an AI algorithm, you would be best positioned to answer these qu
   [https://www.accessdata.fda.gov/cdrh\_docs/pdf19/K192437.pdf](https://www.accessdata.fda.gov/cdrh_docs/pdf19/K192437.pdf)
 * FDA’s Quality Management System requirements are available online as [21 CFR Part 820](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfCFR/CFRSearch.cfm?CFRPart=820). European and Canadian regulators require compliance with [ISO 13485 standard](https://www.iso.org/standard/59752.html) \(which is not publicly available\)
 
-  
+## Regulatory Landscape: HIPAA, Anonymization
+
+Privacy laws vary from one country to another, but most of them are similar to HIPAA \(USA\) and GDPR \(Europe\).
+
+If you want to learn more about it, there is more detail in the "EHR Data" course in this nanodegree. Consider this a bit of a recap with a focus on applying de-identification methods to DICOM data.
+
+There are a lot to privacy laws, but something that has the greatest impact on an AI engineer are the requirements towards de-identifying the data that is coming in. De-identification is important because HIPAA Privacy rule \(and GDPR\) institute quite strict controls over “Protected Health Information” while at the same time[HIPAA has this to say about De-identified Health Information](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html?language=es):
+
+> De-Identified Health Information. There are no restrictions on the use or disclosure of de-identified health information. De-identified health information neither identifies nor provides a reasonable basis to identify an individual. There are two ways to de-identify information; either: \(1\) a formal determination by a qualified statistician; or \(2\) the removal of specified identifiers of the individual and of the individual’s relatives, household members, and employers is required, and is adequate only if the covered entity has no actual knowledge that the remaining information could be used to identify the individual.
+
+Essentially, a lot of restrictions and controls are removed for data that is considered de-identified. If you read this definition carefully, you will see that HIPAA suggests two methods for de-identification. Method \#2 is actually somewhat straightforward as HIPAA lists things that are considered private in[45 CFR 165.514](https://www.law.cornell.edu/cfr/text/45/164.514), and we will practice with some of these in our final exercise.
+
+Method \#1 is worth a note here, though. You may wonder what statisticians have to do with privacy, but it might make sense if you remember that statisticians are what machine learning engineers used to be called before ML became widespread :\) On a serious note, there is more to de-identifying data than removing unique identifiers and other things that can identify a person. Thus, age alone is hardly good enough to identify a person. But what if the age of an individual is high, you know the country where they live, and you have access to additional information such as a newspaper article that interviews the longest-living person from that country who happens to have the same age as that in your “de-identified” dataset? Surely, that would be sufficient to identify that individual. This is where statistics becomes important and a prudent approach would be to prove, with statistical guarantees, the chances of re-identifying an individual based on patterns in the dataset. This is getting very close to the concept of[differential privacy](https://en.wikipedia.org/wiki/Differential_privacy)and is outside the scope of this course. However, I will post some links in the final section.
+
+When it comes to DICOM medical images, anonymization typically boils down to cleaning out the DICOM metadata tags. However, depending on the dataset, you might also want to take a closer look at the pixels. Thus, you may see text that has been burnt directly into the images \(not common in CT and MR, but quite common in XRays\) or facial features \(as we’ve seen in some of the Slicer visualizations throughout the course\). As always, a good AI engineer will inspect the data and provide input if the data has potentially identifying characteristics.
+
+In this lesson we have covered the following:
+
+* Basics of DICOM networking
+* How hospital networks operate and where would AI algorithms fit in
+* Requirements for integration of AI algorithms
+* Tools for simulating and debugging clinical environments:
+  * scripting via DCMTK
+  * OHIF - the zero-footprint medical image viewer
+  * A deeper-dive into Slicer for annotation
+* Medical imaging viewer as radiologist’s tool
+* Medical Device Regulations with the US FDA as an example
+* Data privacy, HIPAA, and anonymization.
+
+Let me leave you with some useful resources here before we move on to the final project.
+
+# Further Resources {#further-resources}
+
+* FDA’s guidance for software validation: [https://www.fda.gov/media/73141/download](https://www.fda.gov/media/73141/download)
+* A very profound analysis done by the University of Cambridge of various regulatory frameworks, as it pertains to algorithms as medical devices: [https://www.phgfoundation.org/documents/algorithms-as-medical-devices.pdf](https://www.phgfoundation.org/documents/algorithms-as-medical-devices.pdf)
+* American College of Radiology has been hosting very good [webinars on all things medical imaging and AI](https://www.acr.org/Member-Resources/rfs/Journal-Club)
+* An [article by American College of Radiology](https://www.acadrad.org/wp-content/uploads/2019/06/NIBIB-workshop-1.pdf) with some greatly structured thoughts on the roadmap for AI development in radiology
+* A question that presents somewhat of a challenge to medical device regulators is what to do about machine learning systems that are continuously learning. As you have seen, the traditional regulatory frameworks assume a strict step-by-step process whereby evidence of device performance is collected and submitted once, and if updates are needed, it is submitted again, with 90 days or so review cycles. That doesn’t quite work well for continuously learning systems. FDA has recently
+  [published some thoughts on what a framework for such systems could look like](https://www.fda.gov/media/122535/download)
+  .
+
 
 
