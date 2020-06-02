@@ -184,11 +184,25 @@ We then saw how we could remove the noise by filtering out frequency components 
 
 * We can use the frequency domain to learn properties of a signal in ways that would be difficult in the time domain.
 * We use the Fourier transform to take a signal from the time domain to the frequency domain
-* We can use `numpy `and`matplotlib`to help us compute and plot a time series signal in the frequency domain.
+* We can use `numpy`and`matplotlib`to help us compute and plot a time series signal in the frequency domain.
 
 ## Summary {#summary}
 
 The Fourier transform plays a pivotal role in signal processing. An intuitive understanding of what it does and how to use can help accomplish many tasks when processing wearable biosignals. Fundamentally, the Fourier transform gives information about what periodic components are present in the signal. And because many biomechanical processes are periodic, \(eg. running or walking cadence, heart beats, breathing rate\) finding this periodic information in our time series signal can be incredibly useful.
 
 In the previous few concepts we tried to impart that intuitive understanding as well as practical information on how to use the Fourier transform in Python. As you progress through the course, you will see more examples of the Fourier transform in action and your intuitive understanding will grow.
+
+# Plotting Signals in the Frequency Domain {#plotting-signals-in-the-frequency-domain}
+
+When we look at signals in the frequency domain, we lose information about the time-domain. Previously this hadn’t been a problem because we were looking at signals whose frequency components did not change over time. They were**stationary**. However, most signals we deal with will not be stationary. In this case, it is better to visualize the frequency components of a signal over time using either a:
+
+* [Short-Time Fourier Transform](https://en.wikipedia.org/wiki/Short-time_Fourier_transform)
+* [Spectrogram](https://en.wikipedia.org/wiki/Spectrogram)
+
+* **Frequency component**
+  : The Fourier transform explains a signal as a sum of sinusoids. Each of these sinusoids is a frequency component of the signal.
+* **Stationarity**
+  : A property of a signal where the statistics of a process generating a signal do not change in time. Generally, if the frequency components in a signal change in time, this signal is not stationary.
+
+
 
