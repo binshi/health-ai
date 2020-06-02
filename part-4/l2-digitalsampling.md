@@ -199,10 +199,26 @@ When we look at signals in the frequency domain, we lose information about the t
 * [Short-Time Fourier Transform](https://en.wikipedia.org/wiki/Short-time_Fourier_transform)
 * [Spectrogram](https://en.wikipedia.org/wiki/Spectrogram)
 
-* **Frequency component**
+* **Frequency component**  
   : The Fourier transform explains a signal as a sum of sinusoids. Each of these sinusoids is a frequency component of the signal.
+
 * **Stationarity**
   : A property of a signal where the statistics of a process generating a signal do not change in time. Generally, if the frequency components in a signal change in time, this signal is not stationary.
 
+## Key Takeaways {#key-takeaways}
+
+* We need to use the STFT or spectrogram to visualize a non-stationary signal in the frequency domain effectively.
+* We can also use a spectrogram to visualize the effect of a bandpass filter on our signal.
+* Again,`matplotlib`and`numpy`are our friends here.
+
+## Further Resources {#further-resources}
+
+Plotting a spectrogram or visualizing the short-time Fourier transform are ways of balancing the trade-off between time resolution and frequency resolution.
+
+Surprisingly, this trade-off is related to the quantum uncertainty principle. If you would like to know more about Quantum Uncertainty Principle, you can watch 3Blue1Brown's video[The more general uncertainty principle, beyond quantum](https://www.youtube.com/watch?v=MBnnXbOM5S4).
+
+This tutorial is a great explanation of this trade-off as well as a description of the[wavelet transform](http://users.rowan.edu/~polikar/WTpart1.html), which is another solution to this problem.
+
+  
 
 
