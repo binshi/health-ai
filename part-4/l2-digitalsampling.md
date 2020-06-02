@@ -202,7 +202,7 @@ When we look at signals in the frequency domain, we lose information about the t
 * **Frequency component**  
   : The Fourier transform explains a signal as a sum of sinusoids. Each of these sinusoids is a frequency component of the signal.
 
-* **Stationarity**
+* **Stationarity**  
   : A property of a signal where the statistics of a process generating a signal do not change in time. Generally, if the frequency components in a signal change in time, this signal is not stationary.
 
 ## Key Takeaways {#key-takeaways}
@@ -219,6 +219,5 @@ Surprisingly, this trade-off is related to the quantum uncertainty principle. If
 
 This tutorial is a great explanation of this trade-off as well as a description of the[wavelet transform](http://users.rowan.edu/~polikar/WTpart1.html), which is another solution to this problem.
 
-  
-
+Real periodic signals are rarely sinusoidal. Still, we like to use the Fourier transform to learn about the periodicity of these signals. All periodic signals are composed of a **fundamental frequency**, which is the lowest frequency of the periodic signal, and integer multiples of this frequency called **harmonics**. In this lesson, we see this for ourselves and how the fundamental frequency relates to the signal in time-domain.
 
