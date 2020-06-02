@@ -62,5 +62,19 @@ And finally, it’s important to remember that digital signals are sampled perio
 
 A sampling rate of 125 Hz means that there are 125 samples per second. The inverse of this is 1 / 125 seconds per sample or 8 milliseconds.
 
+## New Vocabulary {#new-vocabulary}
+
+* **Transducer**: Part of a sensor that converts a physical phenomenon into an electrical one \(e.g., voltage\)
+* **Analog-to-Digital Convert \(ADC\)**: A device \(usually embedded in the sensor\) that converts an analog voltage into an array of bits.
+* **Bit depth**: The number of bits an ADC uses to create a sample. A 16-bit ADC produces a 16-bit number for each sample.
+* **Noise floor**: The total amount of noise in the sensor, including electrical interference from the environment and other parts of the device, thermal noise, and quantization noise.
+* **Dynamic range**: The physical range of the sensor. Values outside of this range will show up as clipping in the digital signal.
+* **Sampling rate**: The frequency at which a sensor measures a signal.
+
+## Further Research {#further-research}
+
+* Sampling Signal Processing
+  [Wikipedia](https://en.wikipedia.org/wiki/Sampling_%28signal_processing%29)
+
 
 
