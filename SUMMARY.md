@@ -15,4 +15,8 @@
   * [L4-MI-E2EDeployment](part-3/l4-mi-e2edeployment.md)
   * [L5-DeployAI](part-3/l5-deployai.md)
 * [part-4](part-4.md)
+  * [L2-DigitalSampling](part-4/l2-digitalsampling.md)
+  * [L3-Sensors](part-4/l3-sensors.md)
+  * L4-ActivityClassification
+  * L5-ECGProcessing
 
