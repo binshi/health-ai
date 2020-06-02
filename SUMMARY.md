@@ -14,4 +14,5 @@
   * [L3-3D-EDA](part-3/l3-3d-eda.md)
   * [L4-MI-E2EDeployment](part-3/l4-mi-e2edeployment.md)
   * [L5-DeployAI](part-3/l5-deployai.md)
+* [part-4](part-4.md)
 
