@@ -73,8 +73,19 @@ A sampling rate of 125 Hz means that there are 125 samples per second. The inver
 
 ## Further Research {#further-research}
 
-* Sampling Signal Processing
-  [Wikipedia](https://en.wikipedia.org/wiki/Sampling_%28signal_processing%29)
+* Sampling Signal Processing [Wikipedia](https://en.wikipedia.org/wiki/Sampling_%28signal_processing%29)
+
+# Time-domain Plotting Continued {#time-domain-plotting-continued}
+
+Plotting a signal in the**time-domain**just means that the x-axis in our plots is time. This is probably the way you naturally visualize signals. This is in contrast to the frequency domain, which we will see later in this lesson.
+
+We also practice more complicated visualizations like plotting event detections on top of a continuous signal as well as visually comparing two similar signals.
+
+## New Vocabulary {#new-vocabulary}
+
+* **Time-domain**: The typical representation we are used to for signals where the signal is represented by values in time.
+
+##  {#notebook-review}
 
 
 
