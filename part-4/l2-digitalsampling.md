@@ -85,7 +85,25 @@ We also practice more complicated visualizations like plotting event detections 
 
 * **Time-domain**: The typical representation we are used to for signals where the signal is represented by values in time.
 
-##  {#notebook-review}
+## Key Takeaways {#key-takeaways}
+
+* Plotting your data is a great way to check your assumptions about the data you have.
+* Matplotilb makes it easy to plot time series signals and events in time together.
+
+## Further Resources {#further-resources}
+
+### Physionet {#physionet}
+
+Physionet is a great resource of freely available biomedical signals. You can try many of the techniques you learn in this class on datasets in[Physionet](https://physionet.org/). This[European ST-T Database](https://physionet.org/content/edb/1.0.0/)from Physionet was used in the previous exercise.
+
+### Plotting {#plotting}
+
+Listed below are the packages we will be using throughout to visualize our datasets.
+
+* [Matplotlib](https://matplotlib.org/)- the plotting library we use most in this course.
+* [Seaborn](https://seaborn.pydata.org/)- a wrapper around `matplotlib`that makes it easier to do higher level statistical visualization. We will use this a few times in the course.
+* [Altair](https://altair-viz.github.io/)- Another powerful visualization library in Python
+* [Plotly](https://plot.ly/)- You can use plotly to create and save visualization in HTML / javascript. This is especially useful when you want to make offline, shareable plots that you can interact with in the browser.
 
 
 
