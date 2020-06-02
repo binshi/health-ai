@@ -139,8 +139,26 @@ If we try to sample a signal that has higher frequency components than the Nyqui
 * **Frequency component**: The Fourier transform explains a signal as a sum of sinusoids. Each of these sinusoids is a frequency component of the signal.
 
 * **Nyquist frequency**: Half of the sampling frequency. Signal components above this frequency will get aliased in the sampled signal.
+
 * **Bandwidth**: A range of frequencies within a band.
 * **Aliasing**: The effect that causes frequency components greater than the Nyquist frequency to become indistinguishable from frequencies below the Nyquist frequency.
 
+# Fourier Transform In Practice {#fourier-transform-in-practice}
 
+Let's make a signal that is composed of two sine waves at 2 Hz and 3 Hz plus some random noise. We will be using the`np.fft`module to compute the Fourier transform with the two main functions below:
+
+* `rfft`- computes the actual Fourier transform coefficients
+* `rfftfreq`- tells us the frequencies for which we are computing the Fourier transform
+
+We then examined`freqs`to see that the FFT samples the Fourier transform uniformly from 0 Hz to the Nyquist frequency, which in this case is 25 Hz because our sampling rate is 50 Hz. We also saw the Fourier transform coefficients and only examined the magnitudes. Plotting the FFT, we see that the signal is composed primarily of two frequencies \(2 and 3Hz\) and a little bit of everything else \(from the random noise\).
+
+We also saw how zero-padding could be used to visualize sinusoids with frequencies that are not present in`freqs`. To visualize at frequencies not in`freqs`, we need to sample twice as often and we can do this by adding 0s to the end of the signal. However, we also see this rippling, which is an artifact of padding the signal with 0s, which is the trade-off when doing zero-padding.
+
+**Inverse Fourier Transform** in which we used the`np.fft`module to compute the inverse Fourier transform with the function`irfft`.
+
+We started with a noisy signal and removed all the frequency components not in the range, in this case, 2Hz and 3Hz. And we saw a recovered signal that looked very close to the signal we saw in the previous video.
+
+But we did the process again from 2.15Hz and 2.95Hz. The recovered signal looked a bit distorted and not what we'd expect. This is because zeroing out Fourier coefficients is not the best way to filter a signal.
+
+We then used`scipy`to**bandpass filter**our signal for us. A bandpass filter will remove all frequency components outside of a given passband. Let's bandpass filter our signal with a passband from 1 Hz to 4 Hz. This way, our desired frequencies of 2.15 Hz and 2.95 Hz are well within the passband. And now, our recovered signal looks very similar to what we want.
 
