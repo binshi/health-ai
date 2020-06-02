@@ -180,5 +180,15 @@ We then saw how we could remove the noise by filtering out frequency components 
 * **Frequency-domain**: A representation of a signal over frequency instead of time. Instead of representing the signal as a series of numbers in time, the signal is represented by the frequency components that make it up.
 * **Bandpass filter**: A function that preserves frequency components of a signal within a band and suppresses the frequency components outside that band.
 
+## Key Takeaways {#key-takeaways}
 
+* We can use the frequency domain to learn properties of a signal in ways that would be difficult in the time domain.
+* We use the Fourier transform to take a signal from the time domain to the frequency domain
+* We can use `numpy `and`matplotlib`to help us compute and plot a time series signal in the frequency domain.
+
+## Summary {#summary}
+
+The Fourier transform plays a pivotal role in signal processing. An intuitive understanding of what it does and how to use can help accomplish many tasks when processing wearable biosignals. Fundamentally, the Fourier transform gives information about what periodic components are present in the signal. And because many biomechanical processes are periodic, \(eg. running or walking cadence, heart beats, breathing rate\) finding this periodic information in our time series signal can be incredibly useful.
+
+In the previous few concepts we tried to impart that intuitive understanding as well as practical information on how to use the Fourier transform in Python. As you progress through the course, you will see more examples of the Fourier transform in action and your intuitive understanding will grow.
 
