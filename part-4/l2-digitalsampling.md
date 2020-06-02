@@ -221,3 +221,11 @@ This tutorial is a great explanation of this trade-off as well as a description 
 
 Real periodic signals are rarely sinusoidal. Still, we like to use the Fourier transform to learn about the periodicity of these signals. All periodic signals are composed of a **fundamental frequency**, which is the lowest frequency of the periodic signal, and integer multiples of this frequency called **harmonics**. In this lesson, we see this for ourselves and how the fundamental frequency relates to the signal in time-domain.
 
+Harmonics explain why different instruments sound different despite playing the same note. Check out 12tone's video on[Why Don't All Instruments Sound The Same?](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/27ab2378-4a93-47aa-8740-dc30fc7ced40/concepts/%28https://www.youtube.com/watch?v=Q8ITu0EASL4)for a more in-depth explanation. You can also watch 3Blue1Brown's video[Music And Measure Theory](https://www.youtube.com/watch?v=cyW5z-M2yzw)explaining why certain notes sound good together by looking at multiples of their frequencies.
+
+## New Vocabulary {#new-vocabulary}
+
+* **Harmonics**: the fundamental frequency and integer multiples of the fundamental frequency of periodic signals.
+
+
+
