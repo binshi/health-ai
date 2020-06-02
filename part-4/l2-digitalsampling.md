@@ -128,7 +128,6 @@ Previously we had only discussed uniformly sampled signals where the signal is s
 
 # Fourier Transform {#fourier-transform}
 
-  
 The theory of fourier transform is that any signal can be represented as a sum of sinusoids. Then we saw how this theory can be put into action by recreating a real accelerometer signal using only the addition of sinusoids. The frequency of the specific sinusoids that make up a signal can tell us important information that we can use to build algorithms to process that signal.
 
 e Fourier transform allows us to describe any signal as a summation of sinusoids. The frequencies of the sinusoids that comprise a signal represent the signal’s **frequency components**. The range of frequency components for a signal is called its **bandwidth**.
@@ -136,4 +135,12 @@ e Fourier transform allows us to describe any signal as a summation of sinusoids
 We then discuss the **Nyquist frequency **and the limits this imposes on the sampling rate and the **bandwidth **of the signals that we sample.
 
 If we try to sample a signal that has higher frequency components than the Nyquist frequency, we will see **aliasing**, which means those high-frequency components will show up at mirrored lower frequencies.
+
+* **Frequency component**: The Fourier transform explains a signal as a sum of sinusoids. Each of these sinusoids is a frequency component of the signal.
+
+* **Nyquist frequency**: Half of the sampling frequency. Signal components above this frequency will get aliased in the sampled signal.
+* **Bandwidth**: A range of frequencies within a band.
+* **Aliasing**: The effect that causes frequency components greater than the Nyquist frequency to become indistinguishable from frequencies below the Nyquist frequency.
+
+
 
