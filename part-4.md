@@ -105,8 +105,6 @@ True Positives = 404 False Positives = 929 - 404 = 525 False Negatives = 3070
 
 Precision = True Positives / \(True Positives + False Positives\) = 404 / 929 = 43% Recall = True Positives / \(True Positives + False Negatives\) = 404 / 3474 = 12%
 
-
-
 ## Further Research {#further-research}
 
 Wearables are part of Digital Health, learn more about it[here](https://en.wikipedia.org/wiki/Digital_health).
@@ -119,9 +117,9 @@ If you would like to read up on the AHS on your own, you can find the clinical t
 
 ### Relevant Papers {#relevant-papers}
 
-* **Apple Heart Study **- Perez MV, Mahaffey KW, Hedlin H, et al. "Large-scale assessment of a smartwatch to identify atrial fibrillation." _N Engl J Med _2019;381:1909-1917. [Link](https://www.nejm.org/doi/full/10.1056/NEJMoa1901183)
-* **Apple Heart Study Response **- Campion Edward W., Jarcho John A.. \(2019\) "Watched by Apple." _N Engl J Med _381:20, 1964-1965. [Link](https://www.nejm.org/doi/full/10.1056/NEJMe1913980)
-* **Framingham Study **- Wolf PA, Abbott RD, Kannel WB. "Atrial fibrillation as an independent risk factor for stroke: the Framingham Study." _Stroke _1991;22:983-988. [Link](https://www.ahajournals.org/doi/10.1161/01.STR.22.8.983)
+* **Apple Heart Study **- Perez MV, Mahaffey KW, Hedlin H, et al. "Large-scale assessment of a smartwatch to identify atrial fibrillation." \_N Engl J Med \_2019;381:1909-1917. [Link](https://www.nejm.org/doi/full/10.1056/NEJMoa1901183)
+* **Apple Heart Study Response **- Campion Edward W., Jarcho John A.. \(2019\) "Watched by Apple." \_N Engl J Med \_381:20, 1964-1965. [Link](https://www.nejm.org/doi/full/10.1056/NEJMe1913980)
+* **Framingham Study **- Wolf PA, Abbott RD, Kannel WB. "Atrial fibrillation as an independent risk factor for stroke: the Framingham Study." \_Stroke \_1991;22:983-988. [Link](https://www.ahajournals.org/doi/10.1161/01.STR.22.8.983)
 * **Wearable Health**- Montgomery, K., Chester, J.,  &  Kopp, K. \(2018\). "Health Wearables: Ensuring Fairness, Preventing Discrimination, and Promoting Equity in an Emerging Internet-of-Things Environment." _Journal of Information Policy_
   , 8, 34-77. doi:10.5325/jinfopoli.8.2018.0034 [Link](https://www.jstor.org/stable/10.5325/jinfopoli.8.2018.0034#metadata_info_tab_contents)
 
@@ -132,6 +130,15 @@ If you would like to read up on the AHS on your own, you can find the clinical t
 * **Classification Accuracy**: A metric for evaluating the performance of a classifier -- the fraction of classifications that are correct. For rare events \(like atrial fibrillation\), this metric is unsuitable. For example, a classifier that classifies every data point as healthy would have a classification accuracy of 99%, as around 1 percent of the population has atrial fibrillation, but would be relatively useless.
 * **Precision**: The fraction of positive classifications that are correct.
 * **Recall**: The fraction of positive elements that are classified correctly as positive.
+
+## Glossary {#glossary}
+
+* **Inclusion Criteria**: Characteristics that potential study subjects must have for them to be included in the study.
+* **Exclusion Criteria**: Characteristics that disqualify potential study subjects from participating in a clinical study. e.g., Some common ones are being under 18 or pregnant.
+* **Classification Accuracy**: A metric for evaluating the performance of a classifier -- the fraction of classifications that are correct. For rare events \(like atrial fibrillation\), this metric is unsuitable. For example, a classifier that classifies every data point as healthy would have a classification accuracy of 99%, as around 1 percent of the population has atrial fibrillation, but would be relatively useless.
+* **Precision**: The fraction of positive classifications that are correct.
+* **Recall**: The fraction of positive elements that are classified correctly as positive.
+* **Primary Endpoint**: The metric being used to answer the question that the study seeks to ask. For drug trials, this would be markers of the disease the drug seeks to treat. For example, the primary endpoint for a study on the effectiveness of a new statin in preventing heart attacks would be the number of heart attacks in the test group compared to a control group. The number and types of participants enrolled in a study are designed with the primary endpoint in mind.
 
 
 
