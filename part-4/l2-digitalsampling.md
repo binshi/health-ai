@@ -141,6 +141,7 @@ If we try to sample a signal that has higher frequency components than the Nyqui
 * **Nyquist frequency**: Half of the sampling frequency. Signal components above this frequency will get aliased in the sampled signal.
 
 * **Bandwidth**: A range of frequencies within a band.
+
 * **Aliasing**: The effect that causes frequency components greater than the Nyquist frequency to become indistinguishable from frequencies below the Nyquist frequency.
 
 # Fourier Transform In Practice {#fourier-transform-in-practice}
@@ -161,4 +162,23 @@ We started with a noisy signal and removed all the frequency components not in t
 But we did the process again from 2.15Hz and 2.95Hz. The recovered signal looked a bit distorted and not what we'd expect. This is because zeroing out Fourier coefficients is not the best way to filter a signal.
 
 We then used`scipy`to**bandpass filter**our signal for us. A bandpass filter will remove all frequency components outside of a given passband. Let's bandpass filter our signal with a passband from 1 Hz to 4 Hz. This way, our desired frequencies of 2.15 Hz and 2.95 Hz are well within the passband. And now, our recovered signal looks very similar to what we want.
+
+# Fourier Transform In Review {#fourier-transform-in-review}
+
+In this class we will be computing the Fourier transform by using a method called the[Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform). This is a clever algorithm that is able to compute the Fourier transform in O\(n\*log\(n\)\) time instead of quadratic time. We use`numpy`’s implementation of this algorithm with the functions:
+
+* `rfft`
+* `rfftfreq`
+* `irfft`
+
+We then saw how we could remove the noise by filtering out frequency components outside of the bandwidth of the signal. The process of removing frequencies from a signal outside a specific band is known as**bandpass filtering**. The band of frequencies that we want to preserve is called the**passband**. -- or**bandpass filtering**our signal. We did this first by manipulating the signal in the frequency domain. After seeing the short-falls of this method, we explored using traditional bandpass filtering techniques that process the signal in the time-domain.
+
+## Further Resources {#further-resources}
+
+[3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw/)is a great YouTube channel that explains mathematical concepts with beautiful animations that make intuitive understanding so much easier. He has a few videos on the Fourier transform, which are absolutely illuminating. I highly recommend exploring this channel, starting with this video,[But what is the Fourier Transform? A visual introduction](https://www.youtube.com/watch?v=spUNpyF58BY).
+
+* **Frequency-domain**: A representation of a signal over frequency instead of time. Instead of representing the signal as a series of numbers in time, the signal is represented by the frequency components that make it up.
+* **Bandpass filter**: A function that preserves frequency components of a signal within a band and suppresses the frequency components outside that band.
+
+
 
