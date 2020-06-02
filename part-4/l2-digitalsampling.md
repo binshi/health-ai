@@ -227,5 +227,71 @@ Harmonics explain why different instruments sound different despite playing the 
 
 * **Harmonics**: the fundamental frequency and integer multiples of the fundamental frequency of periodic signals.
 
+## Summary {#summary}
+
+We covered a lot of material in this lesson. We started with the basics of what a signal is and how to digitally sample one. Then we covered techniques to process digital signals, including interpolation, the Fourier Transform, and harmonics. Along the way, we learned how to visualize signals using matplotlib, and how the spectrogram or STFT can help us more accurately see the Fourier coefficients of a signal as they change in time. The breadth of concepts that we went over could comprise full university classes. We did a lot of exercises to help you feel comfortable using these topics practically, but a lot of this material might be unlike other disciplines of math that you’ve seen before. Don’t hesitate to rewatch the videos and explore the further resources to build your intuition. And I’m hopeful that as we use these concepts in the upcoming lessons, things will start to click more.
+
+## Further Resources {#further-resources}
+
+### Physionet {#physionet}
+
+Physionet is a great resource of freely available biomedical signals. You can try many of the techniques you learn in this class on datasets in[Physionet](https://physionet.org/). This[European ST-T Database](https://physionet.org/content/edb/1.0.0/)from Physionet was used in the previous exercise.
+
+### Plotting {#plotting}
+
+* [Matplotlib](https://matplotlib.org/)
+  - the plotting library we use most in this course.
+* [Seaborn](https://seaborn.pydata.org/)
+  - a wrapper around
+  `matplotlib`
+  that makes it easier to do higher-level statistical visualization. We will use this a few times in the course.
+* [Altair](https://altair-viz.github.io/)
+  - Another powerful visualization library in Python
+* [Plotly](https://plot.ly/)
+  - You can use
+  `plotly`
+  to create and save visualization in HTML / javascript. This is especially useful when you want to make offline, shareable plots that you can interact with in the browser.
+
+### Interpolation {#interpolation}
+
+* [Interpolation](https://en.wikipedia.org/wiki/Interpolation)
+* [Linear Interpolation](https://en.wikipedia.org/wiki/Linear_interpolation)
+
+### Fourier Transform {#fourier-transform}
+
+[3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw/featured)is a great YouTube channel that explains mathematical concepts with beautiful animations that make intuitive understanding so much easier. He has a few videos on the Fourier transform, which are absolutely illuminating. I highly recommend exploring this channel, starting with[this video](https://www.youtube.com/watch?v=spUNpyF58BY).
+
+### Spectrograms {#spectrograms}
+
+Plotting a spectrogram or visualizing the short-time Fourier transform are ways of balancing the trade-off between time resolution and frequency resolution. Surprisingly, this trade-off is related to the quantum uncertainty principle \(see[this 3Blue1Brown video](https://www.youtube.com/watch?v=MBnnXbOM5S4)\). This tutorial is a great explanation of this trade-off as well as a description of the[wavelet transform](http://users.rowan.edu/~polikar/WTpart1.html), which is another solution to this problem.
+
+### Harmonics {#harmonics}
+
+Harmonics explain why different instruments sound different despite playing the same note. Check out[this video](https://www.youtube.com/watch?v=Q8ITu0EASL4)from YouTube channel[12tone](https://www.youtube.com/channel/UCTUtqcDkzw7bisadh6AOx5w)for an explanation.
+
+[3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw)also has[a video](https://www.youtube.com/watch?v=cyW5z-M2yzw)explaining why certain notes sound good together by looking at multiples of their frequencies.
+
+## Glossary {#glossary}
+
+* **Transducer**: Part of a sensor that converts a physical phenomenon into an electrical one \(e.g., voltage\)
+* **Analog-to-Digital Convert \(ADC\)**: A device \(usually embedded in the sensor\) that converts an analog voltage into an array of bits.
+* **Bit depth**: The number of bits an ADC uses to create a sample. A 16-bit ADC produces a 16-bit number for each sample.
+* **Noise floor**: The total amount of noise in the sensor, including electrical interference from the environment and other parts of the device, thermal noise, and quantization noise.
+* **Dynamic range**: The physical range of the sensor. Values outside of this range will show up as clipping in the digital signal.
+* **Sampling rate**: The frequency at which a sensor measures a signal.
+* **Hz**: The units of the sampling rate. 1Hz means 1 sample per second.
+* **Nyquist frequency**: Half of the sampling frequency. Signal components above this frequency will get aliased in the sampled signal.
+* **Frequency component**: The Fourier transform explains a signal as a sum of sinusoids. Each of these sinusoids is a frequency component of the signal.
+* **Aliasing**: The effect that causes frequency components greater than the Nyquist frequency to become indistinguishable from frequencies below the Nyquist frequency.
+* **Bandwidth**: A range of frequencies within a band.
+* **Interpolation**
+  : A method for estimating new data points within a range of discrete known data points.
+* **Resampling**: The process of changing the sampling rate of a discrete signal to obtain a new discrete representation of the underlying continuous signal.
+* **Frequency domain**: A representation of a signal over frequency instead of time. Instead of representing the signal as a series of numbers in time, the signal is represented by the frequency components that make it up.
+* **Time-domain**: The typical representation we are used to for signals where the signal is represented by values in time.
+* **Bandpass filter**: A function that preserves frequency components of a signal within a band and suppresses the frequency components outside that band.
+* **Passband**: The band of a bandpass filter where frequency components will be preserved.
+* **Stationarity**: A property of a signal where the statistics of a process generating a signal do not change in time. Generally, if the frequency components in a signal change in time, this signal is not stationary.
+
 
 
