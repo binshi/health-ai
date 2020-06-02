@@ -18,10 +18,11 @@ You’ll understand the physical quantity being measured, become familiar with w
 
 This lesson will describe the sensors and raw signals they collect. Sensors enable a set of algorithms that can compute derived metrics from each of these signals or multiple in combination.
 
-[![](https://video.udacity-data.com/topher/2020/March/5e7a3d49_nd320-c4-l2-sensor-and-algorithms/nd320-c4-l2-sensor-and-algorithms.png "The 3 types of sensors \(IMU, PPG, and ECG\) covered in this lesson and the algorithms that can be derived from those sensors.
-- An IMU sensor can inform an Activity Classification and Pulse Rate Estimation Algorithms. 
-- A PPG sensor can inform a Pulse Rate Estimation Algorithm.
-- An ECG sensor can inform a Heart Beat Detection Algorithm which can look for specific heart anomalies/phenomenon like an Arrhythmia Detection Algorithm.")Sensor & Algorithms](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/5bc40cc9-b7e9-4fa2-bb91-b49376f945ff#)
+\[!\[\]\([https://video.udacity-data.com/topher/2020/March/5e7a3d49\_nd320-c4-l2-sensor-and-algorithms/nd320-c4-l2-sensor-and-algorithms.png](https://video.udacity-data.com/topher/2020/March/5e7a3d49_nd320-c4-l2-sensor-and-algorithms/nd320-c4-l2-sensor-and-algorithms.png) "The 3 types of sensors \(IMU, PPG, and ECG\) covered in this lesson and the algorithms that can be derived from those sensors.
+
+* An IMU sensor can inform an Activity Classification and Pulse Rate Estimation Algorithms. 
+* A PPG sensor can inform a Pulse Rate Estimation Algorithm.
+* An ECG sensor can inform a Heart Beat Detection Algorithm which can look for specific heart anomalies/phenomenon like an Arrhythmia Detection Algorithm."\)Sensor & Algorithms\]\([https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/5bc40cc9-b7e9-4fa2-bb91-b49376f945ff\#](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/5bc40cc9-b7e9-4fa2-bb91-b49376f945ff#)\)
 
 ### Outline {#outline}
 
@@ -51,6 +52,13 @@ This also means that accelerometers are affected by gravity. For example, if we 
 This also means that when the device is stationary, you can measure its orientation. If all the acceleration is in the downward z-direction, then it’s flat on a table. Or if it’s all in the x-direction, then it’s tilted on its side. We’ll take a more in-depth look at this another phenomena in the next lesson where we look at accelerometer traces in detail.
 
 Not all accelerometers are implemented using this capacitor attached to a mass on a spring model, but they follow similar principles. For example, some accelerometers use a force sensitive resistor or a [piezoelectric crystal](https://blog.endaq.com/piezoelectric-accelerometers-how-they-work-and-where-to-buy) to modulate a voltage in response to an acceleration.
+
+* **Inertial Measurement Unit \(IMU\)**: A collection of sensors that measure motion.
+
+* **Accelerometer**: A sensor that measures linear acceleration.
+* **Gyroscope**: A sensor that measures angular velocity.
+* **Magnetometer**: A sensor that measures magnetic forces.
+* **g-force**: The amount of acceleration on a body measured in units of acceleration due to gravity on earth \(or roughly 9.8m/s^2\).
 
 
 
