@@ -99,3 +99,9 @@ This is demonstrated graphically below:
 [![](https://video.udacity-data.com/topher/2020/March/5e7a3d4b_nd320-c4-l0-precision-recall-wiki/nd320-c4-l0-precision-recall-wiki.png "Precision and Recall")Precision and Recall  
 Source: Walber. Precision and recall. Nov 2014. CC-BY-SA-4.0[Link](https://commons.wikimedia.org/wiki/File:Precisionrecall.svg)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/4417cb06-0a1d-4dad-9418-2e615308b2f6/concepts/fd2dfaee-57d9-43a6-8791-87603e962db7#)
 
+In the AHS study, 404 participants got a new diagnosis of AF from 929 who had an irregular pulse notification. And 3070 participants got a new diagnosis of AF from 293,015 who didn't get an irregular pulse notification. If the irregular pulse notification is used to classify participants that will and will not receive an AF diagnosis, what is the precision and recall? \(Round to the nearest %\)
+
+True Positives = 404 False Positives = 929 - 404 = 525 False Negatives = 3070
+
+Precision = True Positives / \(True Positives + False Positives\) = 404 / 929 = 43% Recall = True Positives / \(True Positives + False Negatives\) = 404 / 3474 = 12%
+
