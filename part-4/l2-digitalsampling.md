@@ -11,8 +11,6 @@ This lesson will be a whirlwind tour through sampling theory, signal processing,
 
 If you are familiar with these libraries and concepts already, then this will be mostly a review. If this is all brand new to you, don’t worry, this lesson assumes zero prior knowledge and doesn’t overwhelm you with the theory. In fact, you won’t see a single equation in this lesson. You will, however, see a lot of code.
 
-
-
 A signal is simply a series of numbers \(e.g. \[3, 4, 6, 2, 4\] is a signal!\). Typically these numbers represent a voltage that changes with respect to some physical phenomenon. When the voltage signal changes in time, it’s called a time series signal. Signal processing helps us analyze this sequence of numbers so we can learn more about the physical phenomenon it represents.
 
 [![](https://video.udacity-data.com/topher/2020/March/5e7a3d4f_nd320-c4-l1-sinusoid-basics/nd320-c4-l1-sinusoid-basics.png "Sinusoid Basics")Sinusoid Basics](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/27ab2378-4a93-47aa-8740-dc30fc7ced40/concepts/e1e88d78-b8f6-4742-909c-50da547c5566#)
@@ -27,14 +25,42 @@ The last property of a periodic signal is the**phase shift**, which is similar t
 
 ## New Vocabulary {#new-vocabulary}
 
-* **Period**
-  : The amount of time it takes to make one repetition.
-* **Frequency**
-  : The amount of repetitions in a given time period, usually 1 second is the time period.
-* **Hertz \(Hz\)**
-  : The units of the sampling rate. 1Hz means 1 sample per second.
-* **Phase Shift**
-  : The shift between two similar periodic signals expressed in fractions of a period \(multiplied by 2𝛑 radians or 360°\).
+* **Period**: The amount of time it takes to make one repetition.
+* **Frequency**: The amount of repetitions in a given time period, usually 1 second is the time period.
+* **Hertz \(Hz\)**: The units of the sampling rate. 1Hz means 1 sample per second.
+* **Phase Shift**: The shift between two similar periodic signals expressed in fractions of a period \(multiplied by 2𝛑 radians or 360°\).
+
+# Digital Sampling {#digital-sampling}
+
+The goal of digital sampling is to take an analog continuous-time signal, typically a voltage, and to quantize it and discretize it in time so that we can store it in a finite amount of memory and use the magic of computers to process it. The component that does this is called an**analog-to-digital converter**or an ADC, this is an example of a \*\*transducer, you will learn more about transducers in a future lesson. It is important to learn about the few fundamental ways the ADC changes the analog signal. In our head, it’s easy sometimes to pretend that we’re dealing with an ideal analog signal, but this can get us into trouble, and it’s important to know more detail about how signals are sampled to avoid pitfalls later on.
+
+An ADC encodes a range of physical values to a set of discrete numbers. In this example, the analog signal varies over time between -3V and +3V and we are using a 4-bit ADC, which means that the ADC has 4 bits to encode the range from -3 to +3 \(ie. the**bit-depth**of our sensor is 4\). The 4 bits indicate that there are 16 discrete values and we can see the effect of this quantization in the digitized signal.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d4d_nd320-c4-l1-quant-noise/nd320-c4-l1-quant-noise.png "Quantization Noise")Quantization Noise](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/27ab2378-4a93-47aa-8740-dc30fc7ced40/concepts/26df90b7-2f41-423f-b945-b7c79e2b2b94#)
+
+But typically, ADCs have many more bits and you won’t see quantization noise because it will be overpowered by other noise sources.
+
+* Latent thermal energy in the system.
+* Electronic noise from within the sensor.
+* Electronic noise from the surroundings and the building itself. All these types of noise contribute to what we call the
+  **noise floor**
+  . Even when the incoming signal is perfectly flat, you will see some noise in the output. If you ever see a flat line at 0 in the output, it’s because your sensor is broken.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d4c_nd320-c4-l1-noise-floor/nd320-c4-l1-noise-floor.png "Noise Floor")Noise Floor](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/27ab2378-4a93-47aa-8740-dc30fc7ced40/concepts/26df90b7-2f41-423f-b945-b7c79e2b2b94#)
+
+This noise is additive, so you’ll see it on top of whatever incoming signal you have.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d4b_nd320-c4-l1-additive-noise/nd320-c4-l1-additive-noise.png "Additive Noise. When you combine the previous 2 signals, quantization and noise floor, you will get an additive signal.")Additive Noise](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/27ab2378-4a93-47aa-8740-dc30fc7ced40/concepts/26df90b7-2f41-423f-b945-b7c79e2b2b94#)
+
+ADCs have a fixed range on the input. So for this example, our ADC was limited to -3V and +3V. This is known as the**dynamic range**of our sensor. When the input signal exceeds the dynamic range of the sensor, in this case from -4 to +4, everything greater than 3 will be clipped and set to 3 and everything smaller than -3 will be clipped to -3. We call this effect clipping, oversaturation, or undersaturation.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d4e_nd320-c4-l1-signal-clipping/nd320-c4-l1-signal-clipping.png "Signal Clipping")Signal Clipping](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/27ab2378-4a93-47aa-8740-dc30fc7ced40/concepts/26df90b7-2f41-423f-b945-b7c79e2b2b94#)
+
+And finally, it’s important to remember that digital signals are sampled periodically in time. We often plot them as these continuous signals by connecting the dots in between, but they are better represented as a sequence of individual points. In this example, there are 30 samples in this second, so we would say the**sampling rate**is 30 samples per second or 30 Hz.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d4e_nd320-c4-l1-sampling-rate/nd320-c4-l1-sampling-rate.png "Sampling Rate")Sampling Rate](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/27ab2378-4a93-47aa-8740-dc30fc7ced40/concepts/26df90b7-2f41-423f-b945-b7c79e2b2b94#)
+
+A sampling rate of 125 Hz means that there are 125 samples per second. The inverse of this is 1 / 125 seconds per sample or 8 milliseconds.
 
 
 
