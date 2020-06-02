@@ -70,3 +70,20 @@ If wearables are ever to be used in a medical context, research and clinical tri
 
 The way the AHS worked was the watch would sometimes notify participants of an irregular pulse rhythm. Once notified, the researchers would send these participants a wearable ECG chest patch for 7 days that would confirm whether they were experiencing AF. 34% of the notified participants in this study were confirmed to have AF from the chest patch. AF can be intermittent, so even if someone has it, there’s no guarantee it would show up during the chest patch period.
 
+## Summary {#summary}
+
+I think this is a landmark study in the use of wearables for clinical research, but I don’t think we should overvalue that 34% of participants were confirmed to have AF or how the Apple Watch's use as a screening or diagnostic tool. The reason for this is because the study deviated from typical clinical trials that try to prove the effectiveness of devices or drugs in a few significant ways:
+
+* Not everyone received an ECG chest patch, so we don’t know the false-negative rate.
+* The inclusion criteria \(Apple Watch and iPhone users\) created a biased study population.
+
+If wearable research is biased towards a more affluent population, the interventions or discoveries made may be more specifically tailored for this population and may be less effective on a less affluent population. This is similar to why researchers think long and hard about how to enroll minority populations in their clinical trials.
+
+Despite the caveats above, this study broke new ground in significant ways:
+
+* Recruited almost half a million people for the study in 8 months.
+* These types of studies lose a lot of participants to follow-up \(e.g., over 2000 participants were notified of having irregular pulse rates but only collected data from 450 ECG chest patches.\)
+* How participants would react to a smartwatch notifying them of an abnormal heart rhythm while it was happening.
+
+I think the study is super exciting in that it's a first attempt to use the capability of wearables to do long term monitoring in a medical context. There’s obviously a lot of hype around studies like this and I want us to be excited about the right things.
+
