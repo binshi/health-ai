@@ -56,9 +56,36 @@ Not all accelerometers are implemented using this capacitor attached to a mass o
 * **Inertial Measurement Unit \(IMU\)**: A collection of sensors that measure motion.
 
 * **Accelerometer**: A sensor that measures linear acceleration.
+
 * **Gyroscope**: A sensor that measures angular velocity.
 * **Magnetometer**: A sensor that measures magnetic forces.
 * **g-force**: The amount of acceleration on a body measured in units of acceleration due to gravity on earth \(or roughly 9.8m/s^2\).
+
+# Accelerometer Deep-Dive {#accelerometer-deep-dive}
+
+Let’s take a more in-depth look at the accelerometer. As a reminder, when we talk about accelerometer magnitude, this means the vector magnitude of the force on the accelerometer in 3D space, as given by this formula.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d1a_nd320-c4-l2-accelerometer-magnitude/nd320-c4-l2-accelerometer-magnitude.png "The Accelerometer Magnitude equals the square root of the sum of the squared of movement in x, y, and z direction. ")Accelerometer magnitude is the square root of the sum of the squared value of movement in each of the 3 axes.](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/917364ba-762e-4f05-bb12-82e16c2092a3#)
+
+Take a look at this accelerometer trace when the wearer is at rest.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d18_nd320-c4-l2-acc-rest/nd320-c4-l2-acc-rest.png "Accelerometer Magnitude - Wearer at Rest")Accelerometer Magnitude - Wearer at Rest](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/917364ba-762e-4f05-bb12-82e16c2092a3#)
+
+The accelerometer magnitude is close to 1 g, which means the total force on the accelerometer is only due to gravity. But if you look at the individual channels, they shift around. In the beginning, they all see the same amount of gravitational force, which means the device is tilted along each axis equally. But then after 15 seconds, the x and y channels drop and the z-channel rises to nearly 1g. This indicates the device has moved and is now lying flat, so only the z-channel feels the force of gravity. By strategically placing accelerometers on the body, you can use this technique to figure out things like posture or sleeping position.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d17_nd320-c4-l2-acc-jogging/nd320-c4-l2-acc-jogging.png "Accelerometer Magnitude - Wearer is Jogging")Accelerometer Magnitude - Wearer is Jogging](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/917364ba-762e-4f05-bb12-82e16c2092a3#)
+
+This is a trace of someone who is jogging. Notice the very periodic shapes in each channel that indicate the cadence of the arm swing, which can be used to figure out how fast someone is walking. By analyzing the specific characteristics of the waveform, you can decompose each stride into various components.
+
+For example, this paper decomposes the accelerometer trace from an ankle into various phases of the gait cycle.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d28_nd320-c4-l2-gait-cycle-phase/nd320-c4-l2-gait-cycle-phase.png "Gait Cycle Phases can be determined by the total acceleration. When the foot is flat, the total acceleration is 5 m/s/s. When the Heel is off the ground, small increases will occur, but with toe-off, the total acceleration will peak near to 20 m/s/s. The swing of the foot phase will be variable around 5 m/s/s. But as the foot strikes the ground, it will max out around 25 m/s/s and have some smaller spikes from 10 - 15 m/s/s as the foot is flat on the ground at 5 m/s/s.")Patterson M., Caulfield B. A novel approach for assessing gait using foot mounted accelerometers; Proceedings of 5th International ICST Conference on Pervasive Computing Technologies for Healthcare; Dublin, Ireland. 23–26 May 2011; pp. 218–221.](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/917364ba-762e-4f05-bb12-82e16c2092a3#)
+
+Discriminating the gait phases like this is an important starting point for several applications such as recovery after an injury or treatment, the classification of daily activities, coaching athletes, and distinguishing between normal and pathological gait. Researchers have found that differences in each person’s gait mean that it can be used to identify individuals.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d1a_nd320-c4-l2-acc-run-break/nd320-c4-l2-acc-run-break.png "Accelerometer Magnitude - Wearer is running with a break in between")Accelerometer Magnitude - Wearer is running with a break in between](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/917364ba-762e-4f05-bb12-82e16c2092a3#)
+
+Here we see a zoomed-out view of the accelerometer trace over 2 minutes. We can see the wearer distinctly changing activities, going from jogging to still to jogging again. You can even tell that they are probably jogging on a treadmill as the speed slowly ramps up and down. And from the sharp cut-off around 50 seconds, maybe we can tell that they jumped off the treadmill or for some reason their treadmill session was cut short. I didn’t collect this dataset, so we can’t know for sure, but it’s interesting that we can learn this level of detail from just an accelerometer alone.
 
 
 
