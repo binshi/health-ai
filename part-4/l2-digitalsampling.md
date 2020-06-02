@@ -105,5 +105,26 @@ Listed below are the packages we will be using throughout to visualize our datas
 * [Altair](https://altair-viz.github.io/)- Another powerful visualization library in Python
 * [Plotly](https://plot.ly/)- You can use plotly to create and save visualization in HTML / javascript. This is especially useful when you want to make offline, shareable plots that you can interact with in the browser.
 
+# Interpolation {#interpolation}
+
+I**nterpolation **which is a technique that allows us to work with multiple signals that are sampled differently in time. We saw 2 signals that are both 1 Hz sine waves, but the one that is sampled at 60 Hz has many more data points than the one sampled at 25 Hz. After plotting and verifying the lengths of the signals, it might appear that`s2_interp `and`s1`are the same, but it is most certainly not! By plotting the original and the interpolated signal together we can see that linear interpolation estimates points in between existing points by using a weighted average of the original points.
+
+Previously we had only discussed uniformly sampled signals where the signal is sampled at fixed intervals in time, but sometimes we may encounter signals that are sampled haphazardly in time. This is troubling because a lot of signal processing techniques that we are about to learn require that the signal is sampled uniformly. We can fix this again with linear interpolation. When we compare the 2 signals, one uniformly and one not uniformly sampled, we can see that they follow the same continuous signal but the location of those samples are at different times. Using the np.interp function you can recover the signal in which the now non-uniformly sampled signal will have a signal point like the uniform signal. But you may notice artifacts at the edge of the resampled signal, and there is more error when the gap between existing samples is larger.
+
+**Interpolation**: A method for estimating new data points within a range of discrete known data points
+
+**Resampling**: The process of changing the sampling rate of a discrete signal to obtain a new discrete representation of the underlying continuous signal.
+
+## Key Takeaways {#key-takeaways}
+
+* Deriving instantaneous heart rate from R peak locations
+* Using interpolation to normalize a non-uniformly sampled signal
+* Using interpolation to align estimates with reference data streams
+
+## Further Resources {#further-resources}
+
+* [Interpolation](https://en.wikipedia.org/wiki/Interpolation)
+* [Linear Interpolation](https://en.wikipedia.org/wiki/Linear_interpolation)
+
 
 
