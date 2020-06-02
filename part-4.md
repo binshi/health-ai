@@ -87,3 +87,15 @@ Despite the caveats above, this study broke new ground in significant ways:
 
 I think the study is super exciting in that it's a first attempt to use the capability of wearables to do long term monitoring in a medical context. There’s obviously a lot of hype around studies like this and I want us to be excited about the right things.
 
+## Classification Accuracy {#classification-accuracy}
+
+From activity classification to AF detection, many tasks in wearable healthcare involve classification. In the case of the AHS, participants were classified by the “irregular pulse” notification into AF and non-AF groups. One way of discussing**classification accuracy**in binary classification is by looking at precision and recall.
+
+* **precision**: the proportion of all true positive cases that are detected positive by the classifier
+* **recall**: the proportion of all positives detected by the classifier that are true positives
+
+This is demonstrated graphically below:
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d4b_nd320-c4-l0-precision-recall-wiki/nd320-c4-l0-precision-recall-wiki.png "Precision and Recall")Precision and Recall  
+Source: Walber. Precision and recall. Nov 2014. CC-BY-SA-4.0[Link](https://commons.wikimedia.org/wiki/File:Precisionrecall.svg)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/4417cb06-0a1d-4dad-9418-2e615308b2f6/concepts/fd2dfaee-57d9-43a6-8791-87603e962db7#)
+
