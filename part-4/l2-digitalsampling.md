@@ -199,11 +199,9 @@ When we look at signals in the frequency domain, we lose information about the t
 * [Short-Time Fourier Transform](https://en.wikipedia.org/wiki/Short-time_Fourier_transform)
 * [Spectrogram](https://en.wikipedia.org/wiki/Spectrogram)
 
-* **Frequency component**  
-  : The Fourier transform explains a signal as a sum of sinusoids. Each of these sinusoids is a frequency component of the signal.
+* **Frequency component**: The Fourier transform explains a signal as a sum of sinusoids. Each of these sinusoids is a frequency component of the signal.
 
-* **Stationarity**  
-  : A property of a signal where the statistics of a process generating a signal do not change in time. Generally, if the frequency components in a signal change in time, this signal is not stationary.
+* **Stationarity**: A property of a signal where the statistics of a process generating a signal do not change in time. Generally, if the frequency components in a signal change in time, this signal is not stationary.
 
 ## Key Takeaways {#key-takeaways}
 
@@ -240,17 +238,17 @@ Physionet is a great resource of freely available biomedical signals. You can tr
 ### Plotting {#plotting}
 
 * [Matplotlib](https://matplotlib.org/)
-  - the plotting library we use most in this course.
+  * the plotting library we use most in this course.
 * [Seaborn](https://seaborn.pydata.org/)
-  - a wrapper around
-  `matplotlib`
-  that makes it easier to do higher-level statistical visualization. We will use this a few times in the course.
+  * a wrapper around
+    `matplotlib`
+    that makes it easier to do higher-level statistical visualization. We will use this a few times in the course.
 * [Altair](https://altair-viz.github.io/)
-  - Another powerful visualization library in Python
+  * Another powerful visualization library in Python
 * [Plotly](https://plot.ly/)
-  - You can use
-  `plotly`
-  to create and save visualization in HTML / javascript. This is especially useful when you want to make offline, shareable plots that you can interact with in the browser.
+  * You can use
+    `plotly`
+    to create and save visualization in HTML / javascript. This is especially useful when you want to make offline, shareable plots that you can interact with in the browser.
 
 ### Interpolation {#interpolation}
 
