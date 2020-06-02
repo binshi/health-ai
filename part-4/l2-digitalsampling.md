@@ -107,7 +107,7 @@ Listed below are the packages we will be using throughout to visualize our datas
 
 # Interpolation {#interpolation}
 
-I**nterpolation **which is a technique that allows us to work with multiple signals that are sampled differently in time. We saw 2 signals that are both 1 Hz sine waves, but the one that is sampled at 60 Hz has many more data points than the one sampled at 25 Hz. After plotting and verifying the lengths of the signals, it might appear that`s2_interp `and`s1`are the same, but it is most certainly not! By plotting the original and the interpolated signal together we can see that linear interpolation estimates points in between existing points by using a weighted average of the original points.
+I**nterpolation **which is a technique that allows us to work with multiple signals that are sampled differently in time. We saw 2 signals that are both 1 Hz sine waves, but the one that is sampled at 60 Hz has many more data points than the one sampled at 25 Hz. After plotting and verifying the lengths of the signals, it might appear that`s2_interp`and`s1`are the same, but it is most certainly not! By plotting the original and the interpolated signal together we can see that linear interpolation estimates points in between existing points by using a weighted average of the original points.
 
 Previously we had only discussed uniformly sampled signals where the signal is sampled at fixed intervals in time, but sometimes we may encounter signals that are sampled haphazardly in time. This is troubling because a lot of signal processing techniques that we are about to learn require that the signal is sampled uniformly. We can fix this again with linear interpolation. When we compare the 2 signals, one uniformly and one not uniformly sampled, we can see that they follow the same continuous signal but the location of those samples are at different times. Using the np.interp function you can recover the signal in which the now non-uniformly sampled signal will have a signal point like the uniform signal. But you may notice artifacts at the edge of the resampled signal, and there is more error when the gap between existing samples is larger.
 
@@ -126,5 +126,14 @@ Previously we had only discussed uniformly sampled signals where the signal is s
 * [Interpolation](https://en.wikipedia.org/wiki/Interpolation)
 * [Linear Interpolation](https://en.wikipedia.org/wiki/Linear_interpolation)
 
+# Fourier Transform {#fourier-transform}
 
+  
+The theory of fourier transform is that any signal can be represented as a sum of sinusoids. Then we saw how this theory can be put into action by recreating a real accelerometer signal using only the addition of sinusoids. The frequency of the specific sinusoids that make up a signal can tell us important information that we can use to build algorithms to process that signal.
+
+e Fourier transform allows us to describe any signal as a summation of sinusoids. The frequencies of the sinusoids that comprise a signal represent the signal’s **frequency components**. The range of frequency components for a signal is called its **bandwidth**.
+
+We then discuss the **Nyquist frequency **and the limits this imposes on the sampling rate and the **bandwidth **of the signals that we sample.
+
+If we try to sample a signal that has higher frequency components than the Nyquist frequency, we will see **aliasing**, which means those high-frequency components will show up at mirrored lower frequencies.
 
