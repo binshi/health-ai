@@ -192,7 +192,7 @@ Using the Nested Cross Validation technique, we'd ideally pick the best hyperpar
 
 We then walked through how to actually apply this technique on our dataset. Our performance dropped because we are now not overfitting our hyperparameters when we evaluate model performance.
 
-We have just learned that another way to regularize our model and increase performance \(besides reducing the tree depth\) is to reduce the number of features we use. The`RandomForestClassifier `can tell us how important the features are in classifying the data. We found the 10 most important features determined by the`RandomForestClassifier`and trained the model on just those 10 features. The trained model no longer misclassified `bike`as`walk`and this improved our classifier performance by 15%, just by picking the most important features!
+We have just learned that another way to regularize our model and increase performance \(besides reducing the tree depth\) is to reduce the number of features we use. The`RandomForestClassifier`can tell us how important the features are in classifying the data. We found the 10 most important features determined by the`RandomForestClassifier`and trained the model on just those 10 features. The trained model no longer misclassified `bike`as`walk`and this improved our classifier performance by 15%, just by picking the most important features!
 
 # Hyperparameter Tuning in Review {#hyperparameter-tuning-in-review}
 
@@ -201,4 +201,28 @@ Machine learning models use data to fit their internal parameters. However, all 
 Some hyperparameters affect how easily the model will overfit the data, sometimes at the expense of complexity. In our case, this hyperparameter was the depth of the trees in the forest. When we limited the tree depth to just 2, we saw the cross-validation error decrease substantially.
 
 Another hyperparameter that we can modify is the number of features that we choose to model. Random forest models use some features more than others to classify the data. In`sklearn`we can ask the`RandomForestClassifier`which features were more important than others. By building a new model that only uses the 10 best features, we were able to improve our performance to 93%.
+
+## Further Resources {#further-resources}
+
+Nested cross-validation can be a tricky concept to wrap your head around. Here are three different explanations from three different authors. Maybe one of the following resources will explain it in a way that clicks for you:
+
+* [Nested CV - Weina Jin](https://weina.me/nested-cross-validation/)
+* [Nested CV - Elder Research](https://www.elderresearch.com/blog/nested-cross-validation)
+* [Nested CV - Stack Exchange: Cross Validated](https://stats.stackexchange.com/questions/65128/nested-cross-validation-for-model-selection)
+
+Our code implementing nested CV was pretty verbose so that you could see all the steps. As with almost everything in ML,`sklearn`can do it for us as well and you can learn more about Nested CV in`sklearn`through the[documentation](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html).
+
+Is overfitting our hyperparameters really a problem in practice?[Yes \(or so says this 2010 paper\)](http://www.jmlr.org/papers/volume11/cawley10a/cawley10a.pdf)
+
+An explanation of the difference between hyperparameters and regular parameters with this[article](https://machinelearningmastery.com/difference-between-a-parameter-and-a-hyperparameter/)from Machine Learning Mastery.
+
+If you want to learn more about Regularization through this[article](https://towardsdatascience.com/regularization-an-important-concept-in-machine-learning-5891628907ea)from Towards Data Science.
+
+## Glossary {#glossary}
+
+* **Hyperparameter**: A parameter of the model that dictates how the model learns. This is not trained during the training process of the model itself.
+* **Regularization**: Regularization is a technique to reduce overfitting of a model by discouraging complexity in the model.
+* **Nested cross-validation**: A technique to determine model performance when hyperparameters are also optimized.
+
+
 
