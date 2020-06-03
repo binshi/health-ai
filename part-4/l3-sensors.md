@@ -58,6 +58,7 @@ Not all accelerometers are implemented using this capacitor attached to a mass o
 * **Accelerometer**: A sensor that measures linear acceleration.
 
 * **Gyroscope**: A sensor that measures angular velocity.
+
 * **Magnetometer**: A sensor that measures magnetic forces.
 * **g-force**: The amount of acceleration on a body measured in units of acceleration due to gravity on earth \(or roughly 9.8m/s^2\).
 
@@ -86,6 +87,70 @@ Discriminating the gait phases like this is an important starting point for seve
 [![](https://video.udacity-data.com/topher/2020/March/5e7a3d1a_nd320-c4-l2-acc-run-break/nd320-c4-l2-acc-run-break.png "Accelerometer Magnitude - Wearer is running with a break in between")Accelerometer Magnitude - Wearer is running with a break in between](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/917364ba-762e-4f05-bb12-82e16c2092a3#)
 
 Here we see a zoomed-out view of the accelerometer trace over 2 minutes. We can see the wearer distinctly changing activities, going from jogging to still to jogging again. You can even tell that they are probably jogging on a treadmill as the speed slowly ramps up and down. And from the sharp cut-off around 50 seconds, maybe we can tell that they jumped off the treadmill or for some reason their treadmill session was cut short. I didn’t collect this dataset, so we can’t know for sure, but it’s interesting that we can learn this level of detail from just an accelerometer alone.
+
+
+
+## Further Resources {#further-resources}
+
+This paper describes using the orientation of accelerometers on the body to determine posture.[Gjoreski, Hristijan & Gams, Matjaz. \(2011\). Activity/Posture Recognition using Wearable Sensors Placed on Different Body Locations. 10.2316/P.2011.716-067.](https://pdfs.semanticscholar.org/b8ac/6f5f1a3362f83aef7c75b0b75ab09e17a3c1.pdf).
+
+A review of methods for segmenting the gait cycle.  
+[Taborri J, Palermo E, Rossi S, Cappa P. Gait Partitioning Methods: A Systematic Review. Sensors \(Basel\). 2016 Jan 6;16\(1\). doi: 10.3390/s16010066. Review. PubMed PMID: 26751449; PubMed Central PMCID: PMC4732099](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4732099/)
+
+Gait cycle segmentation using an ankle based accelerometer.  
+[Patterson, Matt & Caulfield, Brian. \(2011\). A novel approach for assessing gait using foot mounted accelerometers. 2011 5th International Conference on Pervasive Computing Technologies for Healthcare and Workshops, PervasiveHealth 2011. 218 - 221. 10.4108/icst.pervasivehealth.2011.246061.](https://eudl.eu/pdf/10.4108/icst.pervasivehealth.2011.246061).
+
+An article describing how changes in the gait cycle can be learned behavior. In this case, from prior KGB training.  
+[Araújo R, Ferreirai JJ, Antonini A, and Bloem B. \(2015\) “Gunslinger’s gait”: a new cause of unilaterally reduced arm swing. The BMJ.](https://www.bmj.com/content/351/bmj.h6141)
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d29_nd320-c4-l2-gait-phases/nd320-c4-l2-gait-phases.png "A chart showing a gait separated from two to eight phases. And as we increase in the number of phases the breakdown of each of the phases increases. This shows how we can break down a gait and thus how we could recognize a gait in our data. ")Source:  
+[Taborri J, Palermo E, Rossi S, Cappa P. Gait Partitioning Methods: A Systematic Review. Sensors \(Basel\). 2016 Jan 6;16\(1\). doi: 10.3390/s16010066. Review. PubMed PMID: 26751449; PubMed Central PMCID: PMC4732099](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4732099/)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/a7c67df0-64b2-4c1e-8504-03e279727580#)
+
+
+
+# Photoplethysmogram \(PPG\) Sensor {#photoplethysmogram-ppg-sensor}
+
+The**photoplethysmogram \(PPG\)**optically measures blood flow at the wrist. The LEDs in a PPG sensor shine a typically green light into your skin and your red blood cells absorb that green light. The reflected light is then measured by the**photodetector**. When your heart beats and blood perfuses through the wrist, there are more red blood cells that absorb the green light and the photodetector sees a smaller signal. As the heart fills back up with blood and blood leaves your wrist, the more green light is reflected back and the photodetector reading goes up. This oscillating waveform can be used to detect pulse rate. See the illustration below.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d46_nd320-c4-l2-ppg-sensor-diagram/nd320-c4-l2-ppg-sensor-diagram.png "PPG Sensor Diagram")PPG Sensor Diagram](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/7ab1b6d5-a4e8-4c29-b36d-e3411c174959#)
+
+The trough corresponds to a peak in perfusion and occurs when the ventricles of the heart contract, called**systole**. The peak in the waveform occurs when there is the least amount of blood in the wrist or when the heart relaxes and fills with blood, called**diastole**.
+
+## Noise Sources {#noise-sources}
+
+There are many other factors that affect the signal.
+
+### Melanin {#melanin}
+
+Skin absorbs light from the LEDs as well and darker skin absorbs more light. This causes a DC shift and a reduction in SNR in the PPG signal for people with darker skin.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d2a_nd320-c4-l2-melanin/nd320-c4-l2-melanin.png "Effect of Melanin")Effect of Melanin](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/7ab1b6d5-a4e8-4c29-b36d-e3411c174959#)
+
+### Arm Motion {#arm-motion}
+
+Blood is a liquid and when you move your arm around, the blood inside moves as well. This is what the PPG signal looks like while running. You can see the cadence of the arm swing in the FFT of the PPG signal as well as in the accelerometer.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d24_nd320-c4-l2-arm-motion/nd320-c4-l2-arm-motion.png "Effect of Arm Motion")Effect of Arm Motion](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/7ab1b6d5-a4e8-4c29-b36d-e3411c174959#)
+
+# Arm Position {#arm-position}
+
+Even while at rest, if the position of the arm changes, blood flows into or out of the wrist. If you hang your arm down, more blood will flow into it and the DC level of the signal will slowly drop. If you raise your arm up, blood will flow out of your arm and the DC level will increase.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d45_nd320-c4-l2-posture/nd320-c4-l2-posture.png "Effect of Posture Change")Effect of Posture Change](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/7ab1b6d5-a4e8-4c29-b36d-e3411c174959#)
+
+### Finger Movement {#finger-movement}
+
+Moving your fingers around will cause a significant disturbance in the PPG signal because, as the tendons in your wrist move, they cause other structures to move around and may even shift the position of the sensor. All this motion will change the path that light takes to travel through the wrist and change the photodetector reading.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d27_nd320-c4-l2-finger-movement/nd320-c4-l2-finger-movement.png "Effect of Finger Movement")Effect of Finger Movement](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/7ab1b6d5-a4e8-4c29-b36d-e3411c174959#)
+
+All these sources of noise make the PPG signal tricky to deal with, but now that you are aware of them, you can design algorithms that are robust to these events.
+
+* **Photoplethysmogram \(PPG\)**: the optical sensor used to measure pulse rate on a wearable device.
+
+* **Photodetector**: A sensor that measures light.
+* **Diastole**: The phase of the cardiac cycle where the heart relaxes and fills with blood.
+* **Systole**: The phase of the cardiac cycle where the ventricles contract and pump blood through the arteries.
 
 
 
