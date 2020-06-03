@@ -36,6 +36,7 @@ This cycle repeats every heartbeat and results in a very regular and uniform loo
 * **Ventricles:**The main chambers of the heart that pump blood throughout the body
 
 * **Depolarization:**The movement of charges across a cell membrane that causes the inside of the cell to become less negatively charged.
+
 * **Repolarization:**The movement of charges across the cell membrane that restore the negative resting charge inside the cell.
 * **Cardiac conduction system:**A group of specialized cardiac cells that send signals to the heart, causing it to contract. The main components that we discussed in this course were the sinoatrial \(SA\) node and the atrioventricular \(AV\) node. Other components include the bundle of His, left and right bundle branches, and the Purkinje fibers, which propagate the signal from the AV node throughout the ventricles.
 * **Sinus node:**The natural pacemaker of the heart. Responsible for generating the impulse that causes the heart to beat.
@@ -70,6 +71,25 @@ After improving the detection rules, we substantially improve the precision and 
 * T-Wave Rejection
 
 The Pan-Tompkins algorithm is a great example of an event detection algorithm. This kind of algorithm is especially common in biomedical time series processing. By diving deep into this algorithm, you’ve seen how knowledge of the underlying physiology, the signal characteristics, and the noise characteristics can help in the algorithm design. As you learn more about the tools and operations that can boost the signal and suppress noise in a specific domain, you will have better intuition for designing algorithms to solve these types of problems.
+
+# Atrial Fibrillation {#atrial-fibrillation}
+
+We’ve discussed atrial fibrillation previously in the context of the Apple Heart Study and the Framingham Study. Now we’ll learn what atrial fibrillation actually is. Atrial Fibrillation is a type of**arrhythmia**, which is an irregular heart rhythm.
+
+Recall, in a normal heart rhythm, the sinus node generates the impulse that causes the atria to contract. This impulse is propagated to the AV node and then throughout ventricles, causing the ventricles to contract. This process results in a very regular rhythm called**sinus rhythm**.
+
+In**Atrial Fibrillation**, instead of the SA node being the sole location that begins the depolarization of the atria, there are multiple locations around the atria that will spontaneously and haphazardly generate an impulse. Each of these impulses causes a partial contraction of the atria, but no single impulse depolarizes the entire atria, so there is no coherent contraction of the atria. Occasionally, one of these impulses will reach the AV node, which will then cause a ventricular contraction. But this occurs at random times, so ventricular contractions occur irregularly.
+
+When can we examine features of the ECG signal to detect atrial fibrillation? First, there is no P-wave because there is no coherent depolarization of the atria to cause an electrical disturbance large enough to create the P-wave. Instead, we see a fibrillating wave in the T-Q segment. Second, the QRS complexes are very irregular.
+
+We mentioned earlier that atrial fibrillation is associated with an increased risk of stroke. Because the atria are not contracting completely, stagnant pools of blood will form in the atria. These pools can form blood clots that are then circulated through the bloodstream. As these clots pass through progressively smaller and smaller arteries, they may eventually obstruct blood flow to the brain and cause a stroke.
+
+Now we have seen how atrial fibrillation occurs physiologically and why it’s a potentially dangerous condition. Next, we will build an algorithm that automatically detects atrial fibrillation and other arrhythmias from the ECG signal.
+
+* **Arrhythmia:**An irregular heart rhythm.
+
+* **Sinus Rhythm:**The normal, regular heart rhythm, paced by the sinus node.
+* **Atrial fibrillation:**An irregular rhythm caused by multiple, haphazard depolarizations across the atria.
 
 
 
