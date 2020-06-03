@@ -40,6 +40,7 @@ This cycle repeats every heartbeat and results in a very regular and uniform loo
 * **Repolarization:**The movement of charges across the cell membrane that restore the negative resting charge inside the cell.
 
 * **Cardiac conduction system:**A group of specialized cardiac cells that send signals to the heart, causing it to contract. The main components that we discussed in this course were the sinoatrial \(SA\) node and the atrioventricular \(AV\) node. Other components include the bundle of His, left and right bundle branches, and the Purkinje fibers, which propagate the signal from the AV node throughout the ventricles.
+
 * **Sinus node:**The natural pacemaker of the heart. Responsible for generating the impulse that causes the heart to beat.
 * **AV node:**Part of the cardiac conduction system that propagates the impulse from the atria to the ventricles after a delay.
 
@@ -97,7 +98,7 @@ Now we have seen how atrial fibrillation occurs physiologically and why it’s a
 
 In the next few concepts, we’ll be building an arrhythmia classifier. The data we will use comes from the[Computing in Cardiology \(CinC\) Challenge 2017 dataset](https://physionet.org/content/challenge-2017/1.0.0/)hosted on Physionet.
 
-The dataset contains thousands of short ECG snippets \(30s - 60s\) from the AliveCor mobile ECG monitor. The original challenge was to build a 4-class classifier for sinus rhythm, atrial fibrillation, alternative rhythm, and noisy record. We will throw out the noisy records and build a two-class classifier distinguishing between sinus rhythm and another rhythm \(atrial fibrillation included\). 
+The dataset contains thousands of short ECG snippets \(30s - 60s\) from the AliveCor mobile ECG monitor. The original challenge was to build a 4-class classifier for sinus rhythm, atrial fibrillation, alternative rhythm, and noisy record. We will throw out the noisy records and build a two-class classifier distinguishing between sinus rhythm and another rhythm \(atrial fibrillation included\).
 
 From exploring our data, we see that we have 1.5x more sinus rhythm records than other rhythm records. Most of the records are 30 seconds long; some are 60 seconds long, and a few are somewhere in between.
 
@@ -134,6 +135,56 @@ I will leave the feature computation code for you to do in the next exercise and
 ## Glossary {#glossary}
 
 * **inter-beat-interval: **The time between successive heart beats. Also called the RR interval.
+
+In this lesson, we saw a good example of how algorithms can be cascaded together. Lower level algorithms operate on the raw data and produce a set of more meaningful and versatile metrics. These metrics can then be inputs into various higher-level algorithms that are more informative about the underlying physiology of the wearer, their health, or their disease state. This allows us to independently iterate on different parts of this stack. Making the underlying algorithms more accurate will generally improve the higher-level algorithms, but this is not always the case. It’s important to remember that any change made in the lower level algorithms will have downstream effects.
+
+We also saw how having a solid understanding of the physiological processes that generate our signal can have a profound impact on how we design our algorithm.
+
+## Lesson Outline {#lesson-outline}
+
+* Heart Physiology
+* QRS Complex Detection
+  * Pan-Tompkins Algorithm
+  * Extending Pan-Tompkins
+* Atrial Fibrillation Physiology
+* Arrhythmia Detection
+  * Computing in Cardiology Challenge 2017
+  * Data Exploration
+  * Feature Extraction
+  * Modelling
+
+## Further Resources {#further-resources}
+
+[Dale Dubin’s Rapid Interpretation of EKG’s](https://www.amazon.com/Rapid-Interpretation-EKGs-Sixth-Dubin/dp/0912912065/)is one of the best resources for quickly understanding the ECG signal.
+
+The original Pan-Tompkins algorithm paper.  
+[Pan J, Tompkins WJ. A real-time QRS detection algorithm. IEEE Trans Biomed Eng. 1985;32\(3\):230–236. doi:10.1109/TBME.1985.325532](https://ieeexplore.ieee.org/document/4122029)
+
+These two papers were the inspiration for the classifier that we built. They used a lot more features and included information from the raw ECG signal as well. See how they built 4-class classifiers and performance was evaluated in this challenge.
+
+* [Behar, Rosenberg, Yaniv, Oster. Rhythm and Quality Classification from Short ECGs Recorded Using a Mobile Device. Computing in Cardiology Challenge 2017.](http://www.cinc.org/archives/2017/pdf/165-056.pdf)
+
+* [Bonizzi, Driessens, Karel. Detection of Atrial Fibrillation Episodes from Short Single Lead Recordings by Means of Ensemble Learning. Computing in Cardiology Challenge 2017.](http://www.cinc.org/archives/2017/pdf/169-313.pdf)
+
+This paper describes some important features that have been shown to be good for atrial fibrillation detection based on the irregularity of RR intervals.  
+[Sarkar S, Ritscher D, Mehra R. A detector for a chronic implantable atrial tachyarrhythmia monitor. Biomedical Engineering IEEE Transactions on 2008;55\(3\):1219–1224.](https://ieeexplore.ieee.org/document/4360105)
+
+One of the most famous databases for ECG arrhythmia detection is the[MIT-BIH database](https://physionet.org/content/mitdb/1.0.0/).[This article](http://ecg.mit.edu/george/publications/mitdb-embs-2001.pdf)is a great overview of the database and its impact.
+
+## Glossary {#glossary}
+
+* **Atria**: The upper chambers of the heart that pass blood to the ventricles.
+* **Ventricles:**The main chambers of the heart that pump blood throughout the body
+* **Depolarization:**The movement of charges across a cell membrane that causes the inside of the cell to become less negatively charged.
+* **Repolarization:**The movement of charges across the cell membrane that restore the negative resting charge inside the cell.
+* **Cardiac conduction system:**A group of specialized cardiac cells that send signals to the heart, causing it to contract. The main components that we discussed in this course were the sinoatrial \(SA\) node and the atrioventricular \(AV\) node. Other components include the bundle of His, left and right bundle branches, and the Purkinje fibers, which propagate the signal from the AV node throughout the ventricles.
+* **Sinus node:**The natural pacemaker of the heart. Responsible for generating the impulse that causes the heart to beat.
+* **AV node:**Part of the cardiac conduction system that propagates the impulse from the atria to the ventricles after a delay.
+* **Refractory Period:**The period after depolarization where a cell cannot depolarize again.
+* **Sinus Rhythm:**The normal, regular heart rhythm, paced by the sinus node.
+* **Arrhythmia:**An irregular heart rhythm.
+* **Atrial fibrillation:**An irregular rhythm caused by multiple, haphazard depolarizations across the atria.
+* **inter-beat-interval:**The time between successive heartbeats. Also called the RR interval.
 
 
 
