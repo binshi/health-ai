@@ -45,12 +45,6 @@ For small datasets like this, looking at the literature of existing features is 
 
 We describe some of these features in an IPython notebook and leave some of the implementation to you in the following exercise!
 
-
-
-
-
-
-
 # Summary {#summary}
 
 We’ve just done our first modeling task with wearable data. It took a while to get here. We had to learn what an accelerometer was and how it collected information about movement, and we had to learn about signal processing to build the features that we used in our model. We were able to build a pretty successful three-class classifier using a random forest and by doing proper hyperparameter optimization. But this problem is about as easy as it gets.
@@ -74,11 +68,7 @@ Understanding Your Data
 ### Data Exploration {#data-exploration}
 
 * [Wrist PPG Dataset](https://physionet.org/content/wrist/1.0.0/)
-* This is a great blog post by
-  [Casie Kozrykov](https://towardsdatascience.com/@kozyrkov)
-  who taught me statistics at Google! In it, she describes the dangers of overfitting your brain when you explore your data.
-  [Your dataset is a giant inkblot test](https://towardsdatascience.com/your-dataset-is-a-giant-inkblot-test-b9bf4c53eec5)
-  .
+* This is a great blog post by [Casie Kozrykov](https://towardsdatascience.com/@kozyrkov) who taught me statistics at Google! In it, she describes the dangers of overfitting your brain when you explore your data. [Your dataset is a giant inkblot test](https://towardsdatascience.com/your-dataset-is-a-giant-inkblot-test-b9bf4c53eec5).
 * Check out[this StackOverflow discussion](https://stats.stackexchange.com/questions/352688/is-exploratory-data-analysis-important-when-doing-purely-predictive-modeling)on the value of data exploration. From one of the responses:
 
   > Two weeks spent training a neuralnet can save you 2 hours looking at the input data
@@ -129,8 +119,13 @@ If you want to learn more about Regularization through this[article](https://tow
 * **Cross-validation**: A technique for estimating model performance where multiple models are trained and tested each on a separate partition of the entire dataset.
 * **Classification accuracy**: The percent of correct classifications made by a model.
 
+# Summary {#summary}
 
+Sampling a sensor hundreds of times per second means that raw sensor data has huge dimensionality. There are 7680 points of accelerometer data at 256 Hz over 10 seconds. Trying to model data points of this size will not be successful. We need to do dimensionality reduction.
 
-  
+By selecting features from the literature, we can be confident that we are not using features that overfit to our dataset and that the activity classifier we build will generalize to other studies and devices.
+
+Check out the notebooks for this lesson and`activity_classifier_utils.py`to see how we implement the features and compute them for our dataset.
+
 
 
