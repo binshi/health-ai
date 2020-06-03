@@ -160,8 +160,6 @@ In this lesson, we finally train our features to build a random forest model. We
 
 [![](https://video.udacity-data.com/topher/2020/March/5e7a3d11_nd320-c4-l3-fruit-classifierpng/nd320-c4-l3-fruit-classifierpng.png "Fruit Classifier")Fruit Classifier](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/889d707f-7014-4216-ac94-ab3c285ad0e0/concepts/1279d063-a181-43fb-a842-0d00a7e33bca#)
 
-
-
 # Further Resources {#further-resources}
 
 Random forests are boosted decision tree models. You need to understand a decision tree before learning what a random forest model is. Start with the[`sklearn`tutorial](https://scikit-learn.org/stable/modules/tree.html)on decision trees. Then check out these videos on youtube for a visual explanation:
@@ -188,5 +186,19 @@ We at first used our best guesses but now we can explore the space and see if we
 
 But, we used the entire dataset many times to figure out the optimal hyperparameters. In some sense, this is also overfitting. Our 90% classification accuracy is likely too high, and not the generalized performance. In the next concept, we can see what our actual generalized performance might be if we use our dataset to optimize hyperparameters.
 
+# Cross-Validation and Feature Importance {#cross-validation-and-feature-importance}
 
+Using the Nested Cross Validation technique, we'd ideally pick the best hyperparameters on a subset of the data, and then evaluate it on a hold-out set which is similar to train-validation-test set split but we don't have enough data to do so. When you don't have enough data to separate your dataset into 3 parts, we can nest the hyperparameter selection in another layer of cross-validation.
+
+We then walked through how to actually apply this technique on our dataset. Our performance dropped because we are now not overfitting our hyperparameters when we evaluate model performance.
+
+We have just learned that another way to regularize our model and increase performance \(besides reducing the tree depth\) is to reduce the number of features we use. The`RandomForestClassifier `can tell us how important the features are in classifying the data. We found the 10 most important features determined by the`RandomForestClassifier`and trained the model on just those 10 features. The trained model no longer misclassified `bike`as`walk`and this improved our classifier performance by 15%, just by picking the most important features!
+
+# Hyperparameter Tuning in Review {#hyperparameter-tuning-in-review}
+
+Machine learning models use data to fit their internal parameters. However, all models also have parameters that configure how they work and aren’t modified during training, these parameters are called**hyperparameters**. We can train these hyperparameters by creating many different models, each with different hyperparameters and evaluating each model’s performance. Just like we can overfit model parameters, we can also overfit its hyperparameters. To avoid this, we can estimate performance using**nested cross-validation**.
+
+Some hyperparameters affect how easily the model will overfit the data, sometimes at the expense of complexity. In our case, this hyperparameter was the depth of the trees in the forest. When we limited the tree depth to just 2, we saw the cross-validation error decrease substantially.
+
+Another hyperparameter that we can modify is the number of features that we choose to model. Random forest models use some features more than others to classify the data. In`sklearn`we can ask the`RandomForestClassifier`which features were more important than others. By building a new model that only uses the 10 best features, we were able to improve our performance to 93%.
 
