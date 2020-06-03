@@ -127,8 +127,6 @@ By selecting features from the literature, we can be confident that we are not u
 
 Check out the notebooks for this lesson and`activity_classifier_utils.py`to see how we implement the features and compute them for our dataset.
 
-
-
 # Further Resources {#further-resources}
 
 This blog post goes through a very similar process as this lesson. It starts by explaining some signal processing techniques \(like we did earlier in the course\). The author uses those techniques to build features in much the same way we just did. And then, he uses those features to build an activity classification model, just as we are about to![Machine Learning with Signal Processing Techniques](http://ataspinar.com/2018/04/04/machine-learning-with-signal-processing-techniques/)
@@ -142,5 +140,13 @@ The algorithm we built was inspired by these two papers.
 * Liu S, Gao RX, Freedson PS. Computational methods for estimating energy expenditure in human physical activities. Med Sci Sports Exerc. 2012;44:2138–2146. doi: 10.1249/MSS.0b013e31825e825a.
   [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3475744/)
 
+# Activity Classification {#activity-classification}
 
+Now that we've explored the data, examined the literature, chosen our features, and pre-processed all the data. Now it's time to finally build the classifier!
+
+First off, we will do feature extraction to train on 10 second long non-overlapping windows. And we used sklearn to build a random forest classifier to classify our data. Then we defined the hyperparameters with 100 trees where each tree has a maximum depth of 4.
+
+Now we are ready to build and train the model!
+
+But as we just trained on the whole dataset we can't easily evaluate it. But one way to evaluate the performance of a multi-class classifier is to look at a confusion matrix. The confusion matrix shows how many data points were misclassified and what they were misclassified as.
 
