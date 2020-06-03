@@ -38,6 +38,7 @@ This cycle repeats every heartbeat and results in a very regular and uniform loo
 * **Depolarization:**The movement of charges across a cell membrane that causes the inside of the cell to become less negatively charged.
 
 * **Repolarization:**The movement of charges across the cell membrane that restore the negative resting charge inside the cell.
+
 * **Cardiac conduction system:**A group of specialized cardiac cells that send signals to the heart, causing it to contract. The main components that we discussed in this course were the sinoatrial \(SA\) node and the atrioventricular \(AV\) node. Other components include the bundle of His, left and right bundle branches, and the Purkinje fibers, which propagate the signal from the AV node throughout the ventricles.
 * **Sinus node:**The natural pacemaker of the heart. Responsible for generating the impulse that causes the heart to beat.
 * **AV node:**Part of the cardiac conduction system that propagates the impulse from the atria to the ventricles after a delay.
@@ -89,7 +90,50 @@ Now we have seen how atrial fibrillation occurs physiologically and why it’s a
 * **Arrhythmia:**An irregular heart rhythm.
 
 * **Sinus Rhythm:**The normal, regular heart rhythm, paced by the sinus node.
+
 * **Atrial fibrillation:**An irregular rhythm caused by multiple, haphazard depolarizations across the atria.
+
+# Arrhythmia Detection: Dataset {#arrhythmia-detection-dataset}
+
+In the next few concepts, we’ll be building an arrhythmia classifier. The data we will use comes from the[Computing in Cardiology \(CinC\) Challenge 2017 dataset](https://physionet.org/content/challenge-2017/1.0.0/)hosted on Physionet.
+
+The dataset contains thousands of short ECG snippets \(30s - 60s\) from the AliveCor mobile ECG monitor. The original challenge was to build a 4-class classifier for sinus rhythm, atrial fibrillation, alternative rhythm, and noisy record. We will throw out the noisy records and build a two-class classifier distinguishing between sinus rhythm and another rhythm \(atrial fibrillation included\). 
+
+From exploring our data, we see that we have 1.5x more sinus rhythm records than other rhythm records. Most of the records are 30 seconds long; some are 60 seconds long, and a few are somewhere in between.
+
+We plot the data and visualize the QRS complex detections provided in the dataset. The QRS complex detector still detects QRS complexes during periods of high noise, but these detections are suspect.
+
+**In the next few concepts, we’ll be building an arrhythmia classifier**. The data we will use comes from the[Computing in Cardiology \(CinC\) Challenge 2017 dataset](https://physionet.org/content/challenge-2017/1.0.0/)hosted on Physionet.
+
+The dataset contains thousands of short ECG snippets \(30s - 60s\) from the AliveCor mobile ECG monitor. The original challenge was to build a 4-class classifier for sinus rhythm, atrial fibrillation, alternative rhythm, and noisy record. We will throw out the noisy records and build a two-class classifier distinguishing between sinus rhythm and another rhythm \(atrial fibrillation included\).
+
+From exploring our data, we see that we have 1.5x more sinus rhythm records than other rhythm records. Most of the records are 30 seconds long; some are 60 seconds long, and a few are somewhere in between.
+
+We plot the data and visualize the QRS complex detections provided in the dataset. The QRS complex detector still detects QRS complexes during periods of high noise, but these detections are suspect.
+
+# Arrhythmia Detection: Features {#arrhythmia-detection-features}
+
+As with activity classification, we will featurize our raw signal and throw those features into a classifier to detect an abnormal heart rhythm. Our input signal will be the time between two QRS complexes, known as the RR interval \(for the R-wave\). This is also called the**inter-beat-interval**. Our input signal will be derived from the output of the Pan-Tompkins algorithm. We will include some of the features in
+
+> [Behar, Rosenberg, Yaniv, Oster. Rhythm and Quality Classification from Short ECGs Recorded Using a Mobile Device. Computing in Cardiology Challenge 2017.](https://www.google.com/url?q=http://www.cinc.org/archives/2017/pdf/165-056.pdf&sa=D&ust=1580267302117000&usg=AFQjCNEKkpmUb8YRX5AjMTMAbTxJRJbbCw)
+
+and
+
+> [Bonizzi, Driessens, Karel. Detection of Atrial Fibrillation Episodes from Short Single Lead Recordings by Means of Ensemble Learning. Computing in Cardiology Challenge 2017.](https://www.google.com/url?q=http://www.cinc.org/archives/2017/pdf/169-313.pdf&sa=D&ust=1580267302117000&usg=AFQjCNHKpTlpKBK9593XqAV23YBN1lmO8Q)
+
+which were entries in the CinC challenge. Recall that the RR interval time series is irregularly sampled heartbeat because we get a new measurement at each heartbeat, not at some fixed interval in time. As you’ll soon see, many of the features we want can be computed on an irregular time series, but some, especially frequency domain features, cannot. In that case, we’ll first have to make this uniform using interpolation before we can compute our frequency domain features.
+
+So we can separate our features into time domain features and frequency domain features. The first few are summary statistics like min, max, median, mean, standard deviation. Then we want to compute the number of outliers. And we’ll say an outlier is an RR interval that is greater than 1.2 times the average RR interval in that record.
+
+Next, we want to compute the root-mean-square of the difference between adjacent RR intervals. And lastly, we want the percent of RR interval differences that are greater than 50 milliseconds.
+
+Before we compute our frequency domain features, we will need to regularize the RR interval time series so that we can take the FFT of it. We want to interpolate the RR interval time series onto a regular 4 Hz time grid. Then the features we want will be the largest FFT magnitude component between 0.04 Hz and 0.15 Hz. We also want to know at which frequency this occurs. And we want both of these values for the band between 0.15 Hz and 0.4 Hz as well.
+
+I will leave the feature computation code for you to do in the next exercise and in the next video we will pick this back up with the implementation.
+
+## Glossary {#glossary}
+
+* **inter-beat-interval: **The time between successive heart beats. Also called the RR interval.
 
 
 
