@@ -19,8 +19,6 @@ Below is a diagram describing the concepts that we will cover in this lesson. Sp
 
 [![](https://video.udacity-data.com/topher/2020/March/5e7a3d14_nd320-c4-l4-lesson-concepts/nd320-c4-l4-lesson-concepts.png "Lesson Concepts")Lesson Concepts](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/048a9529-ee90-4e0f-bf00-413bb3e18983/concepts/3a10a13f-d928-433a-a654-6b54a821c9f1#)
 
-
-
 # Heart Physiology {#heart-physiology}
 
 Before we can understand all the parts of the ECG wave, we need to first learn more about how the heart works. The heart is made up of four chambers, two atria and two ventricles. The**atria**pump blood into the ventricles and then the**ventricles**pump blood throughout the body. Each heart cell is polarized, meaning there is a different electrical charge inside and outside of the cell. At rest, the inside of the cell is negatively charged compared to the outside. When the cell**depolarizes**, positive charges outside of the cell flow inside and makes the interior of the cell positively charged relative to the outside. This depolarization causes the cell to contract. The movement of charges across a heart cell’s membrane is the source of the electrical activity that gets measured by an ECG.
@@ -36,11 +34,42 @@ This cycle repeats every heartbeat and results in a very regular and uniform loo
 * **Atria**: The upper chambers of the heart that pass blood to the ventricles.
 
 * **Ventricles:**The main chambers of the heart that pump blood throughout the body
+
 * **Depolarization:**The movement of charges across a cell membrane that causes the inside of the cell to become less negatively charged.
 * **Repolarization:**The movement of charges across the cell membrane that restore the negative resting charge inside the cell.
 * **Cardiac conduction system:**A group of specialized cardiac cells that send signals to the heart, causing it to contract. The main components that we discussed in this course were the sinoatrial \(SA\) node and the atrioventricular \(AV\) node. Other components include the bundle of His, left and right bundle branches, and the Purkinje fibers, which propagate the signal from the AV node throughout the ventricles.
 * **Sinus node:**The natural pacemaker of the heart. Responsible for generating the impulse that causes the heart to beat.
 * **AV node:**Part of the cardiac conduction system that propagates the impulse from the atria to the ventricles after a delay.
+
+# Pan-Tompkins QRS Complex Detection {#pan-tompkins-qrs-complex-detection}
+
+Previously, we learned that ventricular contraction corresponds with the QRS complex. Finding these QRS complexes in the ECG signal is important for a number of algorithmic goals. It directly gives you information about the heart rate and heart rhythm and provides important context when doing more complex processing.
+
+The way we find these QRS complexes is by using an algorithm called the Pan-Tompkins algorithm.
+
+For most event detection tasks like this, we start with preprocessing steps that will boost the signal and suppress the noise. For Pan-Tompkins, we start with the bandpass filter that selects for frequencies in the QRS complex and suppresses frequencies outside of that band. This is followed by a one-sample difference, which is analogous to a derivative operation. This will preserve the steep slopes of the QRS complex and attenuate shallower ones elsewhere in the waveform. Next, we do an element-wise square which non-linearly amplifies the larger portions of our signal and makes everything positive. Finally, we do a moving sum over a fixed window length. This takes advantage of the fact the QRS complex has a fixed width of 150ms. If we tune the moving sum window to 150ms, we can fully take advantage of all the energy in the QRS complex, while attenuating other spikes that are shorter or longer than 150ms.
+
+The detection steps are fairly simple. We simply find the peaks in our pre-processed waveform and then threshold them to select for the QRS complexes.
+
+Next, we take a look at the code for this algorithm, and we plot the output.
+
+# Pan-Tompkings In Code {#pan-tompkings-in-code}
+
+We saw a basic implementation of the Pan-Tompkins algorithm and visualized how the pre-processing steps change the waveform. On noisy signals, with small QRS complexes, we saw just how well the pre-processing steps could improve our signal. Still, we saw that sometimes it would not be enough and more complex detection rules need to be implemented.
+
+In the following exercise, we implement more sophisticated detection rules for just this purpose.
+
+The overall goal here isn’t necessarily to understand the Pan-Tompkins algorithm per se; it’s really to get to a place where we can solve this kind of problem in any domain where you have some knowledge of the underlying physiology and the signal characteristics and the noise characteristics and you can do for your task what Pan-Tompkins algorithm does for QRS complex detection. As you learn more about these tools and operations that can boost signal and suppress noise in your specific domain, you’ll be able to build a better intuition for designing your own algorithm on your own problem.
+
+**Notebook**
+
+After improving the detection rules, we substantially improve the precision and recall of our detector substantially. Watch the video to see how we implement the three strategies for more robust detection:
+
+* Refractory Period Blanking
+* Adaptive Thresholding
+* T-Wave Rejection
+
+The Pan-Tompkins algorithm is a great example of an event detection algorithm. This kind of algorithm is especially common in biomedical time series processing. By diving deep into this algorithm, you’ve seen how knowledge of the underlying physiology, the signal characteristics, and the noise characteristics can help in the algorithm design. As you learn more about the tools and operations that can boost the signal and suppress noise in a specific domain, you will have better intuition for designing algorithms to solve these types of problems.
 
 
 
