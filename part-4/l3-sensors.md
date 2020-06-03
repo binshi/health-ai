@@ -148,6 +148,7 @@ All these sources of noise make the PPG signal tricky to deal with, but now that
 * **Photodetector**: A sensor that measures light.
 
 * **Diastole**: The phase of the cardiac cycle where the heart relaxes and fills with blood.
+
 * **Systole**: The phase of the cardiac cycle where the ventricles contract and pump blood through the arteries.
 
 ## Signal Quality Evaluation {#signal-quality-evaluation}
@@ -170,5 +171,12 @@ Again we observe that we get higher amplitudes in dry and warmer environments. T
 
 In the following exercise you will use a more holistic metric to evaluate PPG signal quality called the signal-to-noise ratio that avoids some of these problems.
 
+## Further Resources {#further-resources}
+
+* To learn more about the PPGs, you can look at this[Wikipedia Entry](https://en.wikipedia.org/wiki/Photoplethysmogram).
+
+* A dissertation on PPG processing techniques that includes an introduction that has great background information on the PPG signal in general.[Schäck, Tim. Photoplethysmography-Based Biomedical Signal Processing Darmstadt, Technische Universität Darmstadt, Jahr der Veröffentlichung der Dissertation auf TU prints: 2019 Tag der mündlichen Prüfung: 21.01.2019.](https://pdfs.semanticscholar.org/c1d1/318d4fa8c8c02b1eaae2ca50c16532b53e15.pdf).
+
+  
 
 
