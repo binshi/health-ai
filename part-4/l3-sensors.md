@@ -207,6 +207,66 @@ and
 
 We have to address these concerns before we can really understand the value of using the Apple Watch as a screening or diagnostic tool.
 
+
+
+## Summary {#summary}
+
+Every time you interact with a new sensor type, it’s a good idea to become familiar with the sensor in this way. You should try to understand the physics that make the sensor work, explore real data from the sensor, and research what common noise sources are and the artifacts they produce in the signal. Seeing how your own body reacts with a sensor is a great way to get experience and build intuition when possible. Finally, examining the existing literature on your sensor and the conditions that you are using it in is critical for learning a larger picture of the sensor’s characteristics.
+
+In this lesson, we learned how the three sensors we’re using in this course -- the IMU, PPG, and ECG sensors -- work. You now know what physical quantities are measured by each sensor, know what each sensor looks like, and learned about common challenges and noise sources that arise when working with these signals.
+
+### Outline {#outline}
+
+* Wrist Wearable Demo
+* IMU Sensor
+  * IMU Overview
+  * Accelerometer Deep Dive
+* PPG Sensor
+* ECG Sensor
+
+## Further Resources {#further-resources}
+
+### IMU {#imu}
+
+* This paper describes using the orientation of accelerometers on the body to determine posture.
+  [Gjoreski, Hristijan & Gams, Matjaz. \(2011\). Activity/Posture Recognition using Wearable Sensors Placed on Different Body Locations. 10.2316/P.2011.716-067.](https://pdfs.semanticscholar.org/b8ac/6f5f1a3362f83aef7c75b0b75ab09e17a3c1.pdf)
+  .
+* A review of methods for segmenting the gait cycle.
+  [Taborri J, Palermo E, Rossi S, Cappa P. Gait Partitioning Methods: A Systematic Review. Sensors \(Basel\). 2016 Jan 6;16\(1\). doi: 10.3390/s16010066. Review. PubMed PMID: 26751449; PubMed Central PMCID: PMC4732099](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4732099/)
+* Gait cycle segmentation using an ankle based accelerometer.
+  [Patterson, Matt & Caulfield, Brian. \(2011\). A novel approach for assessing gait using foot mounted accelerometers. 2011 5th International Conference on Pervasive Computing Technologies for Healthcare and Workshops, PervasiveHealth 2011. 218 - 221. 10.4108/icst.pervasivehealth.2011.246061.](https://eudl.eu/pdf/10.4108/icst.pervasivehealth.2011.246061)
+  .
+* An article describing how changes in the gait cycle can be learned behavior. In this case, from prior KGB training.
+  [Araújo R, Ferreirai JJ, Antonini A, and Bloem B. \(2015\) “Gunslinger’s gait”: a new cause of unilaterally reduced arm swing. The BMJ.](https://www.bmj.com/content/351/bmj.h6141)
+
+### PPG {#ppg}
+
+* To learn more about the PPGs, you can look at this[Wikipedia Entry](https://en.wikipedia.org/wiki/Photoplethysmogram)
+
+* A dissertation on PPG processing techniques that includes an introduction that has great background information on the PPG signal in general.[Schäck, Tim. Photoplethysmography-Based Biomedical Signal Processing Darmstadt, Technische Universität Darmstadt, Jahr der Veröffentlichung der Dissertation auf TU prints: 2019 Tag der mündlichen Prüfung: 21.01.2019.](https://pdfs.semanticscholar.org/c1d1/318d4fa8c8c02b1eaae2ca50c16532b53e15.pdf).
+
+### ECG {#ecg}
+
+* You can learn more about the ECG in the
+  [Wikipedia Entry](https://en.wikipedia.org/wiki/Electrocardiography)
+* Note: We’ll cover the ECG in more detail in lesson 4.
+
+## Glossary {#glossary}
+
+* **Inertial Measurement Unit \(IMU\)**: A collection of sensors that measure motion.
+* **Accelerometer**: A sensor that measures linear acceleration.
+* **Gyroscope**: A sensor that measures angular velocity.
+* **Magnetometer**: A sensor that measures magnetic forces.
+* **g-force**: The amount of acceleration on a body due to gravity.
+* **Photoplethysmogram \(PPG\)**: the optical sensor used to measure pulse rate on a wearable device.
+* **Photodetector**: A sensor that measures light.
+* **Diastole**: The phase of the cardiac cycle where the heart relaxes and fills with blood.
+* **Systole**: The phase of the cardiac cycle where the ventricles contract and pump blood through the arteries.
+* **Electrocardiogram \(ECG\)**: A sensor that measures the electrical activity of the heart.
+* **Electrode**: Part of an ECG circuit. Conductive pads that make contact with the skin.
+* **Lead**: An electrical potential difference measured across two electrodes of an ECG circuit.
+* **Holter monitor**: A mobile ECG device that can measure continuously for typically 24 - 72 hours.
+
   
 
 
