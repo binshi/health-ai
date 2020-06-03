@@ -224,5 +224,84 @@ If you want to learn more about Regularization through this[article](https://tow
 * **Regularization**: Regularization is a technique to reduce overfitting of a model by discouraging complexity in the model.
 * **Nested cross-validation**: A technique to determine model performance when hyperparameters are also optimized.
 
+# Summary {#summary}
+
+We’ve just done our first modeling task with wearable data. It took a while to get here. We had to learn what an accelerometer was and how it collected information about movement, and we had to learn about signal processing to build the features that we used in our model. We were able to build a pretty successful three-class classifier using a random forest and by doing proper hyperparameter optimization. But this problem is about as easy as it gets.
+
+If you’re looking for a challenge, go to the original dataset and see that it actually has four classes -- running, walking, high-intensity biking, and low-intensity biking. You could try building a classifier that can distinguish between high-intensity and low-intensity biking. You’ll also find a PPG signal in the dataset. That might help you discriminate between these two classes. You might also find that it’s impossible. Maybe there’s not enough information in these sensors to solve this problem, or maybe the dataset wasn’t collected as rigorously as we need. Ultimately, low-resistance and high-resistance is subjective, and the dataset description even notes:
+
+> ...each participant was free to set the pace of the treadmill and pedal rate on the bike so they were comfortable and also to change these settings or stop the exercise at any time.
+
+More often than not, this is the reality of real-world data science problems.
+
+### Outline {#outline}
+
+Understanding Your Data
+
+* Wrist PPG Dataset
+* Data Exploration and Visualization Understanding The Literature
+  * Feature Engineering and Extraction Modeling Performance Evaluation Hyperparameter Optimization
+
+## Further Resources {#further-resources}
+
+### Data Exploration {#data-exploration}
+
+* [Wrist PPG Dataset](https://physionet.org/content/wrist/1.0.0/)
+* This is a great blog post by
+  [Casie Kozrykov](https://towardsdatascience.com/@kozyrkov)
+  who taught me statistics at Google! In it, she describes the dangers of overfitting your brain when you explore your data.
+  [Your dataset is a giant inkblot test](https://towardsdatascience.com/your-dataset-is-a-giant-inkblot-test-b9bf4c53eec5)
+  .
+* Check out[this StackOverflow discussion](https://stats.stackexchange.com/questions/352688/is-exploratory-data-analysis-important-when-doing-purely-predictive-modeling)on the value of data exploration. From one of the responses:
+
+  > Two weeks spent training a neuralnet can save you 2 hours looking at the input data
+
+* And finally, a[blog post](https://machinelearningmastery.com/understand-problem-get-better-results-using-exploratory-data-analysis/)from a machine learning practitioner on the data exploration.
+
+### Feature Creation {#feature-creation}
+
+This blog post,[Machine Learning with Signal Processing Techniques](http://ataspinar.com/2018/04/04/machine-learning-with-signal-processing-techniques/), goes through a very similar process as this lesson. It starts by explaining some signal processing techniques \(like we did earlier in the course\). The author uses those techniques to build features in much the same way we just did. And then, he uses those features to build an activity classification model, just as we are about to!
+
+The algorithm we built was inspired by these two papers.
+
+[Mehrang S., Pietilä J., Korhonen I. An Activity Recognition Framework Deploying the Random Forest Classifier and A Single Optical Heart Rate Monitoring and Triaxial Accelerometer Wrist-Band. Sensors. 2018;18:613. doi: 10.3390/s18020613.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5856093/)
+
+[Liu S, Gao RX, Freedson PS. Computational methods for estimating energy expenditure in human physical activities. Med Sci Sports Exerc. 2012;44:2138–2146. doi: 10.1249/MSS.0b013e31825e825a.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3475744/)
+
+### Model Building {#model-building}
+
+Random forests are boosted decision tree models. You need to understand a decision tree before learning what a random forest model is. Start with the[`sklearn`tutorial](https://scikit-learn.org/stable/modules/tree.html)on decision trees. Then check out these videos on youtube for a visual explanation:
+
+[Decision Trees Part 1](https://www.youtube.com/watch?v=7VeUPuFGJHk)[Decision Trees Part 2](https://www.youtube.com/watch?v=wpNl-JwwplA)[Random Forest Part 1](https://www.youtube.com/watch?v=J4Wdy0Wc_xQ)[Random Forest Part 2](https://www.youtube.com/watch?v=nyxTdL_4Q-Q)
+
+See this[list of classification accuracy metrics](https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics)that can be computed in`sklearn`.
+
+Follow[this series of blog posts](https://towardsdatascience.com/multi-class-metrics-made-simple-part-i-precision-and-recall-9250280bddc2)for an understanding of how these accuracy metrics work on multiclass problems like ours.
+
+### Hyperparameter Optimization {#hyperparameter-optimization}
+
+Nested cross-validation can be a tricky concept to wrap your head around. Here are three different explanations from three different authors. Maybe one of the following resources will explain it in a way that clicks for you:
+
+* [Nested CV - Weina Jin](https://weina.me/nested-cross-validation/)
+* [Nested CV - Elder Research](https://www.elderresearch.com/blog/nested-cross-validation)
+* [Nested CV - Stack Exchange: Cross Validated](https://stats.stackexchange.com/questions/65128/nested-cross-validation-for-model-selection)
+
+Our code implementing nested CV was pretty verbose so that you could see all the steps. As with almost everything in ML,`sklearn`can do it for us as well and you can learn more about Nested CV in`sklearn`through the[documentation](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html).
+
+Is overfitting our hyperparameters really a problem in practice?[Yes \(or so says this 2010 paper\)](http://www.jmlr.org/papers/volume11/cawley10a/cawley10a.pdf)
+
+An explanation on the difference between hyperparameters and regular parameters with this[article](https://machinelearningmastery.com/difference-between-a-parameter-and-a-hyperparameter/)from Machine Learning Mastery.
+
+If you want to learn more about Regularization through this[article](https://towardsdatascience.com/regularization-an-important-concept-in-machine-learning-5891628907ea)from Towards Data Science.
+
+## Glossary {#glossary}
+
+* **Hyperparameter**: A parameter of the model that dictates how the model learns. This is not trained during the training process of the model itself.
+* **Regularization**: Regularization is a technique to reduce overfitting of a model by discouraging complexity in the model.
+* **Nested cross-validation**: A technique to determine model performance when hyperparameters are also optimized.
+* **Cross-validation**: A technique for estimating model performance where multiple models are trained and tested each on a separate partition of the entire dataset.
+* **Classification accuracy**: The percent of correct classifications made by a model.
+
+  
 
 
