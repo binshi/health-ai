@@ -129,3 +129,18 @@ Check out the notebooks for this lesson and`activity_classifier_utils.py`to see 
 
 
 
+# Further Resources {#further-resources}
+
+This blog post goes through a very similar process as this lesson. It starts by explaining some signal processing techniques \(like we did earlier in the course\). The author uses those techniques to build features in much the same way we just did. And then, he uses those features to build an activity classification model, just as we are about to![Machine Learning with Signal Processing Techniques](http://ataspinar.com/2018/04/04/machine-learning-with-signal-processing-techniques/)
+
+## Literature {#literature}
+
+The algorithm we built was inspired by these two papers.
+
+* Mehrang S., Pietilä J., Korhonen I. An Activity Recognition Framework Deploying the Random Forest Classifier and A Single Optical Heart Rate Monitoring and Triaxial Accelerometer Wrist-Band. Sensors. 2018;18:613. doi: 10.3390/s18020613.
+  [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5856093/)
+* Liu S, Gao RX, Freedson PS. Computational methods for estimating energy expenditure in human physical activities. Med Sci Sports Exerc. 2012;44:2138–2146. doi: 10.1249/MSS.0b013e31825e825a.
+  [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3475744/)
+
+
+
