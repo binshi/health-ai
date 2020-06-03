@@ -150,8 +150,6 @@ Now we are ready to build and train the model!
 
 But as we just trained on the whole dataset we can't easily evaluate it. But one way to evaluate the performance of a multi-class classifier is to look at a confusion matrix. The confusion matrix shows how many data points were misclassified and what they were misclassified as.
 
-
-
 # Summary {#summary}
 
 We've explored the data, examined the literature, chosen our features, and pre-processed all the data. Now it's time to finally build the classifier!
@@ -161,4 +159,34 @@ In this lesson, we finally train our features to build a random forest model. We
 ### Quiz {#quiz}
 
 [![](https://video.udacity-data.com/topher/2020/March/5e7a3d11_nd320-c4-l3-fruit-classifierpng/nd320-c4-l3-fruit-classifierpng.png "Fruit Classifier")Fruit Classifier](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/889d707f-7014-4216-ac94-ab3c285ad0e0/concepts/1279d063-a181-43fb-a842-0d00a7e33bca#)
+
+
+
+# Further Resources {#further-resources}
+
+Random forests are boosted decision tree models. You need to understand a decision tree before learning what a random forest model is. Start with the[`sklearn`tutorial](https://scikit-learn.org/stable/modules/tree.html)on decision trees. Then check out these videos on youtube for a visual explanation:
+
+* [Decision Trees Part 1](https://www.youtube.com/watch?v=7VeUPuFGJHk)
+* [Decision Trees Part 2](https://www.youtube.com/watch?v=wpNl-JwwplA)
+* [Random Forest Part 1](https://www.youtube.com/watch?v=J4Wdy0Wc_xQ)
+* [Random Forest Part 2](https://www.youtube.com/watch?v=nyxTdL_4Q-Q)
+
+See this[list of classification accuracy metrics](https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics)that can be computed in`sklearn`.
+
+Follow[this series of blog posts](https://towardsdatascience.com/multi-class-metrics-made-simple-part-i-precision-and-recall-9250280bddc2)for an understanding of how these accuracy metrics work on multiclass problems like ours.
+
+## Glossary {#glossary}
+
+* **Cross-validation**: A technique for estimating model performance where multiple models are trained and tested each on a separate partition of the entire dataset.
+* **Classification accuracy**: The percent of correct classifications made by a model.
+
+# Hyperparameter Tuning and Regularization {#hyperparameter-tuning-and-regularization}
+
+We ended the last concept with a classification accuracy of 77%. However, there are a few more ways we can turn to improve the performance.
+
+We at first used our best guesses but now we can explore the space and see if we can improve the performance. We found that reducing the maximum tree depth to 2, we have significantly increased our classification accuracy, from 77% to 89%. By reducing the depth to 2, we are**regularizing**our model. Regularization is an important topic in ML and is our best way to avoid overfitting. This is why we see an increase in the cross-validated performance.
+
+But, we used the entire dataset many times to figure out the optimal hyperparameters. In some sense, this is also overfitting. Our 90% classification accuracy is likely too high, and not the generalized performance. In the next concept, we can see what our actual generalized performance might be if we use our dataset to optimize hyperparameters.
+
+
 
