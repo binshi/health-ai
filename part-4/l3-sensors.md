@@ -60,6 +60,7 @@ Not all accelerometers are implemented using this capacitor attached to a mass o
 * **Gyroscope**: A sensor that measures angular velocity.
 
 * **Magnetometer**: A sensor that measures magnetic forces.
+
 * **g-force**: The amount of acceleration on a body measured in units of acceleration due to gravity on earth \(or roughly 9.8m/s^2\).
 
 # Accelerometer Deep-Dive {#accelerometer-deep-dive}
@@ -88,8 +89,6 @@ Discriminating the gait phases like this is an important starting point for seve
 
 Here we see a zoomed-out view of the accelerometer trace over 2 minutes. We can see the wearer distinctly changing activities, going from jogging to still to jogging again. You can even tell that they are probably jogging on a treadmill as the speed slowly ramps up and down. And from the sharp cut-off around 50 seconds, maybe we can tell that they jumped off the treadmill or for some reason their treadmill session was cut short. I didn’t collect this dataset, so we can’t know for sure, but it’s interesting that we can learn this level of detail from just an accelerometer alone.
 
-
-
 ## Further Resources {#further-resources}
 
 This paper describes using the orientation of accelerometers on the body to determine posture.[Gjoreski, Hristijan & Gams, Matjaz. \(2011\). Activity/Posture Recognition using Wearable Sensors Placed on Different Body Locations. 10.2316/P.2011.716-067.](https://pdfs.semanticscholar.org/b8ac/6f5f1a3362f83aef7c75b0b75ab09e17a3c1.pdf).
@@ -105,8 +104,6 @@ An article describing how changes in the gait cycle can be learned behavior. In 
 
 [![](https://video.udacity-data.com/topher/2020/March/5e7a3d29_nd320-c4-l2-gait-phases/nd320-c4-l2-gait-phases.png "A chart showing a gait separated from two to eight phases. And as we increase in the number of phases the breakdown of each of the phases increases. This shows how we can break down a gait and thus how we could recognize a gait in our data. ")Source:  
 [Taborri J, Palermo E, Rossi S, Cappa P. Gait Partitioning Methods: A Systematic Review. Sensors \(Basel\). 2016 Jan 6;16\(1\). doi: 10.3390/s16010066. Review. PubMed PMID: 26751449; PubMed Central PMCID: PMC4732099](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4732099/)](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/a7c67df0-64b2-4c1e-8504-03e279727580#)
-
-
 
 # Photoplethysmogram \(PPG\) Sensor {#photoplethysmogram-ppg-sensor}
 
@@ -149,8 +146,29 @@ All these sources of noise make the PPG signal tricky to deal with, but now that
 * **Photoplethysmogram \(PPG\)**: the optical sensor used to measure pulse rate on a wearable device.
 
 * **Photodetector**: A sensor that measures light.
+
 * **Diastole**: The phase of the cardiac cycle where the heart relaxes and fills with blood.
 * **Systole**: The phase of the cardiac cycle where the ventricles contract and pump blood through the arteries.
+
+## Signal Quality Evaluation {#signal-quality-evaluation}
+
+The single most important factor that can make or break any algorithm you build is the underlying quality of the signal. As an algorithms engineer you may have the rare opportunity to influence the design of the hardware that will acquire the signal that will then be the input to your algorithms. Being able to provide actionable quantitative feedback for various hardware prototypes will provide endless returns down the line when you start building algorithms based on that hardware.
+
+We can see an example of this kind of analysis in[this paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6651860/)where the researchers analyzed the effects of different mediums \(water vs. air\) and temperature on the PPG signal quality and pulse rate estimation from a smartphone sensor.
+
+First let’s look at the pulse rate algorithm accuracy.
+
+[![](https://video.udacity-data.com/topher/2020/May/5eb8ee6b_l2-ppg-snr-1/l2-ppg-snr-1.png "Pulse rate estimation accuracy vs. temperature and medium")Pulse rate accuracy acquired from smartphone PPG signals for varying temperature in dry \(red\) and underwater \(blue\) environments.](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/3e41ac7a-3ff9-42f7-8594-e15376d834b9#)
+
+Pulse rate accuracy deteriorates at cooler temperatures and is worse underwater compared to in air.
+
+Using a pulse rate algorithm’s accuracy is a great way to evaluate signal quality, especially if the primary thing you want to do with that signal is estimate pulse rate and if you have the algorithm on hand. However, using an algorithm to estimate signal quality can conflate the algorithm accuracy and its idiosyncrasies with the signal quality. Sometimes you may want to look directly at the signal characteristics themselves. Here, the researchers chose to look at signal amplitude.
+
+[![](https://video.udacity-data.com/topher/2020/May/5eb8ee6b_l2-ppg-snr-2/l2-ppg-snr-2.png "PPG signal amplitude vs. temperature and medium")Smartphone PPG signal amplitude for varying temperature in dry \(red\) and underwater \(blue\) environments.](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/3e41ac7a-3ff9-42f7-8594-e15376d834b9#)
+
+Again we observe that we get higher amplitudes in dry and warmer environments. This plot implies that a higher signal amplitude corresponds to higher signal quality. But as we have seen previously, with PPG signals, this is not always the case. Motion artifact and ambient light can cause high amplitude peaks in the signal that definitely do not correspond to signal quality. Optimizing for signal amplitude might mean that you build hardware that is extremely susceptible to motion artifacts.
+
+In the following exercise you will use a more holistic metric to evaluate PPG signal quality called the signal-to-noise ratio that avoids some of these problems.
 
 
 
