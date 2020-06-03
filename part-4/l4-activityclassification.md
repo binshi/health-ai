@@ -150,3 +150,15 @@ Now we are ready to build and train the model!
 
 But as we just trained on the whole dataset we can't easily evaluate it. But one way to evaluate the performance of a multi-class classifier is to look at a confusion matrix. The confusion matrix shows how many data points were misclassified and what they were misclassified as.
 
+
+
+# Summary {#summary}
+
+We've explored the data, examined the literature, chosen our features, and pre-processed all the data. Now it's time to finally build the classifier!
+
+In this lesson, we finally train our features to build a random forest model. We talk about model performance and use**cross-validation**to estimate our accuracy. We end up with a model with an overall**classification accuracy**of 73%, which is the percent of correct classifications made by the model. But don’t fret, we’ll do better in the next video!
+
+### Quiz {#quiz}
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d11_nd320-c4-l3-fruit-classifierpng/nd320-c4-l3-fruit-classifierpng.png "Fruit Classifier")Fruit Classifier](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/889d707f-7014-4216-ac94-ab3c285ad0e0/concepts/1279d063-a181-43fb-a842-0d00a7e33bca#)
+
