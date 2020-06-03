@@ -193,5 +193,20 @@ The ECG has been “somewhat” wearable for a while.**Holter monitors**are ECG 
 
 Beyond that, there are chest patches that only measure 1-lead of the 12 lead ECG. These chest patches can last from a few days to a couple of weeks. In 2011, Alivecor started making a handheld device that paired with an iPhone to take an ECG. Apple Watch and Verily’s Study Watch both have ECG sensors embedded into the hardware. On a wristwatch, the two electrodes are moved to the wrist and fingers on opposing hands. Because of this, the ECG cannot be monitored continuously and passively like the chest patch or Holter monitor or other sensors on a wearable. However, a wrist-watch can be worn for years, while a chest patch only lasts for a few weeks.
 
+# The Apple Heart Study - Revisited {#the-apple-heart-study-revisited}
+
+Wearables allow us to collect more data under more conditions from more people. Typically we’d only measure ECGs from people that are suspected of having heart conditions. Now Apple Watch can measure and look for atrial fibrillation from its large, mostly healthy population. More research needs to be done into AF itself to really know how useful detecting it in this population actually is. For example, what does it mean when someone under 40 years old has AF. Are they actually at an increased risk of stroke? The Framingham study -- which found the association between AF and stroke -- was conducted in the 40s, 50s, and 60s when AF was diagnosed after coming to the hospital and taking an ECG. If a subject’s AF was not persistent enough to show up at that time, then it would go undiagnosed. In fact, for a lot of the stroke victims, it was unknown that they even had AF until after they came to the hospital for the stroke itself.
+
+Although the population of Framingham study was at a 4-5X increase in the risk of stroke from AF, it is unclear if the population that the Apple Watch is discovering AF for is also at this increased risk. What does it mean to the public health system when you're alerting all these people of AF just because you can monitor it more closely than you ever could before? And how should patients and their doctors respond when they discover AF? The Apple Heart Study paper mentions these concerns explicitly:
+
+> ...further studies are needed to better understand the public health implications of identifying irregular pulse in persons younger than 40 years of age.
+
+and
+
+> ...uncertainty remains about the benefits of diagnosing and treating asymptomatic atrial fibrillation...
+
+We have to address these concerns before we can really understand the value of using the Apple Watch as a screening or diagnostic tool.
+
+  
 
 
