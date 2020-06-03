@@ -177,6 +177,21 @@ In the following exercise you will use a more holistic metric to evaluate PPG si
 
 * A dissertation on PPG processing techniques that includes an introduction that has great background information on the PPG signal in general.[Schäck, Tim. Photoplethysmography-Based Biomedical Signal Processing Darmstadt, Technische Universität Darmstadt, Jahr der Veröffentlichung der Dissertation auf TU prints: 2019 Tag der mündlichen Prüfung: 21.01.2019.](https://pdfs.semanticscholar.org/c1d1/318d4fa8c8c02b1eaae2ca50c16532b53e15.pdf).
 
-  
+# Electrocardiogram \(ECG\) Sensor {#electrocardiogram-ecg-sensor}
+
+**Electrocardiograms \(ECG or EKG\)**measure the voltage across the chest, which is primarily due to the heart rhythm. ECGs are different from the other raw signals produced by a wearable in that cardiologists can use them in their raw, unprocessed form to diagnose heart problems like a previous heart attack or an irregular heart rhythm.
+
+The ECG measures the voltage created by the electrical activity in the heart. A traditional ECG does this with electrodes on the chest. An**electrode**is a conductive pad that comes in contact with skin and a**lead**is the electrical potential difference between two electrodes.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d25_nd320-c4-l2-clinical-ecg/nd320-c4-l2-clinical-ecg.jpg "Clinic ECG")Clinic ECG](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/b8d60b91-ae4b-488b-8379-99e6fe33f2b5#)
+
+Each pair of electrodes measures a slightly different voltage. The standard 12-lead ECG contains 12 different voltages across different axes of the body.
+
+[![](https://video.udacity-data.com/topher/2020/March/5e7a3d15_nd320-c4-l2-12-lead-ecg/nd320-c4-l2-12-lead-ecg.png "12 Lead ECG")12 Lead ECG](https://classroom.udacity.com/nanodegrees/nd320-beta/parts/f2d5d3bd-ad72-415e-85e6-208fe1237dfe/modules/b337aa97-ba0a-4a57-8ee6-e15ae15fc987/lessons/d7a821f4-d64c-402e-80b7-b293656119a8/concepts/b8d60b91-ae4b-488b-8379-99e6fe33f2b5#)
+
+The ECG has been “somewhat” wearable for a while.**Holter monitors**are ECG machines that are connected to a person’s chest in much the same way a tabletop machine is, but the recording device is portable and attached to the wearer’s hip. Holter monitors are worn during stress tests after a patient has been diagnosed or is suspected of having a heart condition or for short-term monitoring. They’re typically not worn for more than a few days.
+
+Beyond that, there are chest patches that only measure 1-lead of the 12 lead ECG. These chest patches can last from a few days to a couple of weeks. In 2011, Alivecor started making a handheld device that paired with an iPhone to take an ECG. Apple Watch and Verily’s Study Watch both have ECG sensors embedded into the hardware. On a wristwatch, the two electrodes are moved to the wrist and fingers on opposing hands. Because of this, the ECG cannot be monitored continuously and passively like the chest patch or Holter monitor or other sensors on a wearable. However, a wrist-watch can be worn for years, while a chest patch only lasts for a few weeks.
+
 
 
